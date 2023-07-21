@@ -97,16 +97,16 @@
             <ul class="navbar-nav d-flex flex-row">
               <!-- Icons -->
           
+             
               <li class="nav-item me-3 me-lg-0">
                 <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
-                <i class="fas fa-cart-shopping"></i>              
-              </a>
+                <i class="fas fa-cart-arrow-down"></i>
+                </a>
               </li>
-
               <li class="nav-item me-3 me-lg-0">
                 <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
                 <i class="fas fa-user"></i>
-              </a>
+                </a>
               </li>
               
             </ul>
