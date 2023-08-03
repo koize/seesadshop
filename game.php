@@ -2,6 +2,10 @@
 
 <head>
     <title>Mini-Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <script>
     class AABB {
@@ -39,9 +43,14 @@
     }
 </script>
 <style>
+    * {
+        font-family: 'Press Start 2P', cursive;
+        text-align: center;
+    }
+
     body {
-        background-color: black;
-        color: white;
+        background-color: #fafac8;
+        color: #2a2a2a;
     }
 
     canvas {
@@ -49,17 +58,25 @@
         image-rendering: pixelated;
         width: 512px;
         height: 512px;
+        margin: auto;
+        padding: 0;
+        display: block;
+        text-align: center;
     }
 </style>
 
 <body>
-    <div style="margin: auto; width: 50%">
+    <h1>Block Collector</h1>
+    <div style="margin: auto;">
         <p>
+        <h2>
             High Score: <span id="high_score">0</span> |
             Score: <span id="score">0</span>
+        </h2>
         </p>
-        <canvas id="glcanvas" width="256" height="256">Your browser may not support webGL, which is needed to run this Game.</canvas>
+        <canvas id="glcanvas" class="border border-primary" width="256" height="256">Your browser may not support webGL, which is needed to run this Game.</canvas>
     </div>
+    <sub>use WASD/arrow keys to move. Collect blocks to increase your score. Dont touch the Boundary!</sub>
 </body>
 <script>
 </script>
@@ -114,7 +131,7 @@
 
     function generateLoot() {
         //generate loot
-        return new AABB(Math.floor(Math.random() * (canvas.width - 16*2) + 16), Math.floor(Math.random() * (canvas.height - 16*2) + 16), 1 + 16 / 2, 1 + 16 / 2);
+        return new AABB(Math.floor(Math.random() * (canvas.width - 16 * 2) + 16), Math.floor(Math.random() * (canvas.height - 16 * 2) + 16), 1 + 16 / 2, 1 + 16 / 2);
         return lootAABB;
     }
     var loot = generateLoot();
@@ -143,8 +160,8 @@
         player.x += player.dx;
         player.y -= player.dy; //subtract because y is inverted
         //check for collisions with map
-        if (player.x < player.width/2 || player.x > canvas.width - player.width/2 
-             || player.y < player.height/2 || player.y > canvas.height - player.height/2) {
+        if (player.x < player.width / 2 || player.x > canvas.width - player.width / 2 ||
+            player.y < player.height / 2 || player.y > canvas.height - player.height / 2) {
             //the player has collided with the map, rip
             score = 0;
             document.getElementById("score").innerHTML = score;
