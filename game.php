@@ -72,6 +72,8 @@
         <h2>
             High Score: <span id="high_score">0</span> |
             Score: <span id="score">0</span>
+            <br>
+            Level: <span id="level">1</span>
         </h2>
         </p>
         <canvas id="glcanvas" class="border border-primary" width="256" height="256">Your browser may not support webGL, which is needed to run this Game.</canvas>
@@ -101,7 +103,7 @@
     let movementY = 0;
     //this part of the code handles key presses
     document.addEventListener('keydown', function(e) {
-        console.log("key pressed:" + e.keyCode);
+        e.preventDefault();
         if (e.keyCode == ' '.charCodeAt(0)) { //spacebar
             //uhh todo...?
         } else if (e.keyCode == 'W'.charCodeAt(0) || e.keyCode == 38) { //W
@@ -115,7 +117,6 @@
         }
     });
     document.addEventListener('keyup', function(e) {
-        console.log("key lifted:" + e.keyCode);
         if (e.keyCode == ' '.charCodeAt(0)) { //spacebar
 
         } else if (e.keyCode == 'W'.charCodeAt(0) || e.keyCode == 38) { //W
@@ -152,8 +153,9 @@
             }
             document.getElementById("score").innerHTML = score;
         }
-        movementX = score / 10 + 2;
-        movementY = score / 10 + 2;
+        movementX = (score / 10) + 2;
+        movementY = (score / 10) + 2;
+        document.getElementById("level").innerHTML = Math.floor(score / 10) + 1;
         ctx.fillStyle = "#FF0000";
         ctx.fillRect(loot.getCenterX() - 16 / 2, loot.getCenterY() - 16 / 2, 16, 16);
         //update the player
