@@ -176,7 +176,7 @@ echo '<!-- Carousel wrapper -->
     <div class="carousel-item active">
       <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp" class="d-block w-100" alt="Sunset Over the City"/>
       <div class="carousel-caption d-none d-md-block">
-        <h5>'.$promotion['name'].'</h5>
+        <h3>New product: '.$promotion['name'].'</h3>
         <p>'.$promotion['details'].'</p>
         <p>'.'Sale price: $'.$promotion['sale_price'].'</p>
         <p>'.'Ends on: '.$promotion['end_date'].'</p>
