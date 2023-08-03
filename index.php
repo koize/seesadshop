@@ -117,59 +117,89 @@
         </div>
       </nav>
       <!-- Navbar -->
-      <?php
+     <!-- carousel -->
+     <?php
 
-include_once "promotion.php";
+// Connect to the MySQL database
+$db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
 
-$db = new mysqli("localhost", "root", "", "seesad");
+// Fetch the promotions
+$query = $db->query('SELECT * FROM promotions');
+$promotions = $query->fetchAll();
 
-$promotions = Promotion::get_promotions($db);
+// Generate the HTML code for the carousel
+/*echo '<div class="carousel slide" id="promotions">';
+echo '<ol class="carousel-indicators">';
+foreach ($promotions as $index => $promotion) {
+  echo '<li data-target="#promotions" data-slide-to="' . $index . '" class="active"></li>';
+}
+echo '</ol>';
+echo '<div class="carousel-inner">';
+foreach ($promotions as $index => $promotion) {
+  echo '<div class="item active">';
+    echo '<img src="' . $promotion['image'] . '" alt="' . $promotion['name'] . '">';
+  echo '<div class="carousel-caption">';
+  echo '<h3>' . $promotion['title'] . '</h3>';
+  echo '<p>' . $promotion['start_date'] . ' - ' . $promotion['end_date'] . '</p>';
+  echo '</div>';
+  echo '</div>';
+}
+echo '</div>';
+echo '<a class="left carousel-control" href="#promotions" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>';
+echo '<a class="right carousel-control" href="#promotions" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>';
+echo '</div>'; */
+
+//<!--mdbootstrap carousel -->
+
+echo '<!-- Carousel wrapper -->
+<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+  <!-- Indicators -->
+  <div class="carousel-indicators">';
+  foreach ($promotions as $index => $promotion) {
+    echo '
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="$index"
+      class="active"
+      aria-current="true"
+      aria-label="Slide '.($index + 1).'"
+    ></button> ';
+  }
+    echo '
+  </div>
+  
+  <!-- Inner -->
+  <div class="carousel-inner">';
+  foreach ($promotions as $index => $promotion) {
+    echo '  <!-- Single item -->
+    <div class="carousel-item active">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp" class="d-block w-100" alt="Sunset Over the City"/>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>'.$promotion['name'].'</h5>
+        <p>'.$promotion['details'].'</p>
+        <p>'.'Sale price: $'.$promotion['sale_price'].'</p>
+        <p>'.'Ends on: '.$promotion['end_date'].'</p>
+      </div>
+    </div>';
+  }
+  echo '
+  <!-- Inner -->
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- Carousel wrapper -->';
 
 ?>
-<!-- Carousel -->
-<div id="carousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel" data-slide-to="1"></li>
-        <li data-target="#carousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="promotion1.jpg" class="d-block w-100" alt="First slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Promotion 1</h5>
-                <p>This is the first promotion.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="promotion2.jpg" class="d-block w-100" alt="Second slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Promotion 2</h5>
-                <p>This is the second promotion.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="promotion3.jpg" class="d-block w-100" alt="Third slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Promotion 3</h5>
-                <p>This is the third promotion.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Controls -->
-    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+     <!--end carousel -->
     </header>
     <!--Main Navigation-->
 
