@@ -76,10 +76,12 @@
         //player coordinates
         x: canvas.width / 2,
         y: canvas.height / 2,
+        height: 32,
+        width: 32,
         //player velocity
         dx: 0,
         dy: 0,
-        AABB: new AABB(0, 0, 1 + 32 / 2, 1 + 32 / 2)
+        AABB: new AABB(0, 0, 32 / 2, 32 / 2)
     }
     let movementX = 0;
     let movementY = 0;
@@ -88,37 +90,40 @@
         console.log("key pressed:" + e.keyCode);
         if (e.keyCode == ' '.charCodeAt(0)) { //spacebar
             //uhh todo...?
-        } else if (e.keyCode == 'W'.charCodeAt(0)) { //W
+        } else if (e.keyCode == 'W'.charCodeAt(0) || e.keyCode == 38) { //W
             player.dy = movementY;
-        } else if (e.keyCode == 'A'.charCodeAt(0)) { //A
+        } else if (e.keyCode == 'A'.charCodeAt(0) || e.keyCode == 37) { //A
             player.dx = -movementX;
-        } else if (e.keyCode == 'D'.charCodeAt(0)) { //D
+        } else if (e.keyCode == 'D'.charCodeAt(0) || e.keyCode == 39) { //D
             player.dx = movementX;
-        } else if (e.keyCode == 'S'.charCodeAt(0)) { //S
+        } else if (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 40) { //S
             player.dy = -movementY;
         }
     });
     document.addEventListener('keyup', function(e) {
-        console.log("key pressed:" + e.keyCode);
+        console.log("key lifted:" + e.keyCode);
         if (e.keyCode == ' '.charCodeAt(0)) { //spacebar
 
-        } else if (e.keyCode == 'W'.charCodeAt(0)) { //W
-            if (player.dy != 0) player.dy = 0;
-        } else if (e.keyCode == 'A'.charCodeAt(0)) { //A
-            if (player.dx != 0) player.dx = 0;
-        } else if (e.keyCode == 'D'.charCodeAt(0)) { //D
-            if (player.dx != 0) player.dx = 0;
-        } else if (e.keyCode == 'S'.charCodeAt(0)) { //S
-            if (player.dy != 0) player.dy = 0;
+        } else if (e.keyCode == 'W'.charCodeAt(0) || e.keyCode == 38) { //W
+            if (player.dy > 0) player.dy = 0;
+        } else if (e.keyCode == 'A'.charCodeAt(0) || e.keyCode == 37) { //A
+            if (player.dx < 0) player.dx = 0;
+        } else if (e.keyCode == 'D'.charCodeAt(0) || e.keyCode == 39) { //D
+            if (player.dx > 0) player.dx = 0;
+        } else if (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 40) { //S
+            if (player.dy < 0) player.dy = 0;
         }
     });
 
     function generateLoot() {
         //generate loot
-        return new AABB(Math.floor(Math.random() * (canvas.width - 16 / 2)), Math.floor(Math.random() * (canvas.height - 16 / 2)), 1 + 16 / 2, 1 + 16 / 2);
+        return new AABB(Math.floor(Math.random() * (canvas.width - 16*2) + 16), Math.floor(Math.random() * (canvas.height - 16*2) + 16), 1 + 16 / 2, 1 + 16 / 2);
         return lootAABB;
     }
     var loot = generateLoot();
+    do {
+        loot = generateLoot();
+    } while (player.AABB.colliding(loot));
 
     function loop() {
         //clear the screen
@@ -133,10 +138,10 @@
             }
             document.getElementById("score").innerHTML = score;
         }
-        movementX = score/10 + 1;
-        movementY = score/10 + 1;
+        movementX = score / 10 + 2;
+        movementY = score / 10 + 2;
         ctx.fillStyle = "#FF0000";
-        ctx.fillRect(loot.getCenterX(), loot.getCenterY(), 16, 16);
+        ctx.fillRect(loot.getCenterX() - 16 / 2, loot.getCenterY() - 16 / 2, 16, 16);
         //update the player
         player.x += player.dx;
         player.y -= player.dy; //subtract because y is inverted
@@ -147,7 +152,8 @@
         if (player.y < 0) player.y = 0;
         if (player.y > canvas.height - 32) player.y = canvas.height - 32;
         */
-        if (player.x < 0 || player.x > canvas.width - 32 || player.y < 0 || player.y > canvas.height - 32) {
+        if (player.x < player.width/2 || player.x > canvas.width - player.width/2 
+             || player.y < player.height/2 || player.y > canvas.height - player.height/2) {
             //the player has collided with the map, rip
             score = 0;
             document.getElementById("score").innerHTML = score;
@@ -161,7 +167,7 @@
         player.AABB.setCenterY(player.y);
         //draw the player
         ctx.fillStyle = "#008080";
-        ctx.fillRect(player.x, player.y, 32, 32);
+        ctx.fillRect(player.x - player.width / 2, player.y - player.height / 2, player.width, player.height);
 
         //request another frame
         requestAnimationFrame(loop);
