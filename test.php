@@ -2,9 +2,6 @@
 
 <head>
     <title>Mini-Game</title>
-    <!--
-    <script src="./js/test.js" type="module"></script>
--->
 </head>
 <script>
     class AABB {
@@ -146,12 +143,6 @@
         player.x += player.dx;
         player.y -= player.dy; //subtract because y is inverted
         //check for collisions with map
-        /*
-        if (player.x < 0) player.x = 0;
-        if (player.x > canvas.width - 32) player.x = canvas.width - 32;
-        if (player.y < 0) player.y = 0;
-        if (player.y > canvas.height - 32) player.y = canvas.height - 32;
-        */
         if (player.x < player.width/2 || player.x > canvas.width - player.width/2 
              || player.y < player.height/2 || player.y > canvas.height - player.height/2) {
             //the player has collided with the map, rip
