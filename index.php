@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="css/style.css" />
     <!-- Material Icons3 -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" /> 
+    <script src="promotion.js"></script>
+
   
   </head>
 <body>
@@ -115,42 +117,59 @@
         </div>
       </nav>
       <!-- Navbar -->
+      <?php
 
-      <!-- Carousel wrapper -->
-      <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
-          <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
-          <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
-        </ol>
+include_once "promotion.php";
 
-        <!-- Inner -->
-        <div class="carousel-inner">
-    <?php foreach ($promotions as $promotion) { ?>
-      <div class="carousel-item <?php echo $promotion['active'] ? 'active' : ''; ?>">
-        <img src="<?php echo $promotion['image']; ?>" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5><?php echo $promotion['title']; ?></h5>
-          <p><?php echo $promotion['description']; ?></p>
+$db = new mysqli("localhost", "root", "", "seesad");
+
+$promotions = Promotion::get_promotions($db);
+
+?>
+<!-- Carousel -->
+<div id="carousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="promotion1.jpg" class="d-block w-100" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Promotion 1</h5>
+                <p>This is the first promotion.</p>
+            </div>
         </div>
-      </div>
-    <?php } ?>
-  </div>
-        <!-- Inner -->
-       
+        <div class="carousel-item">
+            <img src="promotion2.jpg" class="d-block w-100" alt="Second slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Promotion 2</h5>
+                <p>This is the second promotion.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="promotion3.jpg" class="d-block w-100" alt="Third slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Promotion 3</h5>
+                <p>This is the third promotion.</p>
+            </div>
+        </div>
+    </div>
 
-        <!-- Controls -->
-        <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-      <!-- Carousel wrapper -->
+    <!-- Controls -->
+    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
     </header>
     <!--Main Navigation-->
 
