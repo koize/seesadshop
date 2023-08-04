@@ -567,6 +567,7 @@ echo '<!-- Carousel wrapper -->
   <!-- Footer -->
 </section>
     <!--Footer-->
+
     <!-- MDB -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Custom scripts -->
