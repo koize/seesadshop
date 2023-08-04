@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
+    <title>seeee saaad shop</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <!-- Google Fonts Roboto -->
@@ -13,7 +13,12 @@
     <link rel="stylesheet" href="css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="css/style.css" />
-</head>
+    <!-- Material Icons3 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" /> 
+    <script src="promotion.js"></script>
+
+  
+  </head>
 <body>
         <!--Main Navigation-->
     <header>
@@ -64,11 +69,12 @@
       </style>
 
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
+      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;" height="110%">
         <div class="container-fluid">
           <!-- Navbar brand -->
           <a class="navbar-brand nav-link" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-            <strong>MDB</strong>
+          <img src="img/cyoher.jpg" class="rounded-circle" alt="a" width= "10%" height= "10%">
+          sussy baka
           </a>
           <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
             aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,131 +87,119 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-                  target="_blank">Learn Bootstrap 5</a>
+                  target="_blank">Products</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Download MDB UI KIT</a>
+                <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Support</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Gabriel's game</a>
               </li>
             </ul>
 
             <ul class="navbar-nav d-flex flex-row">
               <!-- Icons -->
-              <li class="nav-item me-3 me-lg-0">
-                <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-                  target="_blank">
-                  <i class="fab fa-youtube"></i>
-                </a>
-              </li>
-              <li class="nav-item me-3 me-lg-0">
-                <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
+          
+             
               <li class="nav-item me-3 me-lg-0">
                 <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
-                  <i class="fab fa-twitter"></i>
+                <i class="fas fa-cart-arrow-down"></i>
                 </a>
               </li>
               <li class="nav-item me-3 me-lg-0">
                 <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
-                  <i class="fab fa-github"></i>
+                <i class="fas fa-user"></i>
                 </a>
               </li>
+              
             </ul>
           </div>
         </div>
       </nav>
       <!-- Navbar -->
+     <!-- carousel -->
+     <?php
 
-      <!-- Carousel wrapper -->
-      <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
-          <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
-          <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
-        </ol>
+// Connect to the MySQL database
+$db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
 
-        <!-- Inner -->
-        <div class="carousel-inner">
-          <!-- Single item -->
-          <div class="carousel-item active">
-            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-              <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white text-center">
-                  <h1 class="mb-3">Learn Bootstrap 5 with MDB</h1>
-                  <h5 class="mb-4">Best & free guide of responsive web design</h5>
-                  <a
-                    class="btn btn-outline-light btn-lg m-2"
-                    href="https://www.youtube.com/watch?v=c9B4TPnak1A"
-                    role="button"
-                    rel="nofollow"
-                    target="_blank"
-                    >Start tutorial</a
-                  >
-                  <a
-                    class="btn btn-outline-light btn-lg m-2"
-                    href="https://mdbootstrap.com/docs/standard/"
-                    target="_blank"
-                    role="button"
-                    >Download MDB UI KIT</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
+// Fetch the promotions
+$query = $db->query('SELECT * FROM promotions');
+$promotions = $query->fetchAll();
 
-          <!-- Single item -->
-          <div class="carousel-item">
-            <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
-              <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white text-center">
-                  <h2>You can place here any content</h2>
-                </div>
-              </div>
-            </div>
-          </div>
+// Generate the HTML code for the carousel
+/*echo '<div class="carousel slide" id="promotions">';
+echo '<ol class="carousel-indicators">';
+foreach ($promotions as $index => $promotion) {
+  echo '<li data-target="#promotions" data-slide-to="' . $index . '" class="active"></li>';
+}
+echo '</ol>';
+echo '<div class="carousel-inner">';
+foreach ($promotions as $index => $promotion) {
+  echo '<div class="item active">';
+    echo '<img src="' . $promotion['image'] . '" alt="' . $promotion['name'] . '">';
+  echo '<div class="carousel-caption">';
+  echo '<h3>' . $promotion['title'] . '</h3>';
+  echo '<p>' . $promotion['start_date'] . ' - ' . $promotion['end_date'] . '</p>';
+  echo '</div>';
+  echo '</div>';
+}
+echo '</div>';
+echo '<a class="left carousel-control" href="#promotions" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>';
+echo '<a class="right carousel-control" href="#promotions" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>';
+echo '</div>'; */
 
-          <!-- Single item -->
-          <div class="carousel-item">
-            <div
-              class="mask"
-              style="
-                background: linear-gradient(
-                  45deg,
-                  rgba(29, 236, 197, 0.7),
-                  rgba(91, 14, 214, 0.7) 100%
-                );
-              "
-            >
-              <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white text-center">
-                  <h2>And cover it with any mask</h2>
-                  <a
-                    class="btn btn-outline-light btn-lg m-2"
-                    href="https://mdbootstrap.com/docs/standard/content-styles/masks/"
-                    target="_blank"
-                    role="button"
-                    >Learn about masks</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Inner -->
+//<!--mdbootstrap carousel -->
 
-        <!-- Controls -->
-        <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+echo '<!-- Carousel wrapper -->
+<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+  <!-- Indicators -->
+  <div class="carousel-indicators">';
+  foreach ($promotions as $index => $promotion) {
+    echo '
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="$index"
+      class="active"
+      aria-current="true"
+      aria-label="Slide '.($index + 1).'"
+    ></button> ';
+  }
+    echo '
+  </div>
+  
+  <!-- Inner -->
+  <div class="carousel-inner">';
+  foreach ($promotions as $index => $promotion) {
+    echo '  <!-- Single item -->
+    <div class="carousel-item active">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp" class="d-block w-100" alt="Sunset Over the City"/>
+      <div class="carousel-caption d-none d-md-block">
+        <h3>New product: '.$promotion['name'].'</h3>
+        <p>'.$promotion['details'].'</p>
+        <p>'.'Sale price: $'.$promotion['sale_price'].'</p>
+        <p>'.'Ends on: '.$promotion['end_date'].'</p>
       </div>
-      <!-- Carousel wrapper -->
+    </div>';
+  }
+  echo '
+  <!-- Inner -->
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- Carousel wrapper -->';
+
+?>
+     <!--end carousel -->
     </header>
     <!--Main Navigation-->
 
@@ -213,40 +207,8 @@
     <main class="mt-5">
       <div class="container">
         <!--Section: Content-->
-        <section>
-          <div class="row">
-            <div class="col-md-6 gx-5 mb-4">
-              <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid" />
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                </a>
-              </div>
-            </div>
-
-            <div class="col-md-6 gx-5 mb-4">
-              <h4><strong>Facilis consequatur eligendi</strong></h4>
-              <p class="text-muted">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
-                eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
-                sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
-              </p>
-              <p><strong>Doloremque vero ex debitis veritatis?</strong></p>
-              <p class="text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod itaque voluptate
-                nesciunt laborum incidunt. Officia, quam consectetur. Earum eligendi aliquam illum
-                alias, unde optio accusantium soluta, iusto molestiae adipisci et?
-              </p>
-            </div>
-          </div>
-        </section>
-        <!--Section: Content-->
-
-        <hr class="my-5" />
-
-        <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>Facilis consequatur eligendi</strong></h4>
+          <h4 class="mb-5"><strong>Our recommendations</strong></h4>
 
           <div class="row">
             <div class="col-lg-4 col-md-12 mb-4">
@@ -261,7 +223,7 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">best seller: face wash 1</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -283,7 +245,7 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">tenz recommended: sauce</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -305,7 +267,7 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">the most original: wasabi</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -313,6 +275,39 @@
                   <a href="#!" class="btn btn-primary">Button</a>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+        <!--Section: Content-->
+       
+
+        <hr class="my-5" />
+
+         <!--Section: Content-->
+         <section>
+          <div class="row">
+            <div class="col-md-6 gx-5 mb-4">
+              <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-md-6 gx-5 mb-4">
+              <h4><strong>About us</strong></h4>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
+                eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
+                sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
+              </p>
+              <p><strong>Why choose us?</strong></p>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod itaque voluptate
+                nesciunt laborum incidunt. Officia, quam consectetur. Earum eligendi aliquam illum
+                alias, unde optio accusantium soluta, iusto molestiae adipisci et?
+              </p>
             </div>
           </div>
         </section>
