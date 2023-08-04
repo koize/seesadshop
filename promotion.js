@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#promotions').carousel({
+    $('#carouselBasicExample').carousel({
       interval: 3000,
       pause: 'hover'
     });
