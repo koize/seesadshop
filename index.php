@@ -69,12 +69,11 @@
       </style>
 
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;" height="110%">
+      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-dark" style="z-index: 3000;" height="110%">
         <div class="container-fluid">
           <!-- Navbar brand -->
           <a class="navbar-brand nav-link" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-          <img src="img/cyoher.jpg" class="rounded-circle" alt="a" width= "10%" height= "10%">
-          sussy baka
+          <img src="img/cyoher.jpg" class="rounded-circle" alt="a" width= "30" height= "30">
           </a>
           <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
             aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
@@ -174,7 +173,7 @@ echo '<!-- Carousel wrapper -->
   foreach ($promotions as $index => $promotion) {
     echo '  <!-- Single item -->
     <div class="carousel-item active">
-      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp" class="d-block w-100" alt="Sunset Over the City"/>
+      <img src="img/carousel1.jpg" class="d-block w-100" alt="Sunset Over the City"/>
       <div class="carousel-caption d-none d-md-block">
         <h3>New product: '.$promotion['name'].'</h3>
         <p>'.$promotion['details'].'</p>
@@ -208,22 +207,22 @@ echo '<!-- Carousel wrapper -->
       <div class="container">
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>Our recommendations</strong></h4>
+          <h4 class="mb-5"><strong>Products of the month</strong></h4>
 
           <div class="row">
-            <div class="col-lg-4 col-md-12 mb-4">
-              <div class="card">
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card text-body bg-info mb-3">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/nature/184.jpg"
-                    class="img-fluid"
+                    src="img/ph1.jpg"
+                    class="card-img-top"
                   />
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">best seller: face wash 1</h5>
+                  <h5 class="card-title">best seller: race war</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -237,15 +236,15 @@ echo '<!-- Carousel wrapper -->
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/nature/023.jpg"
-                    class="img-fluid"
+                    src="img/hj2.jpg"
+                    class="card-img-top"
                   />
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">tenz recommended: sauce</h5>
+                  <h5 class="card-title">my reaction</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -256,18 +255,18 @@ echo '<!-- Carousel wrapper -->
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card">
+              <div class="card text-white bg-dark mb-3">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
-                    class="img-fluid"
+                    src="img/ph3.jpg"
+                    class="card-img-top"
                   />
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">the most original: wasabi</h5>
+                  <h5 class="card-title">amogus</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -288,7 +287,7 @@ echo '<!-- Carousel wrapper -->
           <div class="row">
             <div class="col-md-6 gx-5 mb-4">
               <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid" />
+                <img src="img/ph5.jpg" class="img-fluid" />
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
@@ -317,7 +316,7 @@ echo '<!-- Carousel wrapper -->
 
         <!--Section: Content-->
         <section class="mb-5">
-          <h4 class="mb-5 text-center"><strong>Facilis consequatur eligendi</strong></h4>
+          <h4 class="mb-5 text-center"><strong>Sign up now!</strong></h4>
 
           <div class="row d-flex justify-content-center">
             <div class="col-md-6">
@@ -366,109 +365,196 @@ echo '<!-- Carousel wrapper -->
 
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block mb-4">
-                  Sign up
+                  Get goodies!!
                 </button>
-
-                <!-- Register buttons -->
-                <div class="text-center">
-                  <p>or sign up with:</p>
-                  <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
-                  </button>
-
-                  <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-google"></i>
-                  </button>
-
-                  <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                  </button>
-
-                  <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-github"></i>
-                  </button>
-                </div>
               </form>
             </div>
           </div>
         </section>
         <!--Section: Content-->
+        <div class="row d-flex justify-content-center align-items-center h-100" style="max-width: 100%;">
+    <div class="col">
+      <div class="row align-items-center justify-content-around">
+        <div class="col-lg-6 px-5 align-text-center">
+          
+          <h1>Where are we?</h1>
+          <br>
+            <h4>
+              <i class="fa-regular fa-map"></i>
+              <span class="m-1"></span>
+              535 Clementi Rd, Singapore 599489
+            </h4>
+
+            <h4>
+              <i class="fa-regular fa-envelope"></i>
+              <span class="m-1"></span>
+              hananoyado@gmail.com
+            </h4>
+
+            <h4>
+              <i class="fa-solid fa-phone"></i>
+              <span class="m-1"></span>
+              +65 8123 0192
+            </h4>
+
+            <h4>
+              <i class="fa-regular fa-clock"></i>
+              <span class="m-1"></span>
+              Mondays to Saturdays, 9AM to 5PM
+            </h4>
+        </div>
+
+        <br>
+
+        <div class="col text-align-center">
+          <div class="m-5">
+            <div class="iframe-rwd">
+              <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3708.281749908684!2d103.77215791453851!3d1.332103599028431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da107d8eb4e359%3A0x75d2e7ffdeeb0c43!2sNgee%20Ann%20Polytechnic!5e1!3m2!1sen!2sus!4v1675999527895!5m2!1sen!2sus"></iframe><br />
+              <small>
+                <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3708.281749908684!2d103.77215791453851!3d1.332103599028431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da107d8eb4e359%3A0x75d2e7ffdeeb0c43!2sNgee%20Ann%20Polytechnic!5e1!3m2!1sen!2sus!4v1675999527895!5m2!1sen!2sus"
+                  style="color:#0000FF;text-align:left">View Larger Map</a>
+              </small>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </div>
+    </section>
+  </div>
+      </div>
+      
     </main>
     <!--Main layout-->
+  <footer class="bg-secondary text-white">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">about seesad</h5>
 
+          <p>
+          Hana No Yado also known as The Flowering Inn is an e-commerce shop that provides flower
+          bouquets for special occasions and gardening essentials to make gardening more enjoyable.
+          The store aims to conveniently deliver spring to your doorstep and provide a helping
+          hand to your gardening journey.
+          </p>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">the poor developers</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">hackerman gab</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">slave 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">slave 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">slave 3</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-0">Quick shortcuts</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!" class="text-white">View all products</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Free vouchers</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Support</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">About us</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+      <section class="mb-1">
+          <!-- Facebook -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+  
+          <!-- Twitter -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+  
+          <!-- Google -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+  
+          <!-- Instagram -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+      </div>
+      <!-- Section: Social media -->
+  
+      <!-- Section: Form -->
+      <div class="container">
+      <section class="">
+        <form action="">
+          <!--Grid row-->
+          <div class="row d-flex justify-content-center">
+            <!--Grid column-->
+            <div class="col-auto">
+              <p class="pt-2">
+                <strong>Sign up for updates!</strong>
+              </p>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+              <!-- Email input -->
+              <div class="form-outline form-light mb-4 ">
+                <input type="email" id="newsEmail" class="form-control" style="color: white" />
+                <label class="form-label" for="newsEmail" style="color: white">Email address</label>
+              </div>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-auto">
+              <!-- Submit button -->
+              <button id="news" type="button" class="btn btn-outline-light mb-4">
+                Subscribe
+              </button>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </form>
+      </section>
+      
+      <!-- Section: Form -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</section>
     <!--Footer-->
-    <footer class="bg-light text-lg-start">
-      <div class="py-4 text-center">
-        <a
-          role="button"
-          class="btn btn-primary btn-lg m-2"
-          href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA"
-          rel="nofollow"
-          target="_blank"
-        >
-          Learn Bootstrap 5
-        </a>
-        <a
-          role="button"
-          class="btn btn-primary btn-lg m-2"
-          href="https://mdbootstrap.com/docs/standard/"
-          target="_blank"
-        >
-          Download MDB UI KIT
-        </a>
-      </div>
 
-      <hr class="m-0" />
-
-      <div class="text-center py-4 align-items-center">
-        <p>Follow MDB on social media</p>
-        <a
-          href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA"
-          class="btn btn-primary m-1"
-          role="button"
-          rel="nofollow"
-          target="_blank"
-        >
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a
-          href="https://www.facebook.com/mdbootstrap"
-          class="btn btn-primary m-1"
-          role="button"
-          rel="nofollow"
-          target="_blank"
-        >
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a
-          href="https://twitter.com/MDBootstrap"
-          class="btn btn-primary m-1"
-          role="button"
-          rel="nofollow"
-          target="_blank"
-        >
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a
-          href="https://github.com/mdbootstrap/mdb-ui-kit"
-          class="btn btn-primary m-1"
-          role="button"
-          rel="nofollow"
-          target="_blank"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
-    <!--Footeeeeeer-->
     <!-- MDB -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Custom scripts -->
