@@ -98,7 +98,20 @@
 
             <ul class="navbar-nav d-flex flex-row">
               <!-- Icons -->
-          
+              <li class="nav-item me-3 me-lg-0">
+              <form class="d-flex input-group w-auto">
+      <input
+        type="search"
+        class="form-control rounded"
+        placeholder="Search all products"
+        aria-label="Search"
+        aria-describedby="search-addon"
+      />
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search"></i>
+      </span>
+    </form>
+              </li>
              
               <li class="nav-item me-3 me-lg-0">
                 <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
@@ -159,7 +172,7 @@ echo '<!-- Carousel wrapper -->
     <button
       type="button"
       data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="$index"
+      data-mdb-slide-to="'.($index).'"
       class="active"
       aria-current="true"
       aria-label="Slide '.($index + 1).'"
@@ -182,7 +195,7 @@ echo '<!-- Carousel wrapper -->
       </div>
     </div>';
   }
-  echo '
+  ?>
   <!-- Inner -->
 
   <!-- Controls -->
@@ -195,9 +208,9 @@ echo '<!-- Carousel wrapper -->
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-<!-- Carousel wrapper -->';
+<!-- Carousel wrapper -->
 
-?>
+
      <!--end carousel -->
     </header>
     <!--Main Navigation-->
