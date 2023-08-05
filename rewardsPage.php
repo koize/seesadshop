@@ -86,6 +86,9 @@
               <li class="nav-item">
               <a class="nav-link" aria-current="page">Rewards</a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link" href="supportPage.php">Support</a>
+              </li>
             </ul>
 
             <ul class="navbar-nav d-flex flex-row">

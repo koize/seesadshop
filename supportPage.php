@@ -80,14 +80,14 @@
                 <a class="nav-link" href="index.php">Home</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" aria-current="page" rel="nofollow"
+              <a class="nav-link" href="storePage.php"
                   >Store</a> <!-- hyperlink to other pages -->
               </li>
               <li class="nav-item">
               <a class="nav-link" href="rewardsPage.php">Rewards</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="supportPage.php">Support</a>
+              <a class="nav-link" aria-current="page" rel="nofollow">Rewards</a>
               </li>
             </ul>
 
@@ -121,67 +121,80 @@
       <!-- Navbar -->
 
       <!-- Carousel wrapper -->
+      
       <!-- Carousel wrapper -->
     </header>
     <!--Main Navigation-->
 
     <!--Main layout-->
     <main class="mt-5">
-      <div class="container">
-      <section class="text-center">
-      <h3 class="mb-5"><strong>Our Products</strong></h3>
-      </section>
-
-      <section class="text-center">
-      <?php
-      $servername = "localhost";
-      $username = "root";
-      $password = "";
-      $dbname = "csad_projek_test";
-
-
-      $conn = new mysqli($servername,$username,$password,$dbname);
-
-      if($conn->connect_error){
-        die("Connection failed: " . $conn->connect_error);
-      }
-
-      $sql = "SELECT image_link,product_name,product_desc,product_price FROM products";
-      $result = $conn->query($sql);
-      echo '<div class="row">';
-      if($result->num_rows > 0){
-        for($i = 0; $i < mysqli_num_rows($result); $i++){
-          $row = mysqli_fetch_assoc($result);
-          echo '<div class="col-lg-4 col-md-12 mb-4">';
-          echo '<div class="card">';
-          echo '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">';
-          echo '<img src= "' . $row['image_link'] . '"class = "img-fluid"/>';
-          echo '<a href="#!">';
-          echo '<div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>';
-          echo '</a>';
-          echo '</div>';
-          echo '<div class="card-body">';
-          echo '<h5 class="card-title">' . $row['product_name']. '</h5>';
-          echo '<p class="card-text">';
-          echo $row['product_desc'];
-          echo '</p>';
-          echo '<p class="card-text">';
-          echo $row['product_price'];
-          echo '</p>';
-          echo '<a href="#!" class="btn btn-primary">Button</a>';
-          echo '</div>';
-          echo '</div>';
-          echo '</div>';
-        }
-      }else{
-        echo "No results found";
-      }
-      echo '</div>';
-      mysqli_close($conn);  
-
-      ?>
-      </section>
-      </div>  
+    <div class="accordion" id="accordionExample" width:1000px>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button
+        class="accordion-button"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+      What are the shipping options for facial products?
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
+      <div class="accordion-body">
+      We offer a variety of shipping options for facial products, including standard 
+      shipping, expedited shipping, and overnight shipping. Standard shipping is free 
+      for orders over $50. Expedited shipping is available for an additional fee. 
+      Overnight shipping is available for the most urgent orders.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#collapseTwo"
+        aria-expanded="false"
+        aria-controls="collapseTwo"
+      >
+      What is your return policy for facial products?
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-mdb-parent="#accordionExample">
+      <div class="accordion-body">
+      We offer a 30-day return policy for facial products. If you are not 
+      satisfied with your purchase, you can return it for a full refund. 
+      You must return the product in its original packaging and in resalable condition.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#collapseThree"
+        aria-expanded="false"
+        aria-controls="collapseThree"
+      >
+      How do I contact customer support?
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-mdb-parent="#accordionExample">
+      <div class="accordion-body">
+      You can contact customer support by email, phone, 
+      or live chat. Our customer support team is available 
+      24/7 to answer your questions and help you with your order.
+      </div>
+    </div>
+  </div>
+</div>
+      
     </main>
     <!--Main layout-->
 

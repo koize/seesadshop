@@ -86,6 +86,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="rewardsPage.php">Rewards</a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link" href="supportPage.php">Support</a>
+              </li>
             </ul>
 
             <ul class="navbar-nav d-flex flex-row">
@@ -251,7 +254,7 @@
           <div class="row">
             <div class="col-lg-4 col-md-12 mb-4">
               <div class="card">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                
                   <img
                     src="https://mdbootstrap.com/img/new/standard/nature/184.jpg"
                     class="img-fluid"
