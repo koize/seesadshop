@@ -32,23 +32,12 @@
         }
 
         .carousel-item:nth-child(1) {
-          background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+          background-image: 'img/carousel_pmnt.jpg';
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center center;
         }
-        .carousel-item:nth-child(2) {
-          background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center center;
-        }
-        .carousel-item:nth-child(3) {
-          background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center center;
-        }
+    
 
         /* Height for devices larger than 576px */
         @media (min-width: 992px) {
@@ -59,7 +48,7 @@
           .carousel-inner,
           .carousel-item,
           .carousel-item.active {
-            height: 50vh;
+            height: 47vh;
           }
         }
 
@@ -69,11 +58,11 @@
       </style>
 
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-dark" style="z-index: 3000;" height="110%">
+      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-info bg-gradient" style="z-index: 2000; --mdb-bg-opacity: 0.8;" height="150%">
         <div class="container-fluid">
           <!-- Navbar brand -->
-          <a class="navbar-brand nav-link" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-          <img src="img/cyoher.jpg" class="rounded-circle" alt="a" width= "30" height= "30">
+          <a class="navbar-brand nav-link" target="_blank" href="index.php">
+          <img src="img/logo.png" alt="a" width= "200" height= "55">
           </a>
           <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
             aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,19 +70,19 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarExample01">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item active">
-                <a class="nav-link" aria-current="page" href="#intro">Home</a>
-              </li>
               <li class="nav-item">
                 <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
                   target="_blank">Products</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="game.php" target="_blank">Rewards</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Support</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Gabriel's game</a>
-              </li>
+                <a class="nav-link" href="about.php" target="_blank">About us</a>
+              </li>              
             </ul>
 
             <ul class="navbar-nav d-flex flex-row">
@@ -164,7 +153,7 @@ echo '</div>'; */
 //<!--mdbootstrap carousel -->
 
 echo '<!-- Carousel wrapper -->
-<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+<div id="carouselBasicExample" class="carousel slide carousel-fade carousel-dark" data-mdb-ride="carousel">
   <!-- Indicators -->
   <div class="carousel-indicators">';
   foreach ($promotions as $index => $promotion) {
@@ -184,16 +173,47 @@ echo '<!-- Carousel wrapper -->
   <!-- Inner -->
   <div class="carousel-inner">';
   foreach ($promotions as $index => $promotion) {
-    echo '  <!-- Single item -->
-    <div class="carousel-item active">
-      <img src="img/carousel1.jpg" class="d-block w-100" alt="Sunset Over the City"/>
-      <div class="carousel-caption d-none d-md-block">
-        <h3>New product: '.$promotion['name'].'</h3>
-        <p>'.$promotion['details'].'</p>
-        <p>'.'Sale price: $'.$promotion['sale_price'].'</p>
-        <p>'.'Ends on: '.$promotion['end_date'].'</p>
-      </div>
+    if ($promotion['name'] == '') {
+      echo'
+      <div class="carousel-item active">
+      <img src="'.$promotion['img_filepath'].'" class="d-block w-100" alt="'.$promotion['name'].'"/>
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.15);">
+                        <div class="carousel-caption">
+                            <div class="text-white text-center">
+                                <h3 class="mb-4">Promotion ends on '.$promotion['end_date'].'</h3>
+                                <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" target="_blank">Start tutorial</a>
+                                <a class="btn btn-outline-light btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">Download MDB UI KIT</a>
+                            </div>
+                        </div>
+                    </div>
+
     </div>';
+    }
+    else {
+      echo '  <!-- Single item -->
+      <div class="carousel-item active">
+        <img src="'.$promotion['img_filepath'].'" class="d-block w-100" alt="'.$promotion['name'].'"/>
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
+                          <div class="carousel-caption">
+                              <div class="text-white text-center">
+                               <div class="row">
+                                <div class="col">
+                                </div>
+                                 <div class="col">
+                                 <h1 class="mb-4">'.$promotion['name'].'</h1>
+                                 <h2 class="mb-4">Sale price: $'.$promotion['sale_price'].'</h2>
+                                 <p class="mb-4">Promotion ends on '.$promotion['end_date'].'</p>
+                                 </div>
+                                <div class="col">
+                                </div>
+                              </div>                            
+                              </div>
+                          </div>
+                      </div>
+  
+      </div>';
+    }
+   
   }
   ?>
   <!-- Inner -->
@@ -224,7 +244,7 @@ echo '<!-- Carousel wrapper -->
 
           <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card text-body bg-info mb-3">
+              <div class="card text-body bg-info mb-3" style="height:550px">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
                     src="img/ph1.jpg"
@@ -240,13 +260,13 @@ echo '<!-- Carousel wrapper -->
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
+                  <a href="#!" class="btn btn-primary">Shop product</a>
                 </div>
               </div>
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card">
+              <div class="card" style="height:550px">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
                     src="img/hj2.jpg"
@@ -262,13 +282,13 @@ echo '<!-- Carousel wrapper -->
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
+                  <a href="#!" class="btn btn-primary">Shop product</a>
                 </div>
               </div>
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card text-white bg-dark mb-3">
+              <div class="card text-white bg-dark mb-3" style="height:550px">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
                     src="img/ph3.jpg"
@@ -284,7 +304,7 @@ echo '<!-- Carousel wrapper -->
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
+                  <a href="#!" class="btn btn-primary">Shop product</a>
                 </div>
               </div>
             </div>
@@ -300,7 +320,7 @@ echo '<!-- Carousel wrapper -->
           <div class="row">
             <div class="col-md-6 gx-5 mb-4">
               <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                <img src="img/ph5.jpg" class="img-fluid" />
+                <img src="img/logo.png" class="img-fluid" />
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
@@ -310,16 +330,19 @@ echo '<!-- Carousel wrapper -->
             <div class="col-md-6 gx-5 mb-4">
               <h4><strong>About us</strong></h4>
               <p class="text-muted">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
-                eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
-                sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
+              Seesad is an online shop dedicated to providing high-quality, natural face wash products that are gentle on the skin. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals.
               </p>
               <p><strong>Why choose us?</strong></p>
               <p class="text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod itaque voluptate
-                nesciunt laborum incidunt. Officia, quam consectetur. Earum eligendi aliquam illum
-                alias, unde optio accusantium soluta, iusto molestiae adipisci et?
+              We offer a variety of different face wash products to suit different skin types.
+
+In addition to our high-quality products, we also offer excellent customer service. We are always available to answer your questions and help you find the right product for your skin.
+
+We believe that Seesad is the best place to buy face wash online. We offer a wide variety of products, excellent customer service, and competitive prices.
+
+Thank you for choosing Seesad!
               </p>
+              <p><strong>For more details, go to our <a href="about.php">About Us</a> page.</strong></p>
             </div>
           </div>
         </section>
@@ -329,7 +352,7 @@ echo '<!-- Carousel wrapper -->
 
         <!--Section: Content-->
         <section class="mb-5">
-          <h4 class="mb-5 text-center"><strong>Sign up now!</strong></h4>
+          <h4 class="mb-5 text-center"><strong>Sign up now to start shopping!</strong></h4>
 
           <div class="row d-flex justify-content-center">
             <div class="col-md-6">
@@ -385,57 +408,12 @@ echo '<!-- Carousel wrapper -->
           </div>
         </section>
         <!--Section: Content-->
-        <div class="row d-flex justify-content-center align-items-center h-100" style="max-width: 100%;">
-    <div class="col">
-      <div class="row align-items-center justify-content-around">
-        <div class="col-lg-6 px-5 align-text-center">
-          
-          <h1>Where are we?</h1>
-          <br>
-            <h4>
-              <i class="fa-regular fa-map"></i>
-              <span class="m-1"></span>
-              535 Clementi Rd, Singapore 599489
-            </h4>
-
-            <h4>
-              <i class="fa-regular fa-envelope"></i>
-              <span class="m-1"></span>
-              hananoyado@gmail.com
-            </h4>
-
-            <h4>
-              <i class="fa-solid fa-phone"></i>
-              <span class="m-1"></span>
-              +65 8123 0192
-            </h4>
-
-            <h4>
-              <i class="fa-regular fa-clock"></i>
-              <span class="m-1"></span>
-              Mondays to Saturdays, 9AM to 5PM
-            </h4>
-        </div>
-
-        <br>
-
-        <div class="col text-align-center">
-          <div class="m-5">
-            <div class="iframe-rwd">
-              <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3708.281749908684!2d103.77215791453851!3d1.332103599028431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da107d8eb4e359%3A0x75d2e7ffdeeb0c43!2sNgee%20Ann%20Polytechnic!5e1!3m2!1sen!2sus!4v1675999527895!5m2!1sen!2sus"></iframe><br />
-              <small>
-                <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3708.281749908684!2d103.77215791453851!3d1.332103599028431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da107d8eb4e359%3A0x75d2e7ffdeeb0c43!2sNgee%20Ann%20Polytechnic!5e1!3m2!1sen!2sus!4v1675999527895!5m2!1sen!2sus"
-                  style="color:#0000FF;text-align:left">View Larger Map</a>
-              </small>
-            </div>
-          </div>
-        </div>
+      
 
       </div>
-    </div>
-    </section>
-  </div>
+          
+      
+      </div>
       </div>
       
     </main>
@@ -450,10 +428,7 @@ echo '<!-- Carousel wrapper -->
           <h5 class="text-uppercase">about seesad</h5>
 
           <p>
-          Hana No Yado also known as The Flowering Inn is an e-commerce shop that provides flower
-          bouquets for special occasions and gardening essentials to make gardening more enjoyable.
-          The store aims to conveniently deliver spring to your doorstep and provide a helping
-          hand to your gardening journey.
+          Seesad is an online shop dedicated to providing high-quality, natural face wash products that are gentle on the skin. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals. For more details, go to our <a href="about.php">About Us</a> page.
           </p>
         </div>
         <!--Grid column-->
@@ -494,7 +469,7 @@ echo '<!-- Carousel wrapper -->
               <a href="#!" class="text-white">Support</a>
             </li>
             <li>
-              <a href="#!" class="text-white">About us</a>
+              <a href="about.php" class="text-white">About us</a>
             </li>
           </ul>
         </div>
@@ -509,7 +484,7 @@ echo '<!-- Carousel wrapper -->
           <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
   
           <!-- Google -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitch"></i></a>
   
           <!-- Instagram -->
           <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
