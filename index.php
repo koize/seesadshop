@@ -57,48 +57,33 @@
       }
     </style>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-info bg-gradient" style="z-index: 2000; --mdb-bg-opacity: 0.8;" height="150%">
-      <div class="container-fluid">
-        <!-- Navbar brand -->
-        <a class="navbar-brand nav-link" href="index.php">
-          <img src="img/logo.png" alt="a" width="200" height="55">
-        </a>
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarExample01">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-             <!-- Dropdown -->
-             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                Products
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li>
-                  <a class="dropdown-item" href="#">Kao (Biore)</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Gatsby</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Others</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">All products</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="game.php">Rewards</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://mdbootstrap.com/docs/standard/">Support</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.php">About us</a>
-            </li>
-          </ul>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-dark" style="z-index: 3000;" height="110%">
+        <div class="container-fluid">
+          <!-- Navbar brand -->
+          <a class="navbar-brand nav-link" target="_blank" href="https://mdbootstrap.com/docs/standard/">
+          <img src="img/cyoher.jpg" class="rounded-circle" alt="a" width= "30" height= "30">
+          </a>
+          <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarExample01">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" aria-current="page" href="#intro">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
+                  target="_blank">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Support</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Gabriel's game</a>
+              </li>
+            </ul>
 
           <ul class="navbar-nav d-flex flex-row">
             <!-- Icons -->
@@ -249,34 +234,28 @@
       <section class="text-center">
         <h4 class="mb-5"><strong>Featured products</strong></h4>
 
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card text-body mb-3" style="height:600px">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="img/featured_pmnt1.jpg" class="card-img-top" />
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Biore UV Aqua Rich Aqua Protect Mist SPF50 PA++++</h5>
-                <p class="card-text">
-                  Features Biore's unique Aqua Protect Mist Technology
-                </p>
-                <div class="row">
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
-                  </div>
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">1 left</small></p>
-                  </div>
-                  <div class="col">
-                    <a href="#!" class="btn btn-primary">Shop</a>
-                  </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card text-body bg-info mb-3">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                  <img
+                    src="img/ph1.jpg"
+                    class="card-img-top"
+                  />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">best seller: race war</h5>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a href="#!" class="btn btn-primary">Button</a>
                 </div>
               </div>
             </div>
-          </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card text-body mb-3" style="height:600px">
