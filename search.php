@@ -63,7 +63,7 @@
       </div>
       <script>
         $(function() {
-          $("#nav-products").load("navbar.php");
+          $("#nav-products").load("navbar.html");
         });
       </script>
     <!-- Navbar -->
@@ -382,7 +382,7 @@
     </div>
     <script> 
       $(function(){
-        $("#footer-home").load("footer.php"); 
+        $("#footer-home").load("footer.html"); 
       });
     </script>
 
