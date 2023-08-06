@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <!-- Material Icons3 -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <script src="promotion.js"></script>
 
 
@@ -61,74 +62,14 @@
     </style>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-info bg-gradient" style="z-index: 2000;" height="150%">
-      <div class="container-fluid">
-        <!-- Navbar brand -->
-        <a class="navbar-brand nav-link" href="index.php">
-          <img src="img/logo.png" alt="a" width="200" height="55">
-        </a>
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarExample01">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                Products
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li>
-                  <a class="dropdown-item" href="#">Kao (Biore)</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Gatsby</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Others</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">All products</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="game.php">Rewards</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://mdbootstrap.com/docs/standard/">Support</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.php">About us</a>
-            </li>
-          </ul>
+      <div id="navbar-about">
 
-          <ul class="navbar-nav d-flex flex-row">
-            <!-- Icons -->
-            <li class="nav-item me-3 me-lg-0">
-              <form class="d-flex input-group w-auto">
-                <input type="search" class="form-control rounded" placeholder="Search all products" aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </form>
-            </li>
-
-            <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
-                <i class="fas fa-cart-arrow-down"></i>
-              </a>
-            </li>
-            <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
-                <i class="fas fa-user"></i>
-              </a>
-            </li>
-
-          </ul>
-        </div>
       </div>
-    </nav>
+      <script>
+        $(function() {
+          $("#navbar-about").load("navbar.php");
+        });
+      </script>
     <!-- Navbar -->
   </header>
   <!--Main Navigation-->
@@ -253,131 +194,14 @@
 
   </main>
   <!--Main layout-->
-  <footer class="bg-secondary text-white">
-    <!-- Grid container -->
-    <div class="container p-4">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">about seesad</h5>
+    <div id="footer-about">
 
-          <p>
-            Seesad is an online shop dedicated to providing high-quality, natural face wash products that are gentle on the skin. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals. For more details, go to our <a href="about.php">About Us</a> page.
-          </p>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">the poor developers</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">hackerman gab</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">slave 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">slave 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">slave 3</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-0">Quick shortcuts</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!" class="text-white">View all products</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Free vouchers</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Support</a>
-            </li>
-            <li>
-              <a href="about.php" class="text-white">About us</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-      </div>
-      <!--Grid row-->
-      <section class="mb-1">
-        <!-- Facebook -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
-
-        <!-- Twitter -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
-
-        <!-- Google -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitch"></i></a>
-
-        <!-- Instagram -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
     </div>
-    <!-- Section: Social media -->
-
-    <!-- Section: Form -->
-    <div class="container">
-      <section class="">
-        <form action="">
-          <!--Grid row-->
-          <div class="row d-flex justify-content-center">
-            <!--Grid column-->
-            <div class="col-auto">
-              <p class="pt-2">
-                <strong>Sign up for updates!</strong>
-              </p>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-md-5 col-12">
-              <!-- Email input -->
-              <div class="form-outline form-light mb-4 ">
-                <input type="email" id="newsEmail" class="form-control" style="color: white" />
-                <label class="form-label" for="newsEmail" style="color: white">Email address</label>
-              </div>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-auto">
-              <!-- Submit button -->
-              <button id="news" type="button" class="btn btn-outline-light mb-4">
-                Subscribe
-              </button>
-            </div>
-            <!--Grid column-->
-          </div>
-          <!--Grid row-->
-        </form>
-      </section>
-
-      <!-- Section: Form -->
-    </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
-  </section>
-  <!--Footer-->
-
+    <script>
+      $(function() {
+        $("#footer-about").load("footer.php");
+      });   
+    </script>
   <!-- MDB -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <!-- Custom scripts -->

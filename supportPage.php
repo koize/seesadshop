@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
 </head>
 <body>
         <!--Main Navigation-->
@@ -64,60 +66,16 @@
       </style>
 
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-dark" style="z-index: 2000;">
-        <div class="container-fluid"> 
-          <!-- Navbar brand -->
-          <a class="navbar-brand nav-link" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-            <strong>MDB</strong> 
-          </a>
-          <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarExample01">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="storePage.php"
-                  >Store</a> <!-- hyperlink to other pages -->
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="rewardsPage.php">Rewards</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" aria-current="page" rel="nofollow">Rewards</a>
-              </li>
-            </ul>
+        <div id = "navbar-support">
 
-            <ul class="navbar-nav d-flex flex-row">
-              <!-- Icons -->
-              <li class="nav-item me-3 me-lg-0">
-                <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-                  target="_blank">
-                  <i class="fab fa-youtube"></i>
-                </a>
-              </li>
-              <li class="nav-item me-3 me-lg-0">
-                <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="nav-item me-3 me-lg-0">
-                <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="nav-item me-3 me-lg-0">
-                <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
-                  <i class="fab fa-github"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
-      </nav>
+
+        <script>
+          $(function(){
+            $("#navbar-support").load("navbar.php");
+          });
+
+        </script>
       <!-- Navbar -->
 
       <!-- Carousel wrapper -->
@@ -199,76 +157,16 @@
     <!--Main layout-->
 
     <!--Footer-->
-    <footer class="bg-light text-lg-start">
-      <div class="py-4 text-center">
-        <a
-          role="button"
-          class="btn btn-primary btn-lg m-2"
-          href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA"
-          rel="nofollow"
-          target="_blank"
-        >
-          Learn Bootstrap 5
-        </a>
-        <a
-          role="button"
-          class="btn btn-primary btn-lg m-2"
-          href="https://mdbootstrap.com/docs/standard/"
-          target="_blank"
-        >
-          Download MDB UI KIT
-        </a>
-      </div>
+    <div id = "footer-support">
 
-      <hr class="m-0" />
+    </div>
 
-      <div class="text-center py-4 align-items-center">
-        <p>Follow MDB on social media</p>
-        <a
-          href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA"
-          class="btn btn-primary m-1"
-          role="button"
-          rel="nofollow"
-          target="_blank"
-        >
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a
-          href="https://www.facebook.com/mdbootstrap"
-          class="btn btn-primary m-1"
-          role="button"
-          rel="nofollow"
-          target="_blank"
-        >
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a
-          href="https://twitter.com/MDBootstrap"
-          class="btn btn-primary m-1"
-          role="button"
-          rel="nofollow"
-          target="_blank"
-        >
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a
-          href="https://github.com/mdbootstrap/mdb-ui-kit"
-          class="btn btn-primary m-1"
-          role="button"
-          rel="nofollow"
-          target="_blank"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
+    <script>
+      $(function(){
+        $("#footer-support").load("footer.php");
+      });
 
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
+    </script>
     <!--Footeeeeeer-->
     <!-- MDB -->
     <script type="text/javascript" src="js/mdb.min.js"></script>

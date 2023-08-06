@@ -57,60 +57,15 @@
       }
     </style>
 
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-dark" style="z-index: 3000;" height="110%">
-        <div class="container-fluid">
-          <!-- Navbar brand -->
-          <a class="navbar-brand nav-link" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-          <img src="img/cyoher.jpg" class="rounded-circle" alt="a" width= "30" height= "30">
-          </a>
-          <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarExample01">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item active">
-                <a class="nav-link" aria-current="page" href="#intro">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-                  target="_blank">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Support</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Gabriel's game</a>
-              </li>
-            </ul>
+    <!-- Navbar -->
+      <div id = "nav-products">
 
-          <ul class="navbar-nav d-flex flex-row">
-            <!-- Icons -->
-            <li class="nav-item me-3 me-lg-0">
-              <form class="d-flex input-group w-auto" action="search.php" method="get">
-                <input type="search" class="form-control rounded" placeholder="Search all products" aria-label="Search" aria-describedby="search-addon" name="search_products" />
-                <span class="input-group-text border-0" id="search-addon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </form>
-            </li>
-
-            <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
-                <i class="fas fa-cart-arrow-down"></i>
-              </a>
-            </li>
-            <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
-                <i class="fas fa-user"></i>
-              </a>
-            </li>
-
-          </ul>
-        </div>
       </div>
-    </nav>
+      <script>
+        $(function() {
+          $("#nav-products").load("navbar.php");
+        });
+      </script>
     <!-- Navbar -->
     <!-- carousel -->
     <?php
@@ -234,28 +189,34 @@
       <section class="text-center">
         <h4 class="mb-5"><strong>Featured products</strong></h4>
 
-          <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card text-body bg-info mb-3">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                  <img
-                    src="img/ph1.jpg"
-                    class="card-img-top"
-                  />
-                  <a href="#!">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">best seller: race war</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card text-body mb-3" style="height:600px">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="img/featured_pmnt1.jpg" class="card-img-top" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Biore UV Aqua Rich Aqua Protect Mist SPF50 PA++++</h5>
+                <p class="card-text">
+                  Features Biore's unique Aqua Protect Mist Technology
+                </p>
+                <div class="row">
+                  <div class="col">
+                    <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
+                  </div>
+                  <div class="col">
+                    <p class="card-text"><small class="text-muted">1 left</small></p>
+                  </div>
+                  <div class="col">
+                    <a href="#!" class="btn btn-primary">Shop</a>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card text-body mb-3" style="height:600px">
@@ -416,130 +377,14 @@
 
   </main>
   <!--Main layout-->
-  <footer class="bg-secondary text-white">
-    <!-- Grid container -->
-    <div class="container p-4">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">about seesad</h5>
+    <div id = "footer-home">
 
-          <p>
-            Seesad is an online shop dedicated to providing high-quality, natural face wash products that are gentle on the skin. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals. For more details, go to our <a href="about.php">About Us</a> page.
-          </p>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">the poor developers</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">hackerman gab</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">slave 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">slave 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">slave 3</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Quick shortcuts</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">View all products</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Free vouchers</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Support</a>
-            </li>
-            <li>
-              <a href="about.php" class="text-white">About us</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-      </div>
-      <!--Grid row-->
-      <section class="mb-1">
-        <!-- Facebook -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
-
-        <!-- Twitter -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
-
-        <!-- Google -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitch"></i></a>
-
-        <!-- Instagram -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
     </div>
-    <!-- Section: Social media -->
-
-    <!-- Section: Form -->
-    <div class="container">
-      <section class="">
-        <form action="">
-          <!--Grid row-->
-          <div class="row d-flex justify-content-center">
-            <!--Grid column-->
-            <div class="col-auto">
-              <p class="pt-2">
-                <strong>Sign up for updates!</strong>
-              </p>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-md-5 col-12">
-              <!-- Email input -->
-              <div class="form-outline form-light mb-4 ">
-                <input type="email" id="newsEmail" class="form-control" style="color: white" />
-                <label class="form-label" for="newsEmail" style="color: white">Email address</label>
-              </div>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-auto">
-              <!-- Submit button -->
-              <button id="news" type="button" class="btn btn-outline-light mb-4">
-                Subscribe
-              </button>
-            </div>
-            <!--Grid column-->
-          </div>
-          <!--Grid row-->
-        </form>
-      </section>
-
-      <!-- Section: Form -->
-    </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
-  </section>
-  <!--Footer-->
+    <script> 
+      $(function(){
+        $("#footer-home").load("footer.php"); 
+      });
+    </script>
 
   <!-- MDB -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
