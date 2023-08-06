@@ -72,14 +72,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarExample01">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow">Products</a>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                Products
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" href="#">Kao (Biore)</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Gatsby</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Others</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">All products</a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="game.php">Rewards</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" >Support</a>
+              <a class="nav-link" href="https://mdbootstrap.com/docs/standard/">Support</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.php">About us</a>
