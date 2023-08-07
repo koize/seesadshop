@@ -58,332 +58,85 @@
     </style>
 
     <!-- Navbar -->
-      <div id = "nav-products">
+    <div id="nav-products">
 
-      </div>
-      <script>
-        $(function() {
-          $("#nav-products").load("navbar.html");
-        });
-      </script>
-    <!-- Navbar -->
-    <!-- carousel -->
-    <?php
-
-    // Connect to the MySQL database
-    $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
-
-    $query = $db->query('CREATE DATABASE IF NOT EXISTS seesad');
-    $query = $db->query('CREATE TABLE IF NOT EXISTS promotions (
-      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      name TEXT NOT NULL,
-      original_price INT,
-      sale_price INT,
-      start_date DATE,
-      end_date DATE,
-      details TEXT,
-      img_filepath TEXT
-    )');
-
-    //sample carousel data
-    $query = $db->query('INSERT IGNORE INTO promotions (id, name, original_price, sale_price, start_date, end_date, details, img_filepath) VALUES ("1", "Biore UV Aqua Rich Aqua Protect Mist SPF50 PA++++", "16", "16", "0000-00-00", "2023-10-10", "Biore\'s unique Aqua Protect Mist Technology", "img/carousel_pmnt1.jpg")');
-    $query = $db->query('INSERT IGNORE INTO promotions (id, name, original_price, sale_price, start_date, end_date, details, img_filepath) VALUES ("2", "Biore UV Perfect Milk SPF50+ PA++++", "0", "12", "0000-00-00", "2023-10-10", "Lasting powdery smooth finish
-    + Smooth Skin Feel", "img/carousel_pmnt2.jpg")');
-    $query = $db->query('INSERT IGNORE INTO promotions (id, name, original_price, sale_price, start_date, end_date, details, img_filepath) VALUES ("3", "Biore UV Anti-Pollution Body Care Serum SPF 50+ PA+++ (Intensive Aura)", "16", "9", "0000-00-00", "2023-10-10", "Anti-pollution body lotion with high UV protection", "img/carousel_pmnt3.jpg")');
-
-
-
-    // Fetch the promotions
-    $query = $db->query('SELECT * FROM promotions');
-    $promotions = $query->fetchAll();
-
-    // Generate the HTML code for the carousel
-
-    echo '<!-- Carousel wrapper -->
-  <div id="carouselBasicExample" class="carousel slide carousel-fade carousel-dark" data-mdb-ride="carousel">
-  <!-- Indicators -->
-  <div class="carousel-indicators">';
-    foreach ($promotions as $index => $promotion) {
-      echo '
-    <button
-      type="button"
-      data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="' . ($index) . '"
-      class="active"
-      aria-current="true"
-      aria-label="Slide ' . ($index + 1) . '"
-    ></button> ';
-    }
-    echo '
-  </div>
-  
-  <!-- Inner -->
-  <div class="carousel-inner">';
-    foreach ($promotions as $index => $promotion) {
-      if ($promotion['name'] == '') {
-        echo '
-      <div class="carousel-item active">
-      <img src="' . $promotion['img_filepath'] . '" class="d-block w-100" alt="' . $promotion['name'] . '"/>
-      <div class="mask" style="background-color: rgba(0, 0, 0, 0.15);">
-                        <div class="carousel-caption">
-                            <div class="text-white text-center">
-                                <h3 class="mb-4">Promotion ends on ' . $promotion['end_date'] . '</h3>
-                                <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" target="_blank">Start tutorial</a>
-                                <a class="btn btn-outline-light btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">Download MDB UI KIT</a>
-                            </div>
-                        </div>
-                    </div>
-
-    </div>';
-      } else {
-        echo '  <!-- Single item -->
-      <div class="carousel-item active">
-        <img src="' . $promotion['img_filepath'] . '" class="d-block w-100" alt="' . $promotion['name'] . '"/>
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0.2);">
-                          <div class="carousel-caption">
-                              <div class="text-white text-center">
-                               <div class="row">
-                                <div class="col">
-                                </div>
-                                 <div class="col">
-                                 <h1 class="mb-4">' . $promotion['name'] . '</h1>
-                                 <h2 class="mb-4">Sale price: $' . $promotion['sale_price'] . '</h2>
-                                 <p class="mb-4">Promotion ends on ' . $promotion['end_date'] . '</p>
-                                 </div>
-                                <div class="col">
-                                </div>
-                              </div>                            
-                              </div>
-                          </div>
-                      </div>
-  
-      </div>';
-      }
-    }
-    ?>
-  
-    <!-- Inner -->
-
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
-      <span class="carousel-control-next-icon"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
     </div>
-
-    <!-- Carousel wrapper -->
-
-
-    <!--end carousel -->
+    <script>
+      $(function() {
+        $("#nav-products").load("navbar.php");
+      });   
+    </script>
+    
   </header>
   <!--Main Navigation-->
 
-  <!--Main layout-->
-  <main class="mt-5">
-    <div class="container">
-      <!--Section: Content-->
+   <!--Main layout-->
+   <main class="mt-5">
+      <div class="container">
       <section class="text-center">
-        <h4 class="mb-5"><strong>Featured products</strong></h4>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card text-body mb-3" style="height:600px">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="img/featured_pmnt1.jpg" class="card-img-top" />
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Biore UV Aqua Rich Aqua Protect Mist SPF50 PA++++</h5>
-                <p class="card-text">
-                  Features Biore's unique Aqua Protect Mist Technology
-                </p>
-                <div class="row">
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
-                  </div>
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">1 left</small></p>
-                  </div>
-                  <div class="col">
-                    <a href="#!" class="btn btn-primary">Shop</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card text-body mb-3" style="height:600px">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="img/featured_pmnt1.jpg" class="card-img-top" />
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Biore UV Aqua Rich Aqua Protect Mist SPF50 PA++++</h5>
-                <p class="card-text">
-                  Features Biore's unique Aqua Protect Mist Technology
-                </p>
-                <div class="row">
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
-                  </div>
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">1 left</small></p>
-                  </div>
-                  <div class="col">
-                    <a href="#!" class="btn btn-primary">Shop</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card text-body mb-3" style="height:600px">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="img/featured_pmnt1.jpg" class="card-img-top" />
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Biore UV Aqua Rich Aqua Protect Mist SPF50 PA++++</h5>
-                <p class="card-text">
-                  Features Biore's unique Aqua Protect Mist Technology
-                </p>
-                <div class="row">
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
-                  </div>
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">1 left</small></p>
-                  </div>
-                  <div class="col">
-                    <a href="#!" class="btn btn-primary">Shop</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <h3 class="mb-5"><strong>Products matching <?php echo $_GET['search_products']?></strong></h3>
       </section>
-      <!--Section: Content-->
+
+      <section class="text-center">
+      <?php
+      $servername = "localhost";
+      $username = "root";
+      $password = "";
+      $dbname = "csad_projek_test";
+      $dbname = "seesad";
 
 
-      <hr class="my-5" />
+      $conn = new mysqli($servername,$username,$password,$dbname);
 
-      <!--Section: Content-->
-      <section>
-        <div class="row">
-          <div class="col-md-6 gx-5 mb-4">
-            <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-              <img src="img/logo.png" class="img-fluid" />
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </a>
-            </div>
-          </div>
+      if($conn->connect_error){
+        die("Connection failed: " . $conn->connect_error);
+      }
 
-          <div class="col-md-6 gx-5 mb-4">
-            <h4><strong>About us</strong></h4>
-            <p class="text-muted">
-              Seesad is an online shop dedicated to providing high-quality, natural face wash products that are gentle on the skin. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals.
-            </p>
-            <p><strong>Why choose us?</strong></p>
-            <p class="text-muted">
-              We offer a variety of different face wash products to suit different skin types.
+      $sql = "SELECT image_link,product_name,product_desc,product_price FROM products WHERE product_name LIKE '%".$_GET['search_products']."%'";
+      $result = $conn->query($sql);
+      echo '<div class="row">';
+      if($result->num_rows > 0){
+        for($i = 0; $i < mysqli_num_rows($result); $i++){
+          $row = mysqli_fetch_assoc($result);
+          echo '<div class="col-lg-4 col-md-12 mb-4">';
+          echo '<div class="card">';
+          echo '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">';
+          echo '<img src= "img/' . $row['image_link'] . '"class = "img-fluid"/>';
+          echo '<a href="#!">';
+          echo '<div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>';
+          echo '</a>';
+          echo '</div>';
+          echo '<div class="card-body">';
+          echo '<h5 class="card-title">' . $row['product_name']. '</h5>';
+          echo '<p class="card-text">';
+          echo $row['product_desc'];
+          echo '</p>';
+          echo '<p class="card-text">';
+          echo $row['product_price'];
+          echo '</p>';
+          echo '<a href="#!" class="btn btn-primary">Button</a>';
+          echo '</div>';
+          echo '</div>';
+          echo '</div>';
+        }
+      }else{
+        echo "No results found";
+      }
+      echo '</div>';
+      mysqli_close($conn);  
 
-              In addition to our high-quality products, we also offer excellent customer service. We are always available to answer your questions and help you find the right product for your skin.
-
-              We believe that Seesad is the best place to buy face wash online. We offer a wide variety of products, excellent customer service, and competitive prices.
-
-              Thank you for choosing Seesad!
-            </p>
-            <p><strong>For more details, go to our <a href="about.php">About Us</a> page.</strong></p>
-          </div>
-        </div>
+      ?>
       </section>
-      <!--Section: Content-->
-
-      <hr class="my-5" />
-
-      <!--Section: Content-->
-      <section class="mb-5">
-        <h4 class="mb-5 text-center"><strong>Sign up now to start shopping!</strong></h4>
-
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-6">
-            <form>
-              <!-- 2 column grid layout with text inputs for the first and last names -->
-              <div class="row mb-4">
-                <div class="col">
-                  <div class="form-outline">
-                    <input type="text" id="form3Example1" class="form-control" />
-                    <label class="form-label" for="form3Example1">First name</label>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-outline">
-                    <input type="text" id="form3Example2" class="form-control" />
-                    <label class="form-label" for="form3Example2">Last name</label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" id="form3Example3" class="form-control" />
-                <label class="form-label" for="form3Example3">Email address</label>
-              </div>
-
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input type="password" id="form3Example4" class="form-control" />
-                <label class="form-label" for="form3Example4">Password</label>
-              </div>
-
-              <!-- Checkbox -->
-              <div class="form-check d-flex justify-content-center mb-4">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" checked />
-                <label class="form-check-label" for="form2Example3">
-                  Subscribe to our newsletter
-                </label>
-              </div>
-
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block mb-4">
-                Get goodies!!
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-      <!--Section: Content-->
-
+      </div>  
+    </main>
+    <!--Main layout-->
+    <div id = "footer-products">
 
     </div>
-
-
-    </div>
-    </div>
-
-  </main>
-  <!--Main layout-->
-    <div id = "footer-home">
-
-    </div>
-    <script> 
-      $(function(){
-        $("#footer-home").load("footer.html"); 
-      });
+    <script>
+      $(function() {
+        $("#footer-products").load("footer.php");
+      });   
     </script>
 
   <!-- MDB -->
