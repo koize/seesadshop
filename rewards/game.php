@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 
 <head>
     <title>Mini-Game</title>
@@ -78,7 +79,12 @@
         </p>
         <canvas id="glcanvas" class="border border-primary" width="256" height="256">Your browser may not support webGL, which is needed to run this Game.</canvas>
     </div>
-    <sub>use WASD/arrow keys to move. Collect blocks to increase your score. Dont touch the Boundary!</sub>
+    <sub style="color:#6a6a6a;">use WASD/arrow keys to move. Collect blocks to increase your score. Dont touch the Boundary!</sub>
+    <?php
+    if (!isset($_SESSION['loggedin'])) {
+        echo '<div style="color:#6a6a6a">You are not logged in! Log in to get rewards while playing!</div>';
+    }
+    ?>
 </body>
 <script>
 </script>
@@ -87,6 +93,12 @@
     let canvas = document.getElementById("glcanvas");
     const ctx = canvas.getContext("2d");
     let hscore = 0;
+    let eh = decodeURIComponent(document.cookie).split(';');
+    eh = eh.find(row => row.startsWith('hscore'));
+    if (eh !== undefined) {
+        hscore = Number(eh.split('=')[1]);
+    }
+    //let hscore = Number(decodeURIComponent(document.cookie).split(';').find(row => row.startsWith('hscore')).split('=')[1]);
     let score = 0;
     let player = {
         //player coordinates
@@ -102,19 +114,26 @@
     let movementX = 0;
     let movementY = 0;
     //this part of the code handles key presses
+    let keyPressed = 0;
     document.addEventListener('keydown', function(e) {
-        e.preventDefault();
+
         if (e.keyCode == ' '.charCodeAt(0)) { //spacebar
             //uhh todo...?
         } else if (e.keyCode == 'W'.charCodeAt(0) || e.keyCode == 38) { //W
             player.dy = movementY;
+            keyPressed = 1;
         } else if (e.keyCode == 'A'.charCodeAt(0) || e.keyCode == 37) { //A
             player.dx = -movementX;
+            keyPressed = 1;
         } else if (e.keyCode == 'D'.charCodeAt(0) || e.keyCode == 39) { //D
             player.dx = movementX;
+            keyPressed = 1;
         } else if (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 40) { //S
             player.dy = -movementY;
+            keyPressed = 1;
         }
+        if (keyPressed === 1) e.preventDefault();
+        keyPressed = 0;
     });
     document.addEventListener('keyup', function(e) {
         if (e.keyCode == ' '.charCodeAt(0)) { //spacebar
@@ -150,6 +169,9 @@
             if (hscore < ++score) {
                 hscore = score;
                 document.getElementById("high_score").innerHTML = hscore;
+                <?php
+                echo 'document.cookie = "hscore=" + hscore + ";" + "path=/";';
+                ?>
             }
             document.getElementById("score").innerHTML = score;
         }
