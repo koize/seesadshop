@@ -101,7 +101,7 @@
           echo '<div class="col-lg-4 col-md-12 mb-4">';
           echo '<div class="card">';
           echo '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">';
-          echo '<img src= "' . $row['image_link'] . '"class = "img-fluid"/>';
+          echo '<img src= "img/' . $row['image_link'] . '"class = "img-fluid"/>';
           echo '<a href="#!">';
           echo '<div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>';
           echo '</a>';
