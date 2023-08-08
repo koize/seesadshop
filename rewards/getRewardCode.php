@@ -6,18 +6,15 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 */
-function generateRewardCodes($user_id, $score) { //taking in stuff(probs ID/score?)
-    $rewardCode = $user_id . "-" . $score . "-";
+function generateRewardCodes() { //taking in stuff(probs ID/score?)
+    $rewardCode = "";
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     for ($i = 0; $i < 20; $i++) {
         $rewardCode .= $characters[rand(0, strlen($characters) - 1)];
     }
-    //print_r($rewardCode . "<br>");
-    $rewardCode = hash('sha256', $rewardCode);
-    //print_r(hash_algos());
     return $rewardCode;
 }
-echo generateRewardCodes(10, $_COOKIE['hscore']);
+echo "<code>" . generateRewardCodes() . "</code>";
 exit();
 //create connection to SQL database using PDO
 $db = new PDO("mysql:host=localhost;dbname=seesad", "root", "");
