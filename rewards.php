@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 
 <head>
     <meta charset="UTF-8" />
@@ -226,9 +227,30 @@
 
             <!--Section: Content-->
             <section class="text-center">
-                <!-- iframe that capures all keyboard inputs when clicked on -->
-                <iframe id="game_iframe" width="1000" height="710" src="game.php"></iframe>
+                <!-- iframe that capures keyboard inputs when clicked on -->
+                <iframe id="game_iframe" width="1000" height="800" src="./rewards/game.php"></iframe>
+                <div>
+                    <button id="claim_reward" class="btn btn-primary" onclick="getRewardCode()">claim rewards!</button>
+                </div>
+                <span id="reward_code"></span>
             </section>
+            <script>
+                function getRewardCode() {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            let response = "Your unique code is: " + this.responseText
+                                            + "<br>Copy this code and use it when purchasing to receive your 5% discount!";
+                            document.getElementById("reward_code").innerHTML = response;
+                        }
+                    };
+                    const value = `; ${document.cookie}`;
+                    //get cookie of name "hscore"
+                    const parts = value.split(`; hscore=`);
+                    xmlhttp.open("GET", "./rewards/getRewardCode.php?s=" + parts.toString(), true);
+                    xmlhttp.send();
+                }
+            </script>
             <!--Section: Content-->
 
             <hr class="my-5" />
