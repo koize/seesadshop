@@ -48,7 +48,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="game.php">Rewards</a>
+              <a class="nav-link" href="rewards.php">Rewards</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="supportPage.php">Support</a>
