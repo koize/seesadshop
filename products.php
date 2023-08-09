@@ -79,6 +79,7 @@
 
       <section class="text-center">
       <?php
+      include 'addtocart.php';
       $servername = "localhost";
       $username = "root";
       $password = "";
@@ -92,7 +93,7 @@
         die("Connection failed: " . $conn->connect_error);
       }
 
-      $sql = "SELECT image_link,product_name,product_desc,product_price FROM products";
+      $sql = "SELECT id,image_link,product_name,product_desc,product_price FROM products";
       $result = $conn->query($sql);
       echo '<div class="row">';
       if($result->num_rows > 0){
@@ -114,7 +115,7 @@
           echo '<p class="card-text">';
           echo $row['product_price'];
           echo '</p>';
-          echo '<a href="#!" class="btn btn-primary">Button</a>';
+          echo '<a href="products.php?addToCart='.$row['id'].'" class="btn btn-primary">Add to Cart</a>';
           echo '</div>';
           echo '</div>';
           echo '</div>';
