@@ -1,3 +1,7 @@
+<?php
+ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +21,7 @@
     <!-- Material Icons3 -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="validateRegistration.js"></script>
 
 
 
@@ -70,7 +75,7 @@
 
         <!--Section: Content-->
         <div class="bg-image" style="max-width: 120rem; z-index: 20; position:relative">
-            <img src="img/account_bg.jpg" class="w-100" alt="Image"   style="height: 750px; object-fit: cover;">
+            <img src="img/account_bg.jpg" class="w-100" alt="Image" style="height: 700px; object-fit: cover;">
             <div class="card mx-auto my-5" style="width: 500px; display: inline-block; z-index: 2000; position:absolute; top: 20px; right: 250px; bottom:20px">
                 <div class="card-body">
                     <h5 class="card-title">Welcome to Seesad!</h5>
@@ -89,48 +94,36 @@
                     <!-- Pills content -->
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                            <form action="account.php" method="post">
-                
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="needs-validation" novalidate>
+
                                 <!-- Email input -->
-                                <div class="form-outline mb-4">
-                                    <input type="email" id="loginName" class="form-control" required/>
-                                    <label class="form-label" for="loginName">Email or username</label>
+                                <div class="form-outline mb-5">
+                                    <input type="email" id="loginName" class="form-control" name="email" required />
+                                    <label class="form-label" for="loginName">Email</label>
+                                    <div class="invalid-feedback">Please enter your email</div>
                                 </div>
 
                                 <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                    <input type="password" id="loginPassword" class="form-control" required/>
+                                <div class="form-outline mb-5">
+                                    <input type="password" id="loginPassword" class="form-control" name="password" required />
                                     <label class="form-label" for="loginPassword">Password</label>
+                                    <div class="invalid-feedback">Please enter your password</div>
                                 </div>
 
                                 <!-- 2 column grid layout -->
                                 <div class="row mb-4">
                                     <div class="col-md-6 d-flex justify-content-center">
-                                        <!-- Checkbox -->
-                                        <div class="form-check mb-3 mb-md-0">
-                                            <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                                            <label class="form-check-label" for="loginCheck"> Remember me </label>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-md-6 d-flex justify-content-center">
-                                        <!-- Simple link -->
-                                        <a href="#!">Forgot password?</a>
                                     </div>
                                 </div>
 
                                 <!-- Submit button -->
                                 <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-
-                                <!-- Register buttons -->
-                                <div class="text-center">
-                                    <p>Not a member? <a href="#!">Register</a></p>
-                                </div>
                             </form>
                         </div>
-                        <script src = "validateRegistration.js"></script>
+                        <script src="validateRegistration.js"></script>
                         <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                            <form class="needs-validation" id="registerForm" novalidate action="account.php" method="post">
+                            <form action="account.php" method="post" class="needs-validation" novalidate >
                                 <!-- Name input -->
                                 <div class="form-outline mb-4">
                                     <input type="text" id="registerName" class="form-control" name="name" required />
@@ -141,45 +134,66 @@
                                 <!-- Username input -->
                                 <div class="input-group form-outline mb-4">
                                     <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                    <input type="text" id="registerUsername" class="form-control" name="username" required/>
+                                    <input type="text" id="registerUsername" class="form-control" name="username" required />
                                     <label class="form-label" for="registerUsername">Username</label>
                                     <div class="invalid-feedback">Please enter a username</div>
                                 </div>
 
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="registerEmail" class="form-control" name="email" required/>
+                                    <input type="email" id="registerEmail" class="form-control" name="email" required />
                                     <label class="form-label" for="registerEmail">Email</label>
                                     <div class="invalid-feedback">Please enter a valid email</div>
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="registerPassword" class="form-control" name="password" required/>
+                                    <input type="password" id="registerPassword" class="form-control" name="password" required />
                                     <label class="form-label" for="registerPassword">Password</label>
                                     <div class="invalid-feedback">Please enter a password</div>
                                 </div>
 
                                 <!-- Repeat Password input -->
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="registerRepeatPassword" class="form-control" required/>
+                                    <input type="password" id="registerRepeatPassword" class="form-control" required />
                                     <label class="form-label" for="registerRepeatPassword">Repeat password</label>
                                     <div class="invalid-feedback">Password does not match!</div>
                                 </div>
 
-                                <!-- Checkbox -->
-                                <div class="form-check d-flex justify-content-center mb-4">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked aria-describedby="registerCheckHelpText" required/>
-                                    <label class="form-check-label" for="registerCheck">
-                                        I have read and agree to the terms
-                                    </label>
-                                    <div class="invalid-feedback">Agree to continue</div>
-                                </div>
+
 
                                 <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary btn-block mb-3" >Sign in</button>
+                                <button type="submit" class="btn btn-primary btn-block mb-3">Register</button>
+
                             </form>
                         </div>
+                        <?php
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
+                            $query = $db->query('SELECT id, password FROM users WHERE email = "' . $_POST['email'] . '"');
+                            $result = $query->fetchAll();
+
+                            //set cookie session and local variables
+                            foreach ($result as $index => $user) {
+                                $serverPassword = $user['password'];
+                                $cookie_value = $user['id'];
+                            }
+
+                            if ($serverPassword != $_POST['password'] || $query->rowCount() == 0) {
+                                echo '<div class="alert alert-danger">Wrong email or password</div>';
+                            } else {
+                                $cookie_name = "id";
+                                setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+                                header("Location: account.php");
+                                exit;
+                            }
+                        }
+
+
+                        ?>
+
+                        <script src="validateRegistration.js"></script>
+
                     </div>
                     <!-- Pills content -->
                 </div>
@@ -187,7 +201,6 @@
         </div>
 
         <!--Section: Content-->
-
 
         </div>
 

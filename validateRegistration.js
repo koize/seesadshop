@@ -1,3 +1,15 @@
+$("#registerPassword, #registerRepeatPassword").on("keyup", function () {
+    if (
+      $("#registerPassword").val() != "" &&
+      $("#registerRepeatPassword").val() != "" &&
+      $("#registerRepeatPassword").val() == $("#registerPassword").val()
+    ) {
+        $("#registerRepeatPassword")[0].setCustomValidity("");
+    }
+    else {
+        document.getElementById("registerRepeatPassword").setCustomValidity("Passwords do not match");
+    }
+  });
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
     'use strict';
