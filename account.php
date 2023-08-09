@@ -1,11 +1,81 @@
+<?php
+
+session_start();
+
+   $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
+   $id = "";
+   $name = "";
+   $username = "";
+   $email = "";
+   $password = "";
+
+  //get sign in or login info from POST and check if user exist and set cookie
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $query = $db->query('SELECT id, name, username, email FROM users WHERE email = "'.$_POST['email'].'"');
+
+    //check if user already exists
+    if ($query->rowCount() == 0) {
+      //add new user to database
+      $query = $db->query('INSERT INTO users (name, username, email, password) VALUES ("'.$name.'","'.$username.'","'.$email.'","'.$password.'")');
+    }
+    $cookie_name = "id";
+    $query = $db->query('SELECT id, name, username, email FROM users WHERE email = "'.$_POST['email'].'"');
+    $result = $query->fetchAll();
+
+    //set cookie session and local variables
+    foreach ($result as $index => $user) {
+      $_SESSION["userId"] = $user['id'];
+      $_SESSION["userName"] = $user['name'];
+      $_SESSION["userUserName"] = $user['username'];
+      $_SESSION["userEmail"] = $user['email'];
+      $id = $user['id'];
+      $name = $user['name'];
+      $username = $user['username'];
+      $email = $user['email'];
+      $cookie_value = $user['id'];
+      setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+    }
+    
+  }
+
+  
+
+  //get user details from cookie
+  if (isset($_COOKIE['id'])) {
+    $query = $db->query('SELECT id, name, username, email FROM users WHERE id = "'.$_COOKIE['id'].'"');
+    $result = $query->fetchAll();
+    foreach ($result as $index => $user) {
+      $_SESSION["userId"] = $user['id'];
+      $_SESSION["userName"] = $user['name'];
+      $_SESSION["userUserName"] = $user['username'];
+      $_SESSION["userEmail"] = $user['email'];
+      $id = $user['id'];
+      $name = $user['name'];
+      $username = $user['username'];
+      $email = $user['email'];
+    }
+  
+  }
+ 
+ 
+
+
+  
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>seeee saaad shop</title>
+    <title>Material Design for Bootstrap</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <!-- Google Fonts Roboto -->
@@ -14,194 +84,234 @@
     <link rel="stylesheet" href="css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Material Icons3 -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="promotion.js"></script>
-
-
 
 </head>
-
 <body>
-    <!--Main Navigation-->
+        <!--Main Navigation-->
     <header>
-        <style>
-            /* Carousel styling */
-            #introCarousel,
-            .carousel-inner,
-            .carousel-item,
-            .carousel-item.active {
-                height: 100vh;
-            }
+      <style>
+        /* Carousel styling */
+        #introCarousel,
+        .carousel-inner,
+        .carousel-item,
+        .carousel-item.active {
+          height: 100vh;
+        }
 
+        .carousel-item:nth-child(1) {
+          background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center center;
+        }
+        .carousel-item:nth-child(2) {
+          background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center center;
+        }
+        .carousel-item:nth-child(3) {
+          background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center center;
+        }
 
+        /* Height for devices larger than 576px */
+        @media (min-width: 992px) {
+          #introCarousel {
+            margin-top: -58.59px;
+          }
+          #introCarousel,
+          .carousel-inner,
+          .carousel-item,
+          .carousel-item.active {
+            height: 50vh;
+          }
+        }
 
+        .navbar .nav-link {
+          color: #fff !important;
+        }
+      </style>
 
-            /* Height for devices larger than 576px */
-            @media (min-width: 992px) {
-                #introCarousel {
-                    margin-top: -58.59px;
-                }
-
-                #introCarousel,
-                .carousel-inner,
-                .carousel-item,
-                .carousel-item.active {
-                    height: 47vh;
-                }
-            }
-
-            .navbar .nav-link {
-                color: #fff !important;
-            }
-        </style>
-
-        <!-- Navbar -->
-        <div id="nav-products">
+      <!-- Navbar -->
+        <div id = "navbar-support">
 
         </div>
+
         <script>
-            $(function() {
-                $("#nav-products").load("navbar.php");
-            });
+          $(function(){
+            $("#navbar-support").load("navbar.php");
+          });
+
         </script>
-        <!-- Navbar -->
+      <!-- Navbar -->
 
-        <!--Section: Content-->
-        <div class="bg-image" style="max-width: 120rem; z-index: 20; position:relative">
-            <img src="img/account_bg.jpg" class="w-100" alt="Image"   style="height: 750px; object-fit: cover;">
-            <div class="card mx-auto my-5" style="width: 500px; display: inline-block; z-index: 2000; position:absolute; top: 20px; right: 250px; bottom:20px">
-                <div class="card-body">
-                    <h5 class="card-title">Welcome to Seesad!</h5>
-                    <p class="card-text">Create an account or login</p>
-                    <!-- Pills navs -->
-                    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
-                        </li>
-                    </ul>
-                    <!-- Pills navs -->
+      <!-- Carousel wrapper -->
+      
+      <!-- Carousel wrapper -->
+    </header>
+    <!--Main Navigation-->
 
-                    <!-- Pills content -->
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                            <form>
-                
-                                <!-- Email input -->
-                                <div class="form-outline mb-4">
-                                    <input type="email" id="loginName" class="form-control" />
-                                    <label class="form-label" for="loginName">Email or username</label>
-                                </div>
+    <!--Main layout-->
+    <main >
+    
+    <section style="background-color: #eee;">
+  <div class="container py-5">
+    
+  
 
-                                <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                    <input type="password" id="loginPassword" class="form-control" />
-                                    <label class="form-label" for="loginPassword">Password</label>
-                                </div>
-
-                                <!-- 2 column grid layout -->
-                                <div class="row mb-4">
-                                    <div class="col-md-6 d-flex justify-content-center">
-                                        <!-- Checkbox -->
-                                        <div class="form-check mb-3 mb-md-0">
-                                            <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                                            <label class="form-check-label" for="loginCheck"> Remember me </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 d-flex justify-content-center">
-                                        <!-- Simple link -->
-                                        <a href="#!">Forgot password?</a>
-                                    </div>
-                                </div>
-
-                                <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-
-                                <!-- Register buttons -->
-                                <div class="text-center">
-                                    <p>Not a member? <a href="#!">Register</a></p>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                            <form>
-                                <!-- Name input -->
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="registerName" class="form-control" />
-                                    <label class="form-label" for="registerName">Name</label>
-                                </div>
-
-                                <!-- Username input -->
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="registerUsername" class="form-control" />
-                                    <label class="form-label" for="registerUsername">Username</label>
-                                </div>
-
-                                <!-- Email input -->
-                                <div class="form-outline mb-4">
-                                    <input type="email" id="registerEmail" class="form-control" />
-                                    <label class="form-label" for="registerEmail">Email</label>
-                                </div>
-
-                                <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                    <input type="password" id="registerPassword" class="form-control" />
-                                    <label class="form-label" for="registerPassword">Password</label>
-                                </div>
-
-                                <!-- Repeat Password input -->
-                                <div class="form-outline mb-4">
-                                    <input type="password" id="registerRepeatPassword" class="form-control" />
-                                    <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-                                </div>
-
-                                <!-- Checkbox -->
-                                <div class="form-check d-flex justify-content-center mb-4">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked aria-describedby="registerCheckHelpText" />
-                                    <label class="form-check-label" for="registerCheck">
-                                        I have read and agree to the terms
-                                    </label>
-                                </div>
-
-                                <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Pills content -->
-                </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 130px;">
+            <h5 class="my-3"><?php echo $name ?></h5>
+            <p class="text-muted mb-1"><?php echo $username . "#" . $id ?></p>
+            <p class="text-muted mb-4"><?php echo $email ?></p>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary">Follow</button>
+              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
             </div>
+          </div>
         </div>
-
-        <!--Section: Content-->
-
-
+        
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><?php echo $name ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Username</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><?php echo $username ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><?php echo $email ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Mobile</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">99999999</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">T18A307</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Account creation date</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">1/1/1111</p>
+              </div>
+            </div>
+          </div>
         </div>
-
-
+      </div>
+        <div class="col-lg-12">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><?php echo $name ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Username</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><?php echo $username ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><?php echo $name ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Mobile</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">(098) 765-4321</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      
+    </main>
+    <!--Main layout-->
 
-        </main>
-        <!--Main layout-->
-        <div id="footer-home">
+    <!--Footer-->
+    <div id = "footer-support">
 
-        </div>
-        <script>
-            $(function() {
-                $("#footer-home").load("footer.php");
-            });
-        </script>
+    </div>
 
-        <!-- MDB -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
-        <!-- Custom scripts -->
-        <script type="text/javascript" src="js/script.js"></script>
+    <script>
+      $(function(){
+        $("#footer-support").load("footer.php");
+      });
+
+    </script>
+    <!--Footeeeeeer-->
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript" src="js/script.js"></script>
 </body>
-
 </html>
+

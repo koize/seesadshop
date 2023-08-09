@@ -75,7 +75,7 @@
               </a>
             </li>
             <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="account.php">
+              <a class="nav-link" href="login.php">
                 <i class="fas fa-user"></i>
               </a>
             </li>
