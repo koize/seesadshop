@@ -108,6 +108,17 @@
 
               $conn = new mysqli($servername, $username, $password, $dbname);
 
+              $query = $db->query('CREATE DATABASE IF NOT EXISTS seesad');
+              $query = $db->query('CREATE TABLE IF NOT EXISTS shopping_cart (
+      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      product_id INT,
+      image_link TEXT,
+      product_name TEXT ,
+      product_price INT,
+      product_quantity INT,
+      cart_id INT)
+    ');
+
               if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
               }
