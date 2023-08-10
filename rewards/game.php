@@ -81,7 +81,7 @@
     </div>
     <sub style="color:#6a6a6a;">use WASD/arrow keys to move. Collect blocks to increase your score. Dont touch the Boundary!</sub>
     <?php
-    if (!isset($_SESSION['loggedin'])) {
+    if (!isset($_COOKIE['id'])) {
         echo '<div style="color:#6a6a6a">You are not logged in! Log in to get rewards while playing!</div>';
     }
     ?>
