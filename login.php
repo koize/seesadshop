@@ -22,10 +22,6 @@ session_start();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="validateRegistration.js"></script>
-
-
-
-
 </head>
 
 <body>
@@ -75,8 +71,8 @@ session_start();
 
         <!--Section: Content-->
         <div class="bg-image" style="max-width: 120rem; z-index: 20; position:relative">
-            <img src="img/account_bg.jpg" class="w-100" alt="Image" style="height: 700px; object-fit: cover;">
-            <div class="card mx-auto my-5" style="width: 500px; display: inline-block; z-index: 2000; position:absolute; top: 20px; right: 250px; bottom:20px">
+            <img src="img/account_bg.jpg" class="w-100" alt="Image" style="height: 800px; object-fit: cover;">
+            <div class="card mx-auto my-5" style="width: 500px; display: inline-block; z-index: 2000; position:absolute; top: 5px; right: 250px; bottom:5px">
                 <div class="card-body">
                     <h5 class="card-title">Welcome to Seesad!</h5>
                     <p class="card-text">Create an account or login</p>
@@ -144,6 +140,20 @@ session_start();
                                     <input type="email" id="registerEmail" class="form-control" name="email" required />
                                     <label class="form-label" for="registerEmail">Email</label>
                                     <div class="invalid-feedback">Please enter a valid email</div>
+                                </div>
+
+                                <!-- Address input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="registerEmail" class="form-control" name="address" required />
+                                    <label class="form-label" for="registerEmail">Address (for shipping)</label>
+                                    <div class="invalid-feedback">Please enter a valid address</div>
+                                </div>
+
+                                <!-- Phone input -->
+                                <div class="form-outline mb-4">
+                                    <input type="number" id="registerEmail" class="form-control" name="phone" required />
+                                    <label class="form-label" for="registerEmail">Mobile no.</label>
+                                    <div class="invalid-feedback">Please enter a valid phone number</div>
                                 </div>
 
                                 <!-- Password input -->
