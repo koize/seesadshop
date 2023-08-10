@@ -198,7 +198,7 @@ if (isset($_COOKIE['id'])) {
           <div class="col-lg-4">
             <div class="card mb-4">
               <div class="card-body text-center">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 130px;">
+                <img src="https://subwayisfresh.com.sg/wp-content/uploads/2022/02/Sides-Double-Chocolate-Cookie.jpg" alt="cookie" class="rounded-circle img-fluid" style="width: 130px;">
                 <h5 class="my-3"><?php echo $name ?></h5>
                 <p class="text-muted mb-1"><?php echo $username . "#" . $id ?></p>
                 <p class="text-muted mb-4"><?php echo $email ?></p>
