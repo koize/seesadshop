@@ -99,6 +99,7 @@
           <div class="col-md-7 gx-5 mb-4">
             <div class="card">
               <?php
+              include 'checkout.php';
               $servername = "localhost";
               $username = "root";
               $password = "";
@@ -116,7 +117,8 @@
       product_name TEXT ,
       product_price INT,
       product_quantity INT,
-      cart_id INT)
+      user_address TEXT,
+      user_id INT)
     ');
 
               if ($conn->connect_error) {
@@ -228,10 +230,7 @@
               <!-- Card end -->
             </div>
             <div class="card" style="width: 100%;">
-              <div class="card-body">
-                <h5 class="card-title">Checkout $23.19</h5>
-                <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
-              </div>
+                <a href="cart.php?checkOut" class="btn btn-primary stretched-link" style="padding: 20px">Checkout $10.00</a>
             </div>
           </div>
       </section>
