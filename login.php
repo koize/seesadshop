@@ -144,14 +144,14 @@ session_start();
 
                                 <!-- Address input -->
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="registerEmail" class="form-control" name="address" required />
-                                    <label class="form-label" for="registerEmail">Address</label>
+                                    <input type="text" id="registerEmail" class="form-control" name="address" required />
+                                    <label class="form-label" for="registerEmail">Address (for shipping)</label>
                                     <div class="invalid-feedback">Please enter a valid address</div>
                                 </div>
 
                                 <!-- Phone input -->
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="registerEmail" class="form-control" name="phone" required />
+                                    <input type="number" id="registerEmail" class="form-control" name="phone" required />
                                     <label class="form-label" for="registerEmail">Mobile no.</label>
                                     <div class="invalid-feedback">Please enter a valid phone number</div>
                                 </div>
