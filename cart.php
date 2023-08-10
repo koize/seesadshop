@@ -107,7 +107,7 @@
 
 
               $conn = new mysqli($servername, $username, $password, $dbname);
-
+              $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
               $query = $db->query('CREATE DATABASE IF NOT EXISTS seesad');
               $query = $db->query('CREATE TABLE IF NOT EXISTS shopping_cart (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
