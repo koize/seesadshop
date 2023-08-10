@@ -19,8 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-
-
   $query = $db->query('CREATE DATABASE IF NOT EXISTS seesad');
   $query = $db->query('CREATE TABLE IF NOT EXISTS users (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -43,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //add new user to database
     date_default_timezone_set('Asia/Kolkata');
     $date = date('d-m-y h:i:s');
-    $query = $db->query('INSERT INTO users (name, username, email, password, created_at) VALUES ("' . $_POST['name'] . '","' . $_POST['username'] . '","' . $email . '","' . $password . '","' . $date . '")');
+    $query = $db->query('INSERT INTO users (name, username, email, password, address, phone, created_at) VALUES ("' . $_POST['name'] . '","' . $_POST['username'] . '","' . $email . '","' . $password . '","' . $_POST['address'] . '","' . $_POST['phone'] . '","' . $date . '")');
   }
   $cookie_name = "id";
   $query = $db->query('SELECT * FROM users WHERE email = "' . $_POST['email'] . '"');
@@ -73,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //get user details from cookie
 if (isset($_COOKIE['id'])) {
-  $query = $db->query('SELECT id, name, username, email FROM users WHERE id = "' . $_COOKIE['id'] . '"');
+  $query = $db->query('SELECT * FROM users WHERE id = "' . $_COOKIE['id'] . '"');
   $result = $query->fetchAll();
   foreach ($result as $index => $user) {
     $_SESSION["userId"] = $user['id'];
@@ -84,6 +82,8 @@ if (isset($_COOKIE['id'])) {
     $name = $user['name'];
     $username = $user['username'];
     $email = $user['email'];
+    $phone = $user['phone'];
+    $address = $user['address'];
   }
 }
 
@@ -196,7 +196,7 @@ if (isset($_COOKIE['id'])) {
 
         <div class="row">
           <div class="col-lg-4">
-            <div class="card mb-4">
+            <div class="card mb-4 py-3">
               <div class="card-body text-center">
                 <img src="https://subwayisfresh.com.sg/wp-content/uploads/2022/02/Sides-Double-Chocolate-Cookie.jpg" alt="cookie" class="rounded-circle img-fluid" style="width: 130px;">
                 <h5 class="my-3"><?php echo $name ?></h5>
