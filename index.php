@@ -288,7 +288,7 @@
         <div class="row">
           <div class="col-md-6 gx-5 mb-4">
             <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-              <img src="img/csad_logo_blue_cropped.png" class="img-fluid" />
+              <img src="img/csad_logo_korean_big.png" class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
