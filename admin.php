@@ -27,6 +27,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         saveShoppingChanges();
     } else if($_POST['mode'] == "delete_shopping") {
         deleteShopping();
+    } else if($_POST['mode'] == "add_promotion") {
+        addPromotion();
+    } else if($_POST['mode'] == "delete_promotion") {
+        deletePromotion();
+    } else if($_POST['mode'] == "save_promotion_changes") {
+        savePromotionChanges();
     }
 }
 
@@ -111,6 +117,38 @@ function deleteShopping() {
     $id = $_POST['id'];
     $db->query('DELETE FROM shopping_cart WHERE id = "' . $id . '"');
     echo "Successfully deleted product!";
+}
+
+function addPromotion() {
+    global $db;
+    $name = $_POST['name'];
+    $original_price = $_POST['original_price'];
+    $sale_price = $_POST['sale_price'];
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
+    $details = $_POST['details'];
+    $image_link = $_POST['image_link'];
+    $db->query('INSERT INTO promotions (name, original_price, sale_price, start_date, end_date, details, image_link) VALUES ("' . $name . '", "' . $original_price . '", "' . $sale_price . '", "' . $start_date . '", "' . $end_date . '", "' . $details . '", "' . $image_link . '")');
+    echo "Successfully added promotion!";
+}
+
+function deletePromotion() {
+    global $db;
+    $id = $_POST['id'];
+    $db->query('DELETE FROM promotions WHERE id = "' . $id . '"');
+}
+
+function savePromotionChanges() {
+    global $db;
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $original_price = $_POST['original_price'];
+    $sale_price = $_POST['sale_price'];
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
+    $details = $_POST['details'];
+    $db->query('UPDATE promotions SET name = "' . $name . '", original_price = "' . $original_price . '", sale_price = "' . $sale_price . '", start_date = "' . $start_date . '", end_date = "' . $end_date . '", details = "' . $details . '" WHERE id = "' . $id . '"');
+    echo "Successfully updated promotion!";
 }
 
 ?>
