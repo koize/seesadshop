@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>seeee saaad shop</title>
+  <title>Clear Skin All Day About</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
   <!-- Google Fonts Roboto -->
@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <script src="promotion.js"></script>
+  <link rel="icon" href="img/csad_logo_korean_small.png" type="image/x-icon"/>
 
 
 </head>
@@ -85,7 +86,7 @@
           <div class="col-md-6 gx-5 mb-4">
             <h4><strong>About us</strong></h4>
             <p class="text-muted">
-              Seesad is an online shop dedicated to providing high-quality face wash products from Kao and Gatsby. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals.
+             Clear Skin All Day is an online shop dedicated to providing high-quality face wash products from Kao and Gatsby. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals.
             </p>
             <p><strong>Why Kao (Biore) and Gatsby?</strong></p>
             <p class="text-muted">
@@ -124,10 +125,10 @@
 
               In addition to our high-quality products, we also offer excellent customer service. We are always available to answer your questions and help you find the right product for your skin.
 
-              We believe that Seesad is the best place to buy face wash online. We offer a wide variety of products from Kao and Gatsby, excellent customer service, and competitive prices. We are confident that you will be happy with your purchase from Seesad.
+              We believe that Clear Skin All Day is the best place to buy face wash online. We offer a wide variety of products from Kao and Gatsby, excellent customer service, and competitive prices. We are confident that you will be happy with your purchase from Seesad.
 
             </p>
-            <p><strong>Thank you for choosing Seesad!
+            <p><strong>Thank you for choosing Clear Skin All Day!
               </strong></p>
 
           </div>
@@ -144,7 +145,7 @@
               <h4>
                 <i class="fas fa-store"></i>
                 <span class="m-1"></span>
-                Seesad @ Singapore Polytechnic
+                Clear Skin All Day @ Singapore Polytechnic
               </h4>
 
               <h4>

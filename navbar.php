@@ -78,7 +78,7 @@
         $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
 
         if (isset($_COOKIE['id'])) {
-          if($_COOKIE['id'] == "9999") {
+          if($_COOKIE['id'] == "1") {
             echo '<li class="nav-item me-3 me-lg-0">
             <a class="nav-link" href="dashboard.php">
             <i class="fas fa-atom"></i>            </a>
