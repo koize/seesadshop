@@ -6,6 +6,8 @@ $password = "";
 $dbname = "csad_projek_test";
 $dbname = "seesad";
 
+$checkOutSuccessful = false;
+
 $conn = new mysqli($servername,$username,$password,$dbname);
 
 if($conn->connect_error){
@@ -44,6 +46,11 @@ if(isset($_GET['checkOut'])){
         VALUES ('$product_id','$product_name','$product_price','$product_quantity','$order_id','$user_id','$address')";
         $conn->query($addToList);
         
+      }
+      $checkOutSuccessful = true;
+      if($checkOutSuccessful == true){
+        $deleteCart = "DELETE FROM shopping_cart";
+        $conn->query($deleteCart);
       }
     }    
   }else{
