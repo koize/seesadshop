@@ -9,7 +9,7 @@ if (!isset($_COOKIE['id'])) {
 }
 
 // Check if the user is an admin
-if ($_COOKIE['id'] != "99999999") {
+if ($_COOKIE['id'] != "9999") {
     echo "You are not an admin.";
     exit();
 }

@@ -231,7 +231,7 @@
                 </div>
               </div>
               <hr class="hr" style="margin: 10px 0px 0px 0px">
-
+              
               <div class="card" style="margin:20px; background-color:lightgray">
                 <div class="row" style="margin: 15px 15px 15px 15px">
                   <div class="col-md-6">
@@ -248,13 +248,25 @@
               </div>
               <!-- Card end -->
             </div>
-            <div class="card" style="width: 100%;">
-                <a href="cart.php?checkOut=10" class="btn btn-info stretched-link" style="padding: 20px">
-                <?php
-                echo '<span style="font-weight: bold; margin:auto; font-size: 18px">CHECKOUT $'.$TOTAL.'</span>'
-                ?>
-              </a>
-            </div>
+            <?php
+              $checkIfEmpty = "SELECT CASE WHEN EXISTS(SELECT 1 FROM shopping_cart) THEN 0 ELSE 1 END AS IsEmpty";
+              $getIfEmpty = mysqli_query($dbb,$checkIfEmpty);
+              $cartempty = $getIfEmpty->fetch_array()['IsEmpty'];
+
+              if($cartempty==1){
+                echo '<div class="card" style="width: 100%;">';
+                echo '<a class="btn btn-secondary stretched-link" style="padding: 20px">';
+                echo '<span style="font-weight: bold; margin:auto; font-size: 18px">No items in cart</span>';
+                echo '</a>';
+                echo '</div>';
+              }else{
+                echo '<div class="card" style="width: 100%;">';
+                echo '<a href="cart.php?checkOut=10" class="btn btn-info stretched-link" style="padding: 20px">';
+                echo '<span style="font-weight: bold; margin:auto; font-size: 18px">CHECKOUT $'.$TOTAL.'</span>';
+                echo '</a>';
+                echo '</div>';
+              }
+              ?>
           </div>
       </section>
     </div>
