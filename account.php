@@ -15,7 +15,7 @@ $created_at = "";
 
 
 //get sign in or login info from POST and check if user exist and set cookie
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['password']) && !isset($_POST['image'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
@@ -84,6 +84,9 @@ if (isset($_COOKIE['id'])) {
     $email = $user['email'];
     $phone = $user['phone'];
     $address = $user['address'];
+    $img_filepath = $user['img_filepath'];
+    $created_at = $user['created_at'];
+
   }
 }
 
@@ -198,7 +201,14 @@ if (isset($_COOKIE['id'])) {
           <div class="col-lg-4">
             <div class="card mb-4 ">
               <div class="card-body text-center">
-                <img src="https://subwayisfresh.com.sg/wp-content/uploads/2022/02/Sides-Double-Chocolate-Cookie.jpg" alt="cookie" class="rounded-circle img-fluid" style="width: 130px;">
+                <?php
+                if ($img_filepath != "") {
+                  echo '<img src="' . $img_filepath . '" alt="cookie" class="rounded-circle img-fluid" style="width: 130px;">';
+                } else {
+                  echo '<img src="https://subwayisfresh.com.sg/wp-content/uploads/2022/02/Sides-Double-Chocolate-Cookie.jpg" alt="cookie" class="rounded-circle img-fluid" style="width: 130px;">';
+                }
+
+                ?>
                 <h5 class="my-3"><?php echo $name ?></h5>
                 <p class="text-muted mb-1"><?php echo $username . "#" . $id ?></p>
                 <p class="text-muted mb-4"><?php echo $email ?></p>
@@ -207,7 +217,7 @@ if (isset($_COOKIE['id'])) {
                   <button type="button" class="btn btn-danger ms-2" data-mdb-toggle="modal" data-mdb-target="#deleteModal">Delete account</button>
                 </div>
                 <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#editModal">Edit profile</button>
+                  <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#editModal">Edit profile</button>
                 </div>
               </div>
             </div>
@@ -221,51 +231,55 @@ if (isset($_COOKIE['id'])) {
                   <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <form method="get" class="needs-validation" novalidate>
-                                <!-- Name input -->
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="registerName" class="form-control" name="name" required value="<?php echo $name ?>"/>
-                                    <label class="form-label" for="registerName">Name</label>
-                                    <div class="invalid-feedback">Please enter your name</div>
-                                </div>
+                  <form method="post" class="needs-validation" novalidate enctype= "multipart/form-data">
+                    <!-- Name input -->
+                    <div class="form-outline mb-4">
+                      <input type="file" name="image" placeholder="Profile Picture" id="image" class="form-control">
+                    </div>
+                    <!-- Name input -->
+                    <div class="form-outline mb-4">
+                      <input type="text" id="registerName" class="form-control" name="name" required value="<?php echo $name ?>" />
+                      <label class="form-label" for="registerName">Name</label>
+                      <div class="invalid-feedback">Please enter your name</div>
+                    </div>
 
-                                <!-- Username input -->
-                                <div class="input-group form-outline mb-4">
-                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                    <input type="text" id="registerUsername" class="form-control" name="username" required value="<?php echo $username ?>"/>
-                                    <label class="form-label" for="registerUsername">Username</label>
-                                    <div class="invalid-feedback">Please enter a username</div>
-                                </div>
+                    <!-- Username input -->
+                    <div class="input-group form-outline mb-4">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                      <input type="text" id="registerUsername" class="form-control" name="username" required value="<?php echo $username ?>" />
+                      <label class="form-label" for="registerUsername">Username</label>
+                      <div class="invalid-feedback">Please enter a username</div>
+                    </div>
 
-                                <!-- Email input -->
-                                <div class="form-outline mb-4">
-                                    <input type="email" id="registerEmail" class="form-control" name="email" required value="<?php echo $email ?>"/>
-                                    <label class="form-label" for="registerEmail">Email</label>
-                                    <div class="invalid-feedback">Please enter a valid email</div>
-                                </div>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                      <input type="email" id="registerEmail" class="form-control" name="email" required value="<?php echo $email ?>" />
+                      <label class="form-label" for="registerEmail">Email</label>
+                      <div class="invalid-feedback">Please enter a valid email</div>
+                    </div>
 
-                                <!-- Address input -->
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="registerEmail" class="form-control" name="address" required value="<?php echo $address ?>"/>
-                                    <label class="form-label" for="registerEmail">Address (for shipping)</label>
-                                    <div class="invalid-feedback">Please enter a valid address</div>
-                                </div>
+                    <!-- Address input -->
+                    <div class="form-outline mb-4">
+                      <input type="text" id="registerEmail" class="form-control" name="address" value="<?php echo $address ?>" />
+                      <label class="form-label" for="registerEmail">Address (for shipping)</label>
+                      <div class="invalid-feedback">Please enter a valid address</div>
+                    </div>
 
-                                <!-- Phone input -->
-                                <div class="form-outline mb-4">
-                                    <input type="number" id="registerEmail" class="form-control" name="phone" required value="<?php echo $phone ?>"/>
-                                    <label class="form-label" for="registerEmail">Mobile no.</label>
-                                    <div class="invalid-feedback">Please enter a valid phone number</div>
-                                </div>
+                    <!-- Phone input -->
+                    <div class="form-outline mb-4">
+                      <input type="number" id="registerEmail" class="form-control" name="phone" value="<?php echo $phone ?>" />
+                      <label class="form-label" for="registerEmail">Mobile no.</label>
+                      <div class="invalid-feedback">Please enter a valid phone number</div>
+                    </div>
 
-                          
 
-                                <!-- Submit button -->
-                                <button type="submit" name="editAcc" class="btn btn-primary btn-block mb-3">Save details</button>
 
-                            </form>
-                            <script src="validateEdit.js"></script>
-                            
+                    <!-- Submit button -->
+                    <button type="submit" name="editAcc" class="btn btn-primary btn-block mb-3">Save details</button>
+
+                  </form>
+                  <script src="validateEdit.js"></script>
+
 
                 </div>
                 <div class="modal-footer">
@@ -296,11 +310,17 @@ if (isset($_COOKIE['id'])) {
             $query = $db->query('DELETE FROM users WHERE id = "' . $_COOKIE['id'] . '"');
             echo "<script>accountSignOut();</script>";
           }
-          if (array_key_exists('editAcc', $_GET)) {
+          if (array_key_exists('editAcc', $_POST)) {
             $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
-            $query = $db->query('UPDATE users SET name = "' . $_GET['name'] . '", username = "' . $_GET['username'] . '", email = "' . $_GET['email'] . '", address = "' . $_GET['address'] . '", phone = "' . $_GET['phone'] . '" WHERE id = "' . $_COOKIE['id'] . '"');
+            $filename = $_FILES["image"]["name"];
+            $tempname = $_FILES["image"]["tmp_name"];
+            $img_filepath = "user-profile-icon/" . $filename;
+
+            $query = $db->query('UPDATE users SET img_filepath = "' . $img_filepath . '" WHERE id = "' . $_COOKIE['id'] . '"');
+            $query = $db->query('UPDATE users SET name = "' . $_POST['name'] . '", username = "' . $_POST['username'] . '", email = "' . $_POST['email'] . '", address = "' . $_POST['address'] . '", phone = "' . $_POST['phone'] . '" WHERE id = "' . $_COOKIE['id'] . '"');
+            move_uploaded_file($tempname, $img_filepath);
           }
-          
+
           ?>
           <!-- EditConfirmModal -->
           <div class="modal fade" id="editConfirmModal" tabindex="-1" aria-labelledby="signOutModal" aria-hidden="true" style="z-index: 10000000 !important;">
