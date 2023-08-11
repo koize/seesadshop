@@ -46,7 +46,7 @@
               <a href="rewards.php" class="text-white">Free vouchers</a>
             </li>
             <li>
-              <a href="supportPage.php" class="text-white">Support</a>
+              <a href="support.php" class="text-white">Support</a>
             </li>
             <li>
               <a href="about.php" class="text-white">About us</a>
