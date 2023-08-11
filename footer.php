@@ -5,10 +5,10 @@
       <div class="row">
         <!--Grid column-->
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">about seesad</h5>
+          <h5 class="text-uppercase">about Clear Skin All Day</h5>
 
           <p>
-            Seesad is an online shop dedicated to providing high-quality, natural face wash products that are gentle on the skin. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals. For more details, go to our <a href="about.php">About Us</a> page.
+          Clear Skin All Day is an online shop dedicated to providing high-quality, natural face wash products that are gentle on the skin. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals. For more details, go to our <a href="about.php">About Us</a> page.
           </p>
         </div>
         <!--Grid column-->
