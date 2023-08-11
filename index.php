@@ -123,22 +123,7 @@
   <!-- Inner -->
   <div class="carousel-inner">';
     foreach ($promotions as $index => $promotion) {
-      if ($promotion['name'] == '') {
-        echo '
-      <div class="carousel-item active">
-      <img src="' . $promotion['img_filepath'] . '" class="d-block w-100" alt="' . $promotion['name'] . '"/>
-      <div class="mask" style="background-color: rgba(0, 0, 0, 0.15);">
-                        <div class="carousel-caption">
-                            <div class="text-white text-center">
-                                <h3 class="mb-4">Promotion ends on ' . $promotion['end_date'] . '</h3>
-                                <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" target="_blank">Start tutorial</a>
-                                <a class="btn btn-outline-light btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">Download MDB UI KIT</a>
-                            </div>
-                        </div>
-                    </div>
-
-    </div>';
-      } else {
+      
         echo '  <!-- Single item -->
       <div class="carousel-item active">
         <img src="' . $promotion['img_filepath'] . '" class="d-block w-100" alt="' . $promotion['name'] . '"/>
@@ -162,7 +147,7 @@
   
       </div>';
       }
-    }
+    
     ?>
   
     <!-- Inner -->
