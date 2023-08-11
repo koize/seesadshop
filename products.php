@@ -83,7 +83,7 @@
         $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
 
         $query = $db->query('CREATE DATABASE IF NOT EXISTS seesad');
-        $query = $db->query('CREATE TABLE IF NOT EXISTS prodcuts (
+        $query = $db->query('CREATE TABLE IF NOT EXISTS products (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       image_link TEXT,
       product_name TEXT,
@@ -91,7 +91,7 @@
       product_price DATE,
       products_category TEXT
     )');
-    
+
         $servername = "localhost";
         $username = "root";
         $password = "";
