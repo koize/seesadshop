@@ -120,6 +120,16 @@
       user_address TEXT,
       user_id INT)
     ');
+    $query = $db->query('CREATE TABLE IF NOT EXISTS orders_list (
+      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      product_id INT,
+      product_name TEXT,
+      product_price INT,
+      product_quantity INT,
+      order_id int,
+      user_id int,
+      address TEXT)
+    ');
 
               if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
