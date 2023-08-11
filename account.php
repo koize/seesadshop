@@ -105,7 +105,6 @@ if (isset($_COOKIE['id'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>Material Design for Bootstrap</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
   <!-- Google Fonts Roboto -->
@@ -116,6 +115,8 @@ if (isset($_COOKIE['id'])) {
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <script src="signout.js"></script>
+  <title>Clear Skin All Day Account</title>
+  <link rel="icon" href="img/csad_logo_korean_small.png" type="image/x-icon"/>
 
 </head>
 

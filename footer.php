@@ -5,10 +5,10 @@
       <div class="row">
         <!--Grid column-->
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">about seesad</h5>
+          <h5 class="text-uppercase">about Clear Skin All Day</h5>
 
           <p>
-            Seesad is an online shop dedicated to providing high-quality, natural face wash products that are gentle on the skin. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals. For more details, go to our <a href="about.php">About Us</a> page.
+          Clear Skin All Day is an online shop dedicated to providing high-quality, natural face wash products that are gentle on the skin. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals. For more details, go to our <a href="about.php">About Us</a> page.
           </p>
         </div>
         <!--Grid column-->
@@ -19,16 +19,16 @@
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="#!" class="text-white">hackerman gab</a>
+              <a href="developers.php#gab" class="text-white">hackerman gab</a>
             </li>
             <li>
-              <a href="#!" class="text-white">slave 1</a>
+              <a href="developers.php#dru" class="text-white">slave 1</a>
             </li>
             <li>
-              <a href="#!" class="text-white">slave 2</a>
+              <a href="developers.php#j" class="text-white">slave 2</a>
             </li>
             <li>
-              <a href="#!" class="text-white">slave 3</a>
+              <a href="developers.php#xav" class="text-white">slave 3</a>
             </li>
           </ul>
         </div>
@@ -40,10 +40,10 @@
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="#!" class="text-white">View all products</a>
+              <a href="products.php" class="text-white">View all products</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Free vouchers</a>
+              <a href="rewards.php" class="text-white">Free vouchers</a>
             </li>
             <li>
               <a href="supportPage.php" class="text-white">Support</a>
@@ -58,16 +58,15 @@
       <!--Grid row-->
       <section class="mb-1">
         <!-- Facebook -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
 
         <!-- Twitter -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/koize/seesadshop" role="button"><i class="fab fa-github"></i></a>
 
         <!-- Google -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitch"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.twitch.tv/koizee_" role="button"><i class="fab fa-twitch"></i></a>
 
         <!-- Instagram -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/spaviationclub/?hl=en" role="button"><i class="fab fa-instagram"></i></a>
     </div>
     <!-- Section: Social media -->
 

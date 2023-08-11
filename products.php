@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>seeee saaad shop</title>
+  <title>Clear Skin All Day Products</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
   <!-- Google Fonts Roboto -->
@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <script src="promotion.js"></script>
+  <link rel="icon" href="img/csad_logo_korean_small.png" type="image/x-icon"/>
 
 
 
@@ -74,7 +75,14 @@
   <main class="mt-5">
     <div class="container">
       <section class="text-center">
-        <h3 class="mb-5"><strong>Our Products</strong></h3>
+        <?php 
+          if (isset($_GET['search_products'])) {
+            echo '<h3 class="mb-5"><strong>Products matching ' . $_GET['search_products'] . '</strong></h3>';
+          } else {
+            echo '<h3 class="mb-5"><strong>Our Products</strong></h3>';
+          }
+
+         ?>
       </section>
 
       <section class="text-center">
@@ -105,7 +113,11 @@
           die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT id,image_link,product_name,product_desc,product_price FROM products";
+        if (isset($_GET['search_products'])) {
+          $sql = "SELECT id,image_link,product_name,product_desc,product_price FROM products WHERE product_name LIKE '%" . $_GET['search_products'] . "%'";
+        } else {
+          $sql = "SELECT id,image_link,product_name,product_desc,product_price FROM products";
+        }
         $result = $conn->query($sql);
         echo '<div class="row">';
         if ($result->num_rows > 0) {

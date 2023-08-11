@@ -1,6 +1,9 @@
 <?php
 ob_start();
 session_start();
+$db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
+$query = $db->query('INSERT IGNORE INTO users (id, name, username, email, password, address, phone, created_at) VALUES ("1","admin","admin","admin@seesad.com","ilovecsad", "535 Clementi Rd, Singapore 599489, JCC clubroom", "11111111", "199 BC")');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +12,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>seeee saaad shop</title>
+    <title>Clear Skin All Day Login</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <!-- Google Fonts Roboto -->
@@ -22,6 +25,8 @@ session_start();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="validateRegistration.js"></script>
+    <link rel="icon" href="img/csad_logo_korean_small.png" type="image/x-icon"/>
+
 </head>
 
 <body>
