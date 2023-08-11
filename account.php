@@ -196,15 +196,36 @@ if (isset($_COOKIE['id'])) {
 
         <div class="row">
           <div class="col-lg-4">
-            <div class="card mb-4 py-3">
+            <div class="card mb-4 ">
               <div class="card-body text-center">
                 <img src="https://subwayisfresh.com.sg/wp-content/uploads/2022/02/Sides-Double-Chocolate-Cookie.jpg" alt="cookie" class="rounded-circle img-fluid" style="width: 130px;">
                 <h5 class="my-3"><?php echo $name ?></h5>
                 <p class="text-muted mb-1"><?php echo $username . "#" . $id ?></p>
                 <p class="text-muted mb-4"><?php echo $email ?></p>
                 <div class="d-flex justify-content-center mb-2">
-                  <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#signOutModal">Sign out</button>
-                  <button type="button" class="btn btn-outline-primary ms-1" data-mdb-toggle="modal" data-mdb-target="#deleteModal">Delete account</button>
+                  <button type="button" class="btn btn-outline-danger" data-mdb-toggle="modal" data-mdb-target="#signOutModal">Sign out</button>
+                  <button type="button" class="btn btn-danger ms-2" data-mdb-toggle="modal" data-mdb-target="#deleteModal">Delete account</button>
+                </div>
+                <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#editModal">Edit profile</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- EditModal -->
+          <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true" style="z-index: 10000000 !important;">
+            <div class="modal-dialog mt-20">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit profile</h5>
+                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" onclick="accountSignOut()">Save</button>
                 </div>
               </div>
             </div>
@@ -227,6 +248,11 @@ if (isset($_COOKIE['id'])) {
           </div>
           <?php
           if (array_key_exists('deleteAcc', $_GET)) {
+            $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
+            $query = $db->query('DELETE FROM users WHERE id = "' . $_COOKIE['id'] . '"');
+            echo "<script>accountSignOut();</script>";
+          }
+          if (array_key_exists('editAcc', $_GET)) {
             $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
             $query = $db->query('DELETE FROM users WHERE id = "' . $_COOKIE['id'] . '"');
             echo "<script>accountSignOut();</script>";
@@ -314,10 +340,10 @@ if (isset($_COOKIE['id'])) {
               <div class="card-body">
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Full Name</p>
+                    <h6 class="font-weight-bold">Past orders#</h6>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $name ?></p>
+                    <h6 class="font-weight-bold">Order contents</h6>
                   </div>
                 </div>
                 <hr>

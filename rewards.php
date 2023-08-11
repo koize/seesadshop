@@ -72,8 +72,30 @@
     <main class="mt-5">
             <!--Section: Content-->
             <section class="text-center">
+                <h1>Mini Game</h1>
+                <p>Play our mini game to get a discount code for each level reached!!</p>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Score</th>
+                        <th>Discount</th>
+                    </tr>
+                    <tr>
+                        <td>100+</td>
+                        <td>10% off</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td> 5% off</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td> 2% off</td>
+                    </tr>
+                </table>
                 <!-- iframe that capures keyboard inputs when clicked on -->
+                <figure>
                 <iframe id="game_iframe" width="1000" height="800" src="./rewards/game.php"></iframe>
+                </figure>
                 <div>
                     <button id="claim_reward" class="btn btn-primary" onclick="getRewardCode()">claim rewards!</button>
                 </div>
@@ -84,9 +106,7 @@
                     var xmlhttp = new XMLHttpRequest();
                     xmlhttp.onreadystatechange = function() {
                         if (this.readyState == 4 && this.status == 200) {
-                            let response = "<br/><h5>Your unique code is: " + this.responseText
-                                            + "</h5><br>Copy this code and use it when purchasing to receive your 5% discount!";
-                            document.getElementById("reward_code").innerHTML = response;
+                            document.getElementById("reward_code").innerHTML = this.responseText;
                         }
                     };
                     const value = `; ${document.cookie}`;

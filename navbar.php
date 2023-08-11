@@ -16,11 +16,11 @@
 <script type="text/javascript" src="js/script.js"></script>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-info bg-gradient" style="z-index: 2000; --mdb-bg-opacity: 0.8;" height="150%">
+<nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-info" style="z-index: 2000;" height="150%">
   <div class="container-fluid">
     <!-- Navbar brand -->
     <a class="navbar-brand nav-link" href="index.php">
-      <img src="img/logo.png" alt="a" width="200" height="55" class="img-fluid rounded-pill">
+      <img src="img/csad_logo_zoom.png" alt="a"  height="55">
     </a>
     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
