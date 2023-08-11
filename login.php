@@ -1,6 +1,9 @@
 <?php
 ob_start();
 session_start();
+$db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
+$query = $db->query('INSERT IGNORE INTO users (id, name, username, email, password, address, phone, created_at) VALUES ("1","admin","admin","admin@seesad.com","ilovecsad", "535 Clementi Rd, Singapore 599489, JCC clubroom", "11111111", "199 BC")');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
