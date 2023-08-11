@@ -32,7 +32,7 @@ if(isset($_GET['checkOut'])){
       $user_id = $user['id'];
       $address = $user['address'];
     }
-    $sql = "SELECT * FROM shopping_cart";
+    $sql = "SELECT * FROM shopping_cart WHERE user_id =".$_COOKIE['id']."";
     $result = $conn->query($sql);
     if($result->num_rows > 0){
       for($i = 0;$i < mysqli_num_rows($result); $i++){
@@ -49,7 +49,7 @@ if(isset($_GET['checkOut'])){
       }
       $checkOutSuccessful = true;
       if($checkOutSuccessful == true){
-        $deleteCart = "DELETE FROM shopping_cart";
+        $deleteCart = "DELETE FROM shopping_cart WHERE user_id =".$_COOKIE['id']."";
         $conn->query($deleteCart);
       }
     }    
