@@ -19,6 +19,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         deleteReward();
     }  else if($_POST['mode'] == "delete_feedback") {
         deleteFeedback();
+    } else if($_POST['mode'] == "save_product_changes") {
+        saveProductChanges();
+    } else if($_OPST['mode'] == "delete_product") {
+        deleteProduct();
     }
 }
 
@@ -67,6 +71,24 @@ function deleteFeedback() {
     $id = $_POST['id'];
     $db->query('DELETE FROM feedback WHERE id = "' . $id . '"');
     echo "Successfully deleted feedback!";
+}
+
+function saveProductChanges() {
+    global $db;
+    $id = $_POST['id'];
+    $product_name = $_POST['product_name'];
+    $product_desc = $_POST['product_desc'];
+    $product_price = $_POST['product_price'];
+    $image_link = $_POST['image_link'];
+    $db->query('UPDATE products SET product_name = "' . $product_name . '", product_desc = "' . $product_desc . '", product_price = "' . $product_price . '", image_link = "' . $image_link . '" WHERE id = "' . $id . '"');
+    echo "Successfully updated product!";
+}
+
+function deleteProduct() {
+    global $db;
+    $id = $_POST['id'];
+    $db->query('DELETE FROM products WHERE id = "' . $id . '"');
+    echo "Successfully deleted product!";
 }
 
 ?>

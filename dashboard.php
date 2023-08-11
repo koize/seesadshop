@@ -91,6 +91,7 @@ if ($_COOKIE['id'] != "99999999") {
     <a class="user_input" href="#Users">Users</a>
     <a class="user_input" href="#reward-codes">Reward Codes</a>
     <a class="user_input" href="#feedback">Feedback</a>
+    <a class="user_input" href="#products">Products</a>
     <!--
     <div id="resultModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="resultModal" aria-hidden="true">
         <div class="modal-dialog mt-20" role="document">
@@ -354,10 +355,10 @@ if ($_COOKIE['id'] != "99999999") {
                 echo "</div>";
                 echo "<div class='modal-body'>";
                 echo "User ID: <div id='feedback_user_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
-                echo "Name: <div id='feedback_user_name" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['name'] . "</div>";
-                echo "Email: <div id='feedback_user_email" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['email'] . "</div>";
-                echo "Profile Picture Path: <div id='feedback_message" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['message'] . "</div>"; //I'm questioning myself
-                echo "Time Created: <div id='feedback_created_at" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['created_at'] . "</div>";
+                echo "Name: <div id='feedback_user_name" . $row['id'] . "' class='user_input'>" . $row['name'] . "</div>";
+                echo "Email: <div id='feedback_user_email" . $row['id'] . "' class='user_input'>" . $row['email'] . "</div>";
+                echo "Profile Picture Path: <div id='feedback_message" . $row['id'] . "' class='user_input'>" . $row['message'] . "</div>"; //I'm questioning myself
+                echo "Time Created: <div id='feedback_created_at" . $row['id'] . "' class='user_input'>" . $row['created_at'] . "</div>";
 
                 //content here
                 echo "</div>";
@@ -386,21 +387,130 @@ if ($_COOKIE['id'] != "99999999") {
                     xmlhttp.send(str);
                 }
             </script>
+            <h3 id="#products">Products</h3>
+            <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#add_product">Add Product</button>
+            <div class="modal fade" id="#add_product" tabindex="-1" role="dialog" aria-labelledby="add_product" aria-hidden="true">
+                <div class='modal-dialog modal-dialog-centered' role='document'>
+                    <div class='modal-content'>
+                        <div class='modal-header'>
+                            <h5 class='modal-title' id='add_productTitle'>Add Product</h5>
+                            <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- add stuff here-->
+                            <div class='modal-footer'>
+                                <button type='button' class='btn btn-danger' onclick='addProduct();'>Add Product</button>
+                            </div>
+                        </div>
+                    </div>
 
-            <script>
-                $(function() {
-                    $("#nav-products").load("navbar.php");
-                });
-            </script>
-            <!-- Navbar -->
-            <div id="footer-about">
-                <script>
-                    $(function() {
-                        $("#footer-about").load("footer.php");
-                    });
-                </script>
-                <!-- MDB -->
-                <script type="text/javascript" src="js/mdb.min.js"></script>
-                <!-- Custom scripts -->
-                <script type="text/javascript" src="js/script.js"></script>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th>id</th>
+                    <th>product name</th>
+                    <th>product desc</th>
+                    <th>product price</th>
+                    <th>image link</th>
+                </tr>
+                <?php
+                $sql = "SELECT * FROM products";
+                $result = $db->query($sql);
+                foreach ($result as $row) {
+                    echo "<tr>";
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['product_name'] . "</td>";
+                    echo "<td>" . $row['product_desc'] . "</td>";
+                    echo "<td>" . $row['product_price'] . "</td>";
+                    echo "<td>" . $row['image_link'] . "</td>";
+                    echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "feedback_" . $row['id'] . "'>Edit</button></td>";
+                    echo "</tr>";
+                }
+                ?>
+                <table>
+                    <?php
+                    $sql = "SELECT * FROM feedback";
+                    $result = $db->query($sql);
+                    //$sql = "SELECT id,image_link,product_name,product_desc,product_price FROM products";
+                    foreach ($result as $row) {
+                        echo "<div class='modal fade' id='products_" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='"
+                            . "products_" . $row['id'] . "' aria-hidden='true'>";
+                        echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
+                        echo "<div class='modal-content'>";
+                        echo "<div class='modal-header'>";
+                        echo "<h5 class='modal-title' id='" . "products_" . $row['id'] . "Title" . "'>Product info" . $row['id'] . "</h5>";
+                        echo "<button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'>";
+                        echo "</button>";
+                        echo "</div>";
+                        echo "<div class='modal-body'>";
+                        echo "User ID: <div id='products_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
+                        echo "Product Name: <div id='product_name" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_name'] . "</div>";
+                        echo "Product Desc: <div id='product_desc" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_desc'] . "</div>";
+                        echo "Product Price: <div id='product_price" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['price'] . "</div>";
+                        echo "img link: <div id='product_created_at" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['image_link'] . "</div>";
+                        //content here
+                        echo "</div>";
+                        echo "<div class='modal-footer'>";
+                        echo "<button type='button' class='btn btn-primary' onclick='saveProductChanges(" . $row['id'] . ");'>Save</button>";
+                        echo "<button type='button' class='btn btn-danger' onclick='deleteProduct(" . $row['id'] . ");'>Delete Product</button>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                    ?>
+                    <script>
+                        function saveProductChanges(x) {
+                            var xmlhttp = new XMLHttpRequest();
+                            var str = "mode=save_product_changes";
+                            var id = "&id=" + document.getElementById("products_id" + x).innerText;
+                            var product_name = "&product_name=" + document.getElementById("product_name" + x).innerText;
+                            var product_desc = "&product_desc=" + document.getElementById("product_desc" + x).innerText;
+                            var product_price = "&product_price=" + document.getElementById("product_price" + x).innerText;
+                            var image_link = "&image_link=" + document.getElementById("image_link" + x).innerText;
+                            str += id + product_name + product_desc + product_price + image_link;
+                            xmlhttp.open("POST", "admin.php", true);
+                            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                            xmlhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    alert(this.responseText);
+                                }
+                            };
+                            xmlhttp.send(str);
+                        }
+
+                        function deleteProduct(x) {
+                            var xmlhttp = new XMLHttpRequest();
+                            var str = "mode=delete_product";
+                            var id = "&id=" + document.getElementById("products_id" + x).innerText;
+                            str += id;
+                            xmlhttp.open("POST", "admin.php", true);
+                            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                            xmlhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    alert(this.responseText);
+                                }
+                            };
+                            xmlhttp.send(str);
+                        }
+                    </script>
+
+                    <script>
+                        $(function() {
+                            $("#nav-products").load("navbar.php");
+                        });
+                    </script>
+                    <!-- Navbar -->
+                    <div id="footer-about">
+                        <script>
+                            $(function() {
+                                $("#footer-about").load("footer.php");
+                            });
+                        </script>
+                        <!-- MDB -->
+                        <script type="text/javascript" src="js/mdb.min.js"></script>
+                        <!-- Custom scripts -->
+                        <script type="text/javascript" src="js/script.js"></script>
 </body>
