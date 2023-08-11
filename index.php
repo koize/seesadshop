@@ -93,7 +93,7 @@
 
 
     //add admin acc
-    $query = $db->query('INSERT IGNORE INTO users (id, name, username, email, password, address, phone, created_at) VALUES ("9999","admin","admin","admin@seesad.com","ilovecsad", "535 Clementi Rd, Singapore 599489, JCC clubroom", "11111111", "199 BC")');
+    $query = $db->query('INSERT IGNORE INTO users (id, name, username, email, password, address, phone, created_at) VALUES ("1","admin","admin","admin@seesad.com","ilovecsad", "535 Clementi Rd, Singapore 599489, JCC clubroom", "11111111", "199 BC")');
 
 
     // Fetch the promotions
