@@ -196,7 +196,7 @@ session_start();
                                 exit;
                             }
 
-                            if ($serverPassword != $_POST['password'] || $query->rowCount() == 0) {
+                            if ($query->rowCount() == 0 || $serverPassword != $_POST['password']) {
                                 echo '<div class="alert alert-danger">Wrong email or password</div>';
                             } else {
                                 $cookie_name = "id";
