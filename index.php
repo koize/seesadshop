@@ -93,7 +93,7 @@
 
 
     //add admin acc
-    $query = $db->query('INSERT IGNORE INTO users (id, name, username, email, password, address, phone, created_at) VALUES ("9999","admin","admin","admin@seesad.com","ilovecsad", "535 Clementi Rd, Singapore 599489, JCC clubroom", "11111111", "199 BC")');
+    $query = $db->query('INSERT IGNORE INTO users (id, name, username, email, password, address, phone, created_at) VALUES ("1","admin","admin","admin@seesad.com","ilovecsad", "535 Clementi Rd, Singapore 599489, JCC clubroom", "11111111", "199 BC")');
 
 
     // Fetch the promotions
@@ -123,22 +123,7 @@
   <!-- Inner -->
   <div class="carousel-inner">';
     foreach ($promotions as $index => $promotion) {
-      if ($promotion['name'] == '') {
-        echo '
-      <div class="carousel-item active">
-      <img src="' . $promotion['img_filepath'] . '" class="d-block w-100" alt="' . $promotion['name'] . '"/>
-      <div class="mask" style="background-color: rgba(0, 0, 0, 0.15);">
-                        <div class="carousel-caption">
-                            <div class="text-white text-center">
-                                <h3 class="mb-4">Promotion ends on ' . $promotion['end_date'] . '</h3>
-                                <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" target="_blank">Start tutorial</a>
-                                <a class="btn btn-outline-light btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">Download MDB UI KIT</a>
-                            </div>
-                        </div>
-                    </div>
-
-    </div>';
-      } else {
+      
         echo '  <!-- Single item -->
       <div class="carousel-item active">
         <img src="' . $promotion['img_filepath'] . '" class="d-block w-100" alt="' . $promotion['name'] . '"/>
@@ -162,7 +147,7 @@
   
       </div>';
       }
-    }
+    
     ?>
   
     <!-- Inner -->
@@ -288,7 +273,7 @@
         <div class="row">
           <div class="col-md-6 gx-5 mb-4">
             <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-              <img src="img/csad_logo_blue_cropped.png" class="img-fluid" />
+              <img src="img/csad_logo_korean_big.png" class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>

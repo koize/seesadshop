@@ -190,7 +190,7 @@ session_start();
 
                             if ($_POST['email'] == "admin@seesad.com" && $_POST['password'] == "ilovecsad") {
                                 $cookie_name = "id";
-                                $cookie_value = 9999;
+                                $cookie_value = 1;
                                 setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
                                 header("Location: dashboard.php");
                                 exit;
