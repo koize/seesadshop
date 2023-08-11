@@ -230,7 +230,7 @@
               <!-- Card end -->
             </div>
             <div class="card" style="width: 100%;">
-                <a href="cart.php?checkOut" class="btn btn-primary stretched-link" style="padding: 20px">Checkout $10.00</a>
+                <a href="cart.php?checkOut=10" class="btn btn-primary stretched-link" style="padding: 20px">Checkout $10.00</a>
             </div>
           </div>
       </section>
