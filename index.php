@@ -92,6 +92,9 @@
     $query = $db->query('INSERT IGNORE INTO promotions (id, name, original_price, sale_price, start_date, end_date, details, img_filepath) VALUES ("3", "Biore UV Anti-Pollution Body Care Serum SPF 50+ PA+++ (Intensive Aura)", "16", "9", "0000-00-00", "2023-10-10", "Anti-pollution body lotion with high UV protection", "img/carousel_pmnt3.jpg")');
 
 
+    //add admin acc
+    $query = $db->query('INSERT IGNORE INTO users (id, name, username, email, password, address, phone, created_at) VALUES ("9999","admin","admin","admin@seesad.com","ilovecsad", "535 Clementi Rd, Singapore 599489, #T18A307", "11111111", "199 BC")');
+
 
     // Fetch the promotions
     $query = $db->query('SELECT * FROM promotions');
