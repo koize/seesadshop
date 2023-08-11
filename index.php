@@ -93,7 +93,6 @@
 
 
     //add admin acc
-    $query = $db->query('INSERT IGNORE INTO users (id, name, username, email, password, address, phone, created_at) VALUES ("1","admin","admin","admin@seesad.com","ilovecsad", "535 Clementi Rd, Singapore 599489, JCC clubroom", "11111111", "199 BC")');
 
 
     // Fetch the promotions
@@ -195,9 +194,7 @@
                   <div class="col">
                     <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
                   </div>
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">1 left</small></p>
-                  </div>
+                
                   <div class="col">
                     <a href="#!" class="btn btn-primary">Shop</a>
                   </div>
@@ -223,9 +220,7 @@
                   <div class="col">
                     <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
                   </div>
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">1 left</small></p>
-                  </div>
+                
                   <div class="col">
                     <a href="#!" class="btn btn-primary">Shop</a>
                   </div>
@@ -251,9 +246,7 @@
                   <div class="col">
                     <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
                   </div>
-                  <div class="col">
-                    <p class="card-text"><small class="text-muted">1 left</small></p>
-                  </div>
+                  
                   <div class="col">
                     <a href="#!" class="btn btn-primary">Shop</a>
                   </div>
