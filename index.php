@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <script src="promotion.js"></script>
-  <link rel="icon" href="img/csad_icon.png" type="image/x-icon"/>
+    <link rel="icon" href="img/csad_icon.png" type="image/x-icon"/>
 
 
 </head>
@@ -68,6 +68,7 @@
       </script>
     <!-- Navbar -->
     <!-- carousel -->
+    
     <?php
 
     // Connect to the MySQL database
@@ -98,7 +99,7 @@
     // Fetch the promotions
     $query = $db->query('SELECT * FROM promotions');
     $promotions = $query->fetchAll();
-
+    $active = true;
     // Generate the HTML code for the carousel
 
     echo '<!-- Carousel wrapper -->
@@ -332,6 +333,8 @@
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <!-- Custom scripts -->
   <script type="text/javascript" src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
