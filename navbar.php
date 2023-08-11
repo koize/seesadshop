@@ -19,6 +19,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-info" style="z-index: 2000;" height="150%">
   <div class="container-fluid">
     <!-- Navbar brand -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarExample01"
+      aria-controls="navbarExample01"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
     <a class="navbar-brand nav-link" href="index.php">
       <img src="img/csad_logo_korean_small.png" alt="a"  height="55">
     </a>
@@ -51,7 +62,7 @@
           <a class="nav-link" href="rewards.php">Rewards</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="supportPage.php">Support</a>
+          <a class="nav-link" href="support.php">Support</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="about.php">About Us</a>
