@@ -17,7 +17,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         saveRewardChanges();
     } else if($_POST['mode'] == "delete_reward") {
         deleteReward();
-    } 
+    }  else if($_POST['mode'] == "delete_feedback") {
+        deleteFeedback();
+    }
 }
 
 function saveUserChanges() {
@@ -58,6 +60,13 @@ function deleteReward() {
     $id = $_POST['id'];
     $db->query('DELETE FROM reward_codes WHERE id = "' . $id . '"');
     echo "Successfully deleted reward!";
+}
+
+function deleteFeedback() {
+    global $db;
+    $id = $_POST['id'];
+    $db->query('DELETE FROM feedback WHERE id = "' . $id . '"');
+    echo "Successfully deleted feedback!";
 }
 
 ?>
