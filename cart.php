@@ -224,7 +224,14 @@
                   Voucher
                 </div>
                 <div class="col-md-6">
-                  <span style="padding-left:100px">ADD/Input</span>
+                  <form method="post" action="checkout.php?voucher=">
+                    <div class="col-md-6">
+                    <input type = "text" name="voucherET"/>
+                    </div>
+                    <div class="col-md-6">
+                    <input type = "submit" value="Add"/>
+                    </div>
+                  </form> 
                 </div>
               </div>
               <hr class="hr" style="margin: 10px 0px 0px 0px">
