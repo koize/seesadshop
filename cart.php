@@ -197,13 +197,21 @@
           <div class="col-md-5 gx-5 mb-4">
             <div class="card" style="margin-bottom: 20px; ">
               <!-- Card start -->
-              <div class="row" style="margin: 20px 10px 0px 10px">
+              <div class="row" style="margin: 20px 10px 0px 10px">  
                 <div class="col-md-6">
                   SubTotal:
                 </div>
                 <div class="col-md-6">
                 <?php
-                  $sqlViewCart = 'SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart WHERE user_id = "$user_id"';
+                
+                if (isset($_COOKIE['id'])) {
+                  $query = $db->query('SELECT id, name, username, address FROM users WHERE id = "' . $_COOKIE['id'] . '"');
+                  $result = $query->fetchAll();
+                  foreach ($result as $index => $user) {
+                  $user_id = $user['id'];
+                  }
+                }
+                  $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart WHERE user_id = $user_id";
                   $result = $conn->query($sqlViewCart);
                   $subTotal = 0;
 
@@ -226,14 +234,18 @@
                 <div class="col-md-6">
                   Voucher
                 </div>
+                
                 <div class="col-md-6">
-                  <form method="post" action="checkout.php?voucher=">
+                  <form>
+                    <div class="row">
                     <div class="col-md-6">
                     <input type = "text" name="voucherET"/>
                     </div>
                     <div class="col-md-6">
-                    <input type = "submit" value="Add"/>
+                    <a href='cart.php?voucher=<?php echo $_POST["voucherET"];?>' class="btn btn-primary">Add</a>
                     </div>
+                </div>
+                
                   </form> 
                 </div>
               </div>
@@ -266,8 +278,7 @@
                   </div>
                   <div class="col-md-6">
                     <?php
-                    $voucher = 0;
-                    $TOTAL = ($subTotal+5+3.69);
+                    $TOTAL = ($subTotal+5+3.69) * $voucherMultiplier;
                     echo '<span style="padding-left:100px; font-weight: bold">$'.$TOTAL.'</span>';
                     ?>
                   </div>
