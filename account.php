@@ -221,11 +221,55 @@ if (isset($_COOKIE['id'])) {
                   <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                <form method="get" class="needs-validation" novalidate>
+                                <!-- Name input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="registerName" class="form-control" name="name" required value="<?php echo $name ?>"/>
+                                    <label class="form-label" for="registerName">Name</label>
+                                    <div class="invalid-feedback">Please enter your name</div>
+                                </div>
+
+                                <!-- Username input -->
+                                <div class="input-group form-outline mb-4">
+                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                    <input type="text" id="registerUsername" class="form-control" name="username" required value="<?php echo $username ?>"/>
+                                    <label class="form-label" for="registerUsername">Username</label>
+                                    <div class="invalid-feedback">Please enter a username</div>
+                                </div>
+
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <input type="email" id="registerEmail" class="form-control" name="email" required value="<?php echo $email ?>"/>
+                                    <label class="form-label" for="registerEmail">Email</label>
+                                    <div class="invalid-feedback">Please enter a valid email</div>
+                                </div>
+
+                                <!-- Address input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="registerEmail" class="form-control" name="address" required value="<?php echo $address ?>"/>
+                                    <label class="form-label" for="registerEmail">Address (for shipping)</label>
+                                    <div class="invalid-feedback">Please enter a valid address</div>
+                                </div>
+
+                                <!-- Phone input -->
+                                <div class="form-outline mb-4">
+                                    <input type="number" id="registerEmail" class="form-control" name="phone" required value="<?php echo $phone ?>"/>
+                                    <label class="form-label" for="registerEmail">Mobile no.</label>
+                                    <div class="invalid-feedback">Please enter a valid phone number</div>
+                                </div>
+
+                          
+
+                                <!-- Submit button -->
+                                <button type="submit" name="editAcc" class="btn btn-primary btn-block mb-3">Save details</button>
+
+                            </form>
+                            <script src="validateEdit.js"></script>
+                            
 
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary" onclick="accountSignOut()">Save</button>
                 </div>
               </div>
             </div>
@@ -254,10 +298,25 @@ if (isset($_COOKIE['id'])) {
           }
           if (array_key_exists('editAcc', $_GET)) {
             $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
-            $query = $db->query('DELETE FROM users WHERE id = "' . $_COOKIE['id'] . '"');
-            echo "<script>accountSignOut();</script>";
+            $query = $db->query('UPDATE users SET name = "' . $_GET['name'] . '", username = "' . $_GET['username'] . '", email = "' . $_GET['email'] . '", address = "' . $_GET['address'] . '", phone = "' . $_GET['phone'] . '" WHERE id = "' . $_COOKIE['id'] . '"');
           }
+          
           ?>
+          <!-- EditConfirmModal -->
+          <div class="modal fade" id="editConfirmModal" tabindex="-1" aria-labelledby="signOutModal" aria-hidden="true" style="z-index: 10000000 !important;">
+            <div class="modal-dialog mt-20">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Profile edited succesfully</h5>
+                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Ok</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- DeleteModal -->
           <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true" style="z-index: 10000000 !important;">
             <div class="modal-dialog mt-20">
