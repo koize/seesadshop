@@ -99,7 +99,6 @@
           <div class="col-md-7 gx-5 mb-4">
             <div class="card">
               <?php
-              include 'checkout.php';
               $servername = "localhost";
               $username = "root";
               $password = "";
@@ -130,6 +129,8 @@
       user_id int,
       address TEXT)
     ');
+                  include 'checkout.php';
+
 
               if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
@@ -200,7 +201,7 @@
                 </div>
                 <div class="col-md-6">
                 <?php
-                  $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart WHERE user_id = $user_id";
+                  $sqlViewCart = 'SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart WHERE user_id = "$user_id"';
                   $result = $conn->query($sqlViewCart);
                   $subTotal = 0;
 
