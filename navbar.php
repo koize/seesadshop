@@ -61,7 +61,7 @@
       <ul class="navbar-nav d-flex flex-row">
         <!-- Icons -->
         <li class="nav-item me-3 me-lg-0">
-          <form class="d-flex input-group w-auto" action="search.php" method="get">
+          <form class="d-flex input-group w-auto" action="products.php" method="get">
             <input type="search" class="form-control rounded" placeholder="Search all products" aria-label="Search" aria-describedby="search-addon" name="search_products" />
             <span class="input-group-text border-0" id="search-addon">
               <i class="fas fa-search"></i>
