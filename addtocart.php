@@ -23,9 +23,6 @@ if (isset($_GET['addToCart'])) {
     $getImageLink = mysqli_query($db, "SELECT image_link FROM products WHERE id=$id");
     $image_link = $getImageLink->fetch_array()['image_link'];
 
-    $productCheck = "SELECT * FROM shopping_cart WHERE product_id=$id";
-    $resultCheck = mysqli_query($db, $productCheck);
-
     if (isset($_COOKIE['id'])) {
         $query = $dbb->query('SELECT id, name, username, email,address FROM users WHERE id = "' . $_COOKIE['id'] . '"');
         $result = $query->fetchAll();
@@ -35,6 +32,11 @@ if (isset($_GET['addToCart'])) {
         }
     }
 
+
+    $productCheck = "SELECT * FROM shopping_cart WHERE product_id=$id AND user_id=$user_id";
+    $resultCheck = mysqli_query($db, $productCheck);
+
+    
     if (mysqli_num_rows($resultCheck) == 0) {
         $sql = "INSERT INTO shopping_cart(product_id,image_link,product_name,product_price,product_quantity,user_address,user_id) 
     VALUES ('$id','$image_link','$product_name','$product_price','1','$address','$user_id')";

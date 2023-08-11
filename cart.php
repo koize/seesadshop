@@ -142,7 +142,14 @@
                 echo '</p>';
                 echo '</div>';
               }else{
-              $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart";
+                if (isset($_COOKIE['id'])) {
+                  $query = $db->query('SELECT id, name, username, address FROM users WHERE id = "' . $_COOKIE['id'] . '"');
+                  $result = $query->fetchAll();
+                  foreach ($result as $index => $user) {
+                  $user_id = $user['id'];
+                  }
+                }
+              $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart WHERE user_id = $user_id";
               $result = $conn->query($sqlViewCart);
 
               if ($result->num_rows > 0) {
