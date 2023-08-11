@@ -51,7 +51,7 @@
           <a class="nav-link" href="rewards.php">Rewards</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="supportPage.php">Support</a>
+          <a class="nav-link" href="support.php">Support</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="about.php">About Us</a>

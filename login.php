@@ -25,7 +25,7 @@ $query = $db->query('INSERT IGNORE INTO users (id, name, username, email, passwo
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="validateRegistration.js"></script>
-    <link rel="icon" href="img/csad_logo_korean_small.png" type="image/x-icon"/>
+    <link rel="icon" href="img/csad_icon.png" type="image/x-icon"/>
 
 </head>
 
