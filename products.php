@@ -75,7 +75,14 @@
   <main class="mt-5">
     <div class="container">
       <section class="text-center">
-        <h3 class="mb-5"><strong>Our Products</strong></h3>
+        <?php 
+          if (isset($_GET['search_products'])) {
+            echo '<h3 class="mb-5"><strong>Products matching ' . $_GET['search_products'] . '</strong></h3>';
+          } else {
+            echo '<h3 class="mb-5"><strong>Our Products</strong></h3>';
+          }
+
+         ?>
       </section>
 
       <section class="text-center">
@@ -106,7 +113,11 @@
           die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT id,image_link,product_name,product_desc,product_price FROM products";
+        if (isset($_GET['search_products'])) {
+          $sql = "SELECT id,image_link,product_name,product_desc,product_price FROM products WHERE product_name LIKE '%" . $_GET['search_products'] . "%'";
+        } else {
+          $sql = "SELECT id,image_link,product_name,product_desc,product_price FROM products";
+        }
         $result = $conn->query($sql);
         echo '<div class="row">';
         if ($result->num_rows > 0) {
