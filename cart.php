@@ -190,7 +190,7 @@
                 </div>
                 <div class="col-md-6">
                 <?php
-                  $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart";
+                  $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart WHERE user_id = $user_id";
                   $result = $conn->query($sqlViewCart);
                   $subTotal = 0;
 

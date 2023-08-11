@@ -80,6 +80,18 @@
       <section class="text-center">
         <?php
         include 'addtocart.php';
+        $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
+
+        $query = $db->query('CREATE DATABASE IF NOT EXISTS seesad');
+        $query = $db->query('CREATE TABLE IF NOT EXISTS prodcuts (
+      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      image_link TEXT,
+      product_name TEXT,
+      product_desc TEXT,
+      product_price DATE,
+      products_category TEXT
+    )');
+    
         $servername = "localhost";
         $username = "root";
         $password = "";
@@ -131,30 +143,30 @@
         echo '</div>';
         mysqli_close($conn);
 
-        ?>        
+        ?>
       </section>
     </div>
     <!-- Modal -->
-  <div class="modal fade" id="PleaseLogin" tabindex="-1" aria-labelledby="feedback" aria-hidden="true" style="z-index: 10000000 !important;">
-            <div class="modal-dialog mt-20">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Not Signed in!</h5>
-                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">Please sign in to add this item to cart</div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Ok</button>
-                </div>
-              </div>
-            </div>
+    <div class="modal fade" id="PleaseLogin" tabindex="-1" aria-labelledby="feedback" aria-hidden="true" style="z-index: 10000000 !important;">
+      <div class="modal-dialog mt-20">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Not Signed in!</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
           </div>
+          <div class="modal-body">Please sign in to add this item to cart</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <!--Main layout-->
   <div id="footer-products">
 
   </div>
- 
+
   <script>
     $(function() {
       $("#footer-products").load("footer.php");
