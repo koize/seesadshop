@@ -99,6 +99,7 @@
           <div class="col-md-7 gx-5 mb-4">
             <div class="card">
               <?php
+              include 'checkout.php';
               $servername = "localhost";
               $username = "root";
               $password = "";
@@ -116,13 +117,31 @@
       product_name TEXT ,
       product_price INT,
       product_quantity INT,
-      cart_id INT)
+      user_address TEXT,
+      user_id INT)
     ');
 
               if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
               }
 
+              $checkIfEmpty = "SELECT CASE WHEN EXISTS(SELECT 1 FROM shopping_cart) THEN 0 ELSE 1 END AS IsEmpty";
+              $getIfEmpty = mysqli_query($dbb,$checkIfEmpty);
+              $cartempty = $getIfEmpty->fetch_array()['IsEmpty'];
+
+              
+
+
+              if($cartempty == 1  ){
+                echo '<div class="card">';
+                echo '<div class="row">';
+                echo '<h4 style="text-align: center; padding: 25px 20px 20px 20px">Cart is empty</h4>';
+                echo '</div>';
+                echo '<p>';
+                echo '<a href="products.php" style="margin: 0px 35% 10px 38%" class="btn btn-outline-info">Add products now!</a>';
+                echo '</p>';
+                echo '</div>';
+              }else{
               $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart";
               $result = $conn->query($sqlViewCart);
 
@@ -148,26 +167,9 @@
                   echo '</div>';
                 }
               }
+              }
 
               ?>
-              <!-- Each item -->
-              <div class="row" style="margin: 20px 10px 0px 10px">
-                <div class="col-md-3">
-                  <img src="img/about_page_kao1.jpg" class="img-fluid" style="height:100%" />
-                </div>
-                <div class="col-md-7">
-                  Product Item
-                </div>
-                <div class="col-md-2">
-                  <div class=row>
-                    <a href="">Delete</a>
-                  </div>
-                  <div class=row>
-                    <span style="text-align: bottom-right; padding-top: 10px; font-weight: bold">$3.69</span>
-                  </div>
-                </div>
-                <hr class="hr hr-blurry" style="margin: 10px 0px 0px 0px">
-              </div>
               <!-- Each item -->
 
             </div>
@@ -177,10 +179,25 @@
               <!-- Card start -->
               <div class="row" style="margin: 20px 10px 0px 10px">
                 <div class="col-md-6">
-                  Subtotal:
+                  SubTotal:
                 </div>
                 <div class="col-md-6">
-                  <span style="padding-left:100px">$TOTAL.exe</span>
+                <?php
+                  $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart";
+                  $result = $conn->query($sqlViewCart);
+                  $subTotal = 0;
+
+                  if ($result->num_rows > 0) {
+                    for ($i = 0; $i < mysqli_num_rows($result); $i++) {
+                      $row = mysqli_fetch_assoc($result);
+                      $subTotal = $subTotal + $row['product_price'];
+                    }
+                  }
+                  $formatted_subTotal = number_format((float)$subTotal,2,'.'.'');
+                  
+
+                  echo '<span style="padding-left:100px">$'.$formatted_subTotal.'</span>';
+                  ?>
                 </div>
               </div>
               <hr class="hr" style="margin: 10px 0px 0px 0px">
@@ -214,27 +231,42 @@
                 </div>
               </div>
               <hr class="hr" style="margin: 10px 0px 0px 0px">
-
-              <div class="card" style="margin:20px; background-color:grey">
+              
+              <div class="card" style="margin:20px; background-color:lightgray">
                 <div class="row" style="margin: 15px 15px 15px 15px">
                   <div class="col-md-6">
                     <b>Total</b>
                   </div>
                   <div class="col-md-6">
-                    <span style="padding-left:100px; font-weight:bold;">$439.10</span>
+                    <?php
+                    $voucher = 0;
+                    $TOTAL = ($subTotal+5+3.69);
+                    echo '<span style="padding-left:100px; font-weight: bold">$'.$TOTAL.'</span>';
+                    ?>
                   </div>
                 </div>
               </div>
               <!-- Card end -->
             </div>
-            <div class="card" style="width: 100%;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card with stretched link</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
-              </div>
-            </div>
+            <?php
+              $checkIfEmpty = "SELECT CASE WHEN EXISTS(SELECT 1 FROM shopping_cart) THEN 0 ELSE 1 END AS IsEmpty";
+              $getIfEmpty = mysqli_query($dbb,$checkIfEmpty);
+              $cartempty = $getIfEmpty->fetch_array()['IsEmpty'];
+
+              if($cartempty==1){
+                echo '<div class="card" style="width: 100%;">';
+                echo '<a class="btn btn-secondary stretched-link" style="padding: 20px">';
+                echo '<span style="font-weight: bold; margin:auto; font-size: 18px">No items in cart</span>';
+                echo '</a>';
+                echo '</div>';
+              }else{
+                echo '<div class="card" style="width: 100%;">';
+                echo '<a href="cart.php?checkOut=10" class="btn btn-info stretched-link" style="padding: 20px">';
+                echo '<span style="font-weight: bold; margin:auto; font-size: 18px">CHECKOUT $'.$TOTAL.'</span>';
+                echo '</a>';
+                echo '</div>';
+              }
+              ?>
           </div>
       </section>
     </div>
