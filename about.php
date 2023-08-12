@@ -169,13 +169,13 @@
               <h4>
                 <i class="fas fa-phone"></i>
                 <span class="m-1"></span>
-                +65 8123 0192
+                +65 9999 1111
               </h4>
 
               <h4>
                 <i class="far fa-clock"></i>
                 <span class="m-1"></span>
-                Monday to Monday, 9AM to 10AM
+                Friday to Friday, 11pm to 11.59pm
               </h4>
             </div>
 
