@@ -518,28 +518,6 @@ if ($_COOKIE['id'] != "1") {
         ?>
     </table>
     <script>
-        /*
-        function addPromotion() {
-            var xmlhttp = new XMLHttpRequest();
-            var str = "mode=add_promotion";
-            var name = "&name=" + document.getElementById("promotion_name").value;
-            var original_price = "&original_price=" + document.getElementById("promotion_original_price").value;
-            var sale_price = "&sale_price=" + document.getElementById("promotion_sale_price").value;
-            var start_date = "&start_date=" + document.getElementById("promotion_start_date").value;
-            var end_date = "&end_date=" + document.getElementById("promotion_end_date").value;
-            var image_link = "&image_link=" + document.getElementById("promotion_image_link").value;
-            var details = "&details=" + document.getElementById("promotion_details").value;
-            str = str + name + original_price + sale_price + start_date + end_date + details;
-            xmlhttp.open('POST', "admin.php", true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    alert(this.responseText);
-                }
-            };
-            xmlhttp.send(str);
-        }
-        */
 
         function deletePromotion(x) {
             var xmlhttp = new XMLHttpRequest();
@@ -625,6 +603,7 @@ if ($_COOKIE['id'] != "1") {
             <th>product name</th>
             <th>product desc</th>
             <th>product price</th>
+            <th>product category</th>
             <th>image link</th>
             <th>edit</th>
         </tr>
@@ -637,6 +616,7 @@ if ($_COOKIE['id'] != "1") {
                     echo "<td>" . $row['product_name'] . "</td>";
                     echo "<td>" . $row['product_desc'] . "</td>";
                     echo "<td>$" . $row['product_price'] . "</td>";
+                    echo "<td>". $row['products_category'] ."</td>";
                     echo "<td><img style='width:65px' src='" . $row['image_link'] . "'><br>" . $row['image_link'] . "</td>";
                     echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "products_" . $row['id'] . "'>Edit</button></td>";
                     echo "</tr>";
@@ -661,8 +641,11 @@ if ($_COOKIE['id'] != "1") {
                         echo "Product Name: <div id='product_name" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_name'] . "</div>";
                         echo "Product Desc: <div id='product_desc" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_desc'] . "</div>";
                         echo "Product Price: <div id='product_price" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_price'] . "</div>";
-                        echo "img link: <div id='product_created_at" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['image_link'] . "</div>";
-                        //content here
+                        echo "Product Category: <div id='product_category" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['products_category'] . "</div>";
+                        echo "<br>Image File: <input type='file' name='product_image_link' id='product_image_link' class='user_input'/>";
+                        echo "<input type='hidden' name='id' id='id' value='" . $row['id'] . "'/>";
+                        echo "<button class='btn btn-primary' type='submit' name='uploadProductImage'>Upload</button>";
+                        echo "</form>";
                         echo "</div>";
                         echo "<div class='modal-footer'>";
                         echo "<button type='button' class='btn btn-primary' onclick='saveProductChanges(" . $row['id'] . ");'>Save</button>";
@@ -682,7 +665,8 @@ if ($_COOKIE['id'] != "1") {
                 var product_name = "&product_name=" + document.getElementById("product_name" + x).innerText;
                 var product_desc = "&product_desc=" + document.getElementById("product_desc" + x).innerText;
                 var product_price = "&product_price=" + document.getElementById("product_price" + x).innerText;
-                var image_link = "&image_link=" + document.getElementById("image_link" + x).innerText;
+                var image_link = "&image_link=" + document.getElementById("product_image_link" + x).innerText;
+                var products_category = "&products_category=" + document.getElementById("product_category" + x).innerText;
                 str += id + product_name + product_desc + product_price + image_link;
                 xmlhttp.open("POST", "admin.php", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
