@@ -170,7 +170,7 @@
                     $formatted_price = number_format((float)$row['product_price'], 2, '.' . '');
                     echo '<div class="row" style = "margin: 20px 10px 0px 10px; position:relative">';
                     echo '<div class="col-md-12 col-lg-3">';
-                    echo '<img src="img/' . $row['image_link'] . '" class="img-fluid"/>';
+                    echo '<img src="' . $row['image_link'] . '" class="img-fluid"/>';
                     echo '</div>';
                     echo '<div class="col-md-12 col-lg-7">';
                     echo '<div class=row>';

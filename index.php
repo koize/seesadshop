@@ -434,7 +434,7 @@
         <div class="row d-flex justify-content-center">
           <div class="col-md-6">
             <div class="ratio ratio-16x9">
-              <iframe src="https://www.youtube.com/embed/NPeL2FGY3n0" title="YouTube video" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/0VPDIfMmdW8" title="YouTube video" allowfullscreen></iframe>
             </div>
           </div>
         </div>
