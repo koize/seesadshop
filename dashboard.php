@@ -288,7 +288,7 @@ if ($_COOKIE['id'] != "1") {
         function deleteUser(x) {
             var xmlhttp = new XMLHttpRequest();
             var str = "mode=delete_user";
-            var user_id = "&user_id=" + document.getElementById("user_user_id").innerText;
+            var user_id = "&user_id=" + document.getElementById("user_user_id" + x).innerText;
             str = str + user_id;
             xmlhttp.open('POST', "admin.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
