@@ -320,6 +320,9 @@ if (isset($_COOKIE['id'])) {
             $query = $db->query('UPDATE users SET img_filepath = "' . $img_filepath . '" WHERE id = "' . $_COOKIE['id'] . '"');
             $query = $db->query('UPDATE users SET name = "' . $_POST['name'] . '", username = "' . $_POST['username'] . '", email = "' . $_POST['email'] . '", address = "' . $_POST['address'] . '", phone = "' . $_POST['phone'] . '" WHERE id = "' . $_COOKIE['id'] . '"');
             move_uploaded_file($tempname, $img_filepath);
+            echo "<script>$(document).ready(function(){
+              $('#editConfirmModal').modal('show');
+              });</script>";
           }
 
           ?>
@@ -333,8 +336,9 @@ if (isset($_COOKIE['id'])) {
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Ok</button>
-                </div>
+                <form >
+                    <button type="submit" class="btn btn-primary" onclick="editAccDone()">Ok</button>
+                  </form>                </div>
               </div>
             </div>
           </div>

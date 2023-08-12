@@ -160,18 +160,16 @@
             echo '<p class="card-text">';
             echo $row['product_desc'];
             echo ' </p>
-                <div class="row">
-                  <div class="col">
-                    <h5 class="card-text">Price: $'.$row['product_price'].'</h5>
-                  </div>
-                
-                  <div class="col">';
+                <div class="row mb-3">
+                    <h5 class="card-text">$'.$row['product_price'].'</h5>
+                </div>
+                  <div class="row">';
                   if (isset($_COOKIE['id'])) {
-                    echo '<a href="products.php?addToCart=' . $row['id'] . '" class="btn btn-primary">Add to Cart</a>';
+                    echo '<a href="products.php?addToCart=' . $row['id'] . '" class="btn btn-primary btn-rounded ">Add to Cart</a>';
                   } else {
-                    echo '<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#PleaseLogin">Add to cart</button>
+                    echo '<button type="button" class="btn btn-primary btn-rounded" data-mdb-toggle="modal" data-mdb-target="#PleaseLogin">Add to cart</button>
                     ';
-                  } echo '                 </div>
+                  } echo ' 
                 </div>
               </div>
             </div>
