@@ -93,7 +93,7 @@ if ($_COOKIE['id'] != "1") {
     <a class="user_input" href="#Users">Users</a>
     <a class="user_input" href="#reward-codes">Reward Codes</a>
     <a class="user_input" href="#feedback">Feedback</a>
-    <!-- <a class="user_input" href="#products">Products</a> -->
+    <a class="user_input" href="#products">Products</a>
     <a class="user_input" href="#shopping-cart">Shopping Cart</a>
     <a class="user_input" href="#promotions">Promotions</a>
     <!--
