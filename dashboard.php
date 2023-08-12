@@ -426,7 +426,7 @@ if ($_COOKIE['id'] != "1") {
                             </tr>
                             <tr>
                                 <td>Original Price:</td>
-                                <td><input type='text'name='promotion_original_price' id='promotion_original_price' class='user_input' /></td>
+                                <td><input type='text' name='promotion_original_price' id='promotion_original_price' class='user_input' /></td>
                             </tr>
                             <tr>
                                 <td>Discounted Price:</td>
@@ -449,7 +449,7 @@ if ($_COOKIE['id'] != "1") {
                                 <td><input type='file' name='promotion_image' id='promotion_image' class='user_input' /></td>
                             </tr>
                         </table>
-                        <button type='submit' class='btn btn-primary' name='uploadNewPromotion' data-mdb-dismiss='modal' >Add</button>
+                        <button type='submit' class='btn btn-primary' name='uploadNewPromotion' data-mdb-dismiss='modal'>Add</button>
                     </form>
                 </div>
             </div>
@@ -577,38 +577,58 @@ if ($_COOKIE['id'] != "1") {
         }
     </script>
 
-    <!--
-            <h3 id="products">Products</h3>
-            <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#add_product">Add Product</button>
-            <div class="modal fade" id="#add_product" tabindex="-1" role="dialog" aria-labelledby="add_product" aria-hidden="true">
-                <div class='modal-dialog modal-dialog-centered' role='document'>
-                    <div class='modal-content'>
-                        <div class='modal-header'>
-                            <h5 class='modal-title' id='add_productTitle'>Add Product</h5>
-                            <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class='modal-footer'>
-                                <button type='button' class='btn btn-danger' onclick='addProduct();'>Add Product</button>
-                            </div>
-                        </div>
-                    </div>
-
+    <h3 id="products">Products</h3>
+    <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#add_product">Add Product</button>
+    <div class="modal fade" id="add_product" tabindex="-1" role="dialog" aria-labelledby="add_product" aria-hidden="true">
+        <div class='modal-dialog modal-dialog-centered' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='add_productTitle'>Add Product</h5>
+                    <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method='post' action='admin.php' enctype='multipart/form-data'>
+                        <table style=" text-align: left">
+                            <tr>
+                                <td>Name:</td>
+                                <td><input type='text' name='product_name' id='product_name' class='user_input' /></td>
+                            </tr>
+                            <tr>
+                                <td>Description</td>
+                                <td><textarea name='product_desc' id='product_desc' cols='30' rows='10'></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Price:</td>
+                                <td><input type='text' name='product_price' id='product_price' class='user_input' /></td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td><input type='text' name='product_category' id='product_category' class='user_input' /></td>
+                            </tr>
+                            <tr>
+                                <td>Product Image</td>
+                                <td><input type='file' name='product_image' id='product_image' class='user_input' /></td>
+                            </tr>
+                        </table>
+                        <button type='submit' class='btn btn-primary' name='uploadNewProduct' data-mdb-dismiss='modal'>Add Product</button>
+                    </form>
                 </div>
             </div>
-            <table class="table table-striped">
-                <tr>
-                    <th>id</th>
-                    <th>product name</th>
-                    <th>product desc</th>
-                    <th>product price</th>
-                    <th>image link</th>
-                    <th>edit</th>
-                </tr>
-            -->
-    <?php
-    /*
+        </div>
+
+    </div>
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>id</th>
+            <th>product name</th>
+            <th>product desc</th>
+            <th>product price</th>
+            <th>image link</th>
+            <th>edit</th>
+        </tr>
+        <?php
                 $sql = "SELECT * FROM products";
                 $result = $db->query($sql);
                 foreach ($result as $row) {
@@ -617,7 +637,7 @@ if ($_COOKIE['id'] != "1") {
                     echo "<td>" . $row['product_name'] . "</td>";
                     echo "<td>" . $row['product_desc'] . "</td>";
                     echo "<td>" . $row['product_price'] . "</td>";
-                    echo "<td>" . $row['image_link'] . "</td>";
+                    echo "<td><img style='width:65px' src='" . $row['image_link'] . "'><br>" . $row['image_link'] . "</td>";
                     echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "feedback_" . $row['id'] . "'>Edit</button></td>";
                     echo "</tr>";
                 }
@@ -626,7 +646,6 @@ if ($_COOKIE['id'] != "1") {
                     <?php
                     $sql = "SELECT * FROM products";
                     $result = $db->query($sql);
-                    //$sql = "SELECT id,image_link,product_name,product_desc,product_price FROM products";
                     foreach ($result as $row) {
                         echo "<div class='modal fade' id='products_" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='"
                             . "products_" . $row['id'] . "' aria-hidden='true'>";
@@ -653,158 +672,158 @@ if ($_COOKIE['id'] != "1") {
                         echo "</div>";
                         echo "</div>";
                         
-                    }*/
-    ?>
-    <script>
-        function saveProductChanges(x) {
-            var xmlhttp = new XMLHttpRequest();
-            var str = "mode=save_product_changes";
-            var id = "&id=" + document.getElementById("products_id" + x).innerText;
-            var product_name = "&product_name=" + document.getElementById("product_name" + x).innerText;
-            var product_desc = "&product_desc=" + document.getElementById("product_desc" + x).innerText;
-            var product_price = "&product_price=" + document.getElementById("product_price" + x).innerText;
-            var image_link = "&image_link=" + document.getElementById("image_link" + x).innerText;
-            str += id + product_name + product_desc + product_price + image_link;
-            xmlhttp.open("POST", "admin.php", true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    alert(this.responseText);
-                }
-            };
-            xmlhttp.send(str);
-        }
+                    }
+        ?>
+        <script>
+            function saveProductChanges(x) {
+                var xmlhttp = new XMLHttpRequest();
+                var str = "mode=save_product_changes";
+                var id = "&id=" + document.getElementById("products_id" + x).innerText;
+                var product_name = "&product_name=" + document.getElementById("product_name" + x).innerText;
+                var product_desc = "&product_desc=" + document.getElementById("product_desc" + x).innerText;
+                var product_price = "&product_price=" + document.getElementById("product_price" + x).innerText;
+                var image_link = "&image_link=" + document.getElementById("image_link" + x).innerText;
+                str += id + product_name + product_desc + product_price + image_link;
+                xmlhttp.open("POST", "admin.php", true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                };
+                xmlhttp.send(str);
+            }
 
-        function deleteProduct(x) {
-            var xmlhttp = new XMLHttpRequest();
-            var str = "mode=delete_product";
-            var id = "&id=" + document.getElementById("products_id" + x).innerText;
-            str += id;
-            xmlhttp.open("POST", "admin.php", true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    alert(this.responseText);
-                }
-            };
-            xmlhttp.send(str);
-        }
-    </script>
-    <h3 id="shopping-cart">Shopping Cart</h3>
-    <table class="table table-striped">
-        <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>product id</th>
-            <th>price</th>
-            <th>product quantity</th>
-            <th>cart ID</th>
-            <th>Image Link</th>
-            <th>Edit</th>
-        </tr>
+            function deleteProduct(x) {
+                var xmlhttp = new XMLHttpRequest();
+                var str = "mode=delete_product";
+                var id = "&id=" + document.getElementById("products_id" + x).innerText;
+                str += id;
+                xmlhttp.open("POST", "admin.php", true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                };
+                xmlhttp.send(str);
+            }
+        </script>
+        <h3 id="shopping-cart">Shopping Cart</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>product id</th>
+                <th>price</th>
+                <th>product quantity</th>
+                <th>cart ID</th>
+                <th>Image Link</th>
+                <th>Edit</th>
+            </tr>
+            <?php
+            $sql = "SELECT * FROM shopping_cart";
+            $result = $db->query($sql);
+            foreach ($result as $row) {
+                echo "<tr>";
+                echo "<td>" . $row['id'] . "</td>";
+                echo "<td>" . $row['product_name'] . "</td>";
+                echo "<td>" . $row['product_id'] . "</td>";
+                echo "<td>" . $row['product_price'] . "</td>";
+                echo "<td>" . $row['product_quantity'] . "</td>";
+                echo "<td>" . $row['cart_id'] . "</td>";
+                echo "<td>" . $row['image_link'] . "</td>";
+                echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "shopping_" . $row['id'] . "'>Edit</button></td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
         <?php
         $sql = "SELECT * FROM shopping_cart";
         $result = $db->query($sql);
         foreach ($result as $row) {
-            echo "<tr>";
-            echo "<td>" . $row['id'] . "</td>";
-            echo "<td>" . $row['product_name'] . "</td>";
-            echo "<td>" . $row['product_id'] . "</td>";
-            echo "<td>" . $row['product_price'] . "</td>";
-            echo "<td>" . $row['product_quantity'] . "</td>";
-            echo "<td>" . $row['cart_id'] . "</td>";
-            echo "<td>" . $row['image_link'] . "</td>";
-            echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "shopping_" . $row['id'] . "'>Edit</button></td>";
-            echo "</tr>";
+            echo "<div class='modal fade' id='shopping" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='"
+                . "products_" . $row['id'] . "' aria-hidden='true'>";
+            echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
+            echo "<div class='modal-content'>";
+            echo "<div class='modal-header'>";
+            echo "<h5 class='modal-title' id='" . "shopping_" . $row['id'] . "Title" . "'>Product info" . $row['id'] . "</h5>";
+            echo "<button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'>";
+            echo "</button>";
+            echo "</div>";
+            echo "<div class='modal-body'>";
+            echo "User ID: <div id='shopping_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
+            echo "Product Name: <div id='shopping_product_name" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_name'] . "</div>";
+            echo "Product Desc: <div id='shopping_product_id" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_id'] . "</div>";
+            echo "Product Price: <div id='shopping_product_price" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_price'] . "</div>";
+            echo "Quantity: <div id='shopping_product_quantity" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_quantity'] . "</div>";
+            echo "Cart ID: <div id='shopping_cart_id" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['cart_id'] . "</div>";
+            echo "image link: <div id='shopping_image_link" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['image_link'] . "</div>";
+            //content here
+            echo "</div>";
+            echo "<div class='modal-footer'>";
+            echo "<button type='button' class='btn btn-primary' onclick='saveShoppingChanges(" . $row['id'] . ");'>Save</button>";
+            echo "<button type='button' class='btn btn-danger' onclick='deleteShopping(" . $row['id'] . ");'>Delete Shopping Entry</button>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
         }
         ?>
-    </table>
-    <?php
-    $sql = "SELECT * FROM shopping_cart";
-    $result = $db->query($sql);
-    foreach ($result as $row) {
-        echo "<div class='modal fade' id='shopping" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='"
-            . "products_" . $row['id'] . "' aria-hidden='true'>";
-        echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
-        echo "<div class='modal-content'>";
-        echo "<div class='modal-header'>";
-        echo "<h5 class='modal-title' id='" . "shopping_" . $row['id'] . "Title" . "'>Product info" . $row['id'] . "</h5>";
-        echo "<button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'>";
-        echo "</button>";
-        echo "</div>";
-        echo "<div class='modal-body'>";
-        echo "User ID: <div id='shopping_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
-        echo "Product Name: <div id='shopping_product_name" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_name'] . "</div>";
-        echo "Product Desc: <div id='shopping_product_id" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_id'] . "</div>";
-        echo "Product Price: <div id='shopping_product_price" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_price'] . "</div>";
-        echo "Quantity: <div id='shopping_product_quantity" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_quantity'] . "</div>";
-        echo "Cart ID: <div id='shopping_cart_id" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['cart_id'] . "</div>";
-        echo "image link: <div id='shopping_image_link" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['image_link'] . "</div>";
-        //content here
-        echo "</div>";
-        echo "<div class='modal-footer'>";
-        echo "<button type='button' class='btn btn-primary' onclick='saveShoppingChanges(" . $row['id'] . ");'>Save</button>";
-        echo "<button type='button' class='btn btn-danger' onclick='deleteShopping(" . $row['id'] . ");'>Delete Shopping Entry</button>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-    }
-    ?>
-    <script>
-        function saveShoppingChanges(x) {
-            var xmlhttp = new XMLHttpRequest();
-            var str = "mode=save_shopping_changes";
-            var id = "&id=" + document.getElementById("shopping_id" + x).innerText;
-            var product_name = "&product_name=" + document.getElementById("shopping_product_name" + x).innerText;
-            var product_id = "&product_id=" + document.getElementById("shopping_product_id" + x).innerText;
-            var product_price = "&product_price=" + document.getElementById("shopping_product_price" + x).innerText;
-            var product_quantity = "&product_quantity=" + document.getElementById("shopping_product_quantity" + x).innerText;
-            var product_cart_id = "&cart_id=" + document.getElementById("shopping_cart_id" + x).innerText;
-            var image_link = "&image_link=" + document.getElementById("shopping_image_link" + x).innerText;
-            str += id + product_name + product_id + product_price + product_quantity;
-            xmlhttp.open("POST", "admin.php", true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    alert(this.responseText);
-                }
-            };
-            xmlhttp.send(str);
-        }
+        <script>
+            function saveShoppingChanges(x) {
+                var xmlhttp = new XMLHttpRequest();
+                var str = "mode=save_shopping_changes";
+                var id = "&id=" + document.getElementById("shopping_id" + x).innerText;
+                var product_name = "&product_name=" + document.getElementById("shopping_product_name" + x).innerText;
+                var product_id = "&product_id=" + document.getElementById("shopping_product_id" + x).innerText;
+                var product_price = "&product_price=" + document.getElementById("shopping_product_price" + x).innerText;
+                var product_quantity = "&product_quantity=" + document.getElementById("shopping_product_quantity" + x).innerText;
+                var product_cart_id = "&cart_id=" + document.getElementById("shopping_cart_id" + x).innerText;
+                var image_link = "&image_link=" + document.getElementById("shopping_image_link" + x).innerText;
+                str += id + product_name + product_id + product_price + product_quantity;
+                xmlhttp.open("POST", "admin.php", true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                };
+                xmlhttp.send(str);
+            }
 
-        function deleteShopping(x) {
-            var xmlhttp = new XMLHttpRequest();
-            var str = "mode=delete_shopping";
-            var id = "&id=" + document.getElementById("shopping_id" + x).innerText;
-            str += id;
-            xmlhttp.open("POST", "admin.php", true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    alert(this.responseText);
-                }
-            };
-            xmlhttp.send(str);
-        }
-    </script>
+            function deleteShopping(x) {
+                var xmlhttp = new XMLHttpRequest();
+                var str = "mode=delete_shopping";
+                var id = "&id=" + document.getElementById("shopping_id" + x).innerText;
+                str += id;
+                xmlhttp.open("POST", "admin.php", true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                };
+                xmlhttp.send(str);
+            }
+        </script>
 
 
 
-    <script>
-        $(function() {
-            $("#nav-products").load("navbar.php");
-        });
-    </script>
-    <!-- Navbar -->
-    <div id="footer-about">
         <script>
             $(function() {
-                $("#footer-about").load("footer.php");
+                $("#nav-products").load("navbar.php");
             });
         </script>
-        <!-- MDB -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
-        <!-- Custom scripts -->
-        <script type="text/javascript" src="js/script.js"></script>
+        <!-- Navbar -->
+        <div id="footer-about">
+            <script>
+                $(function() {
+                    $("#footer-about").load("footer.php");
+                });
+            </script>
+            <!-- MDB -->
+            <script type="text/javascript" src="js/mdb.min.js"></script>
+            <!-- Custom scripts -->
+            <script type="text/javascript" src="js/script.js"></script>
 </body>
