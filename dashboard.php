@@ -93,9 +93,9 @@ if ($_COOKIE['id'] != "1") {
     <a class="user_input" href="#Users">Users</a>
     <a class="user_input" href="#reward-codes">Reward Codes</a>
     <a class="user_input" href="#feedback">Feedback</a>
+    <a class="user_input" href="#promotions">Promotions</a>
     <a class="user_input" href="#products">Products</a>
     <a class="user_input" href="#shopping-cart">Shopping Cart</a>
-    <a class="user_input" href="#promotions">Promotions</a>
     <!--
     <div id="resultModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="resultModal" aria-hidden="true">
         <div class="modal-dialog mt-20" role="document">
@@ -638,7 +638,7 @@ if ($_COOKIE['id'] != "1") {
                     echo "<td>" . $row['product_desc'] . "</td>";
                     echo "<td>" . $row['product_price'] . "</td>";
                     echo "<td><img style='width:65px' src='" . $row['image_link'] . "'><br>" . $row['image_link'] . "</td>";
-                    echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "feedback_" . $row['id'] . "'>Edit</button></td>";
+                    echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "products_" . $row['id'] . "'>Edit</button></td>";
                     echo "</tr>";
                 }
                 ?>
@@ -660,7 +660,7 @@ if ($_COOKIE['id'] != "1") {
                         echo "User ID: <div id='products_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
                         echo "Product Name: <div id='product_name" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_name'] . "</div>";
                         echo "Product Desc: <div id='product_desc" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_desc'] . "</div>";
-                        echo "Product Price: <div id='product_price" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['price'] . "</div>";
+                        echo "Product Price: <div id='product_price" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_price'] . "</div>";
                         echo "img link: <div id='product_created_at" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['image_link'] . "</div>";
                         //content here
                         echo "</div>";
