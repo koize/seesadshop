@@ -155,7 +155,7 @@
         <div class="col-md-6 gx-6 mb-4">
           <p class="lead fw-normal text-muted mb-5 mr-5">
             <span style="color: #2980B9">some random guy that ended up in the hardest EEE course with ZERO coding knowledge. he just wanted enjoy poly life and chill, but sadly that only exists in PFP. now year 2 exists. hell week is still going on. left school right when gate closes, 1 day before THIS WEBSITE IS DUE!!!. oh and the cause of drew's mental breakdowns? well MAD exists and its still not done as of writing (4hrs before this website's submission lmao)</span>
-            <br><span style="color: #2980B9; font-family: 'Courier'">"mad > csad" ~ j</span>
+            <br><span style="color: #2980B9; font-family: 'Courier'">"u doing dashboard now right...right..." ~ j</span>
 
           </p>
         </div>
@@ -168,7 +168,7 @@
       <div class="card py-1 px-5 mb-5" id="xav">
         <h6 class="my-5 display-6 fw-bold ls-tight" style="color: #6DD5FA">
           Xavier
-          <span style="color: #2980B9">(korean) - 2204512</span>
+          <span style="color: #2980B9">(pulled a gabriel, also korean?) - 2204512</span>
         </h6>
         <div class="col">
         <div class="row">
@@ -177,7 +177,8 @@
         </div>
         <div class="col-md-6 gx-6 mb-4">
           <p class="lead fw-normal text-muted mb-5 mr-5">
-            <span style="color: #2980B9">"went to habourfront on day of submission"</span>
+            <span style="color: #2980B9">Best most reliable class chairperson for DCPE/FT/2B/22 Sem 1, he gives hes all when notifying class of weekly submissions through his friday announcements ensuring everyone doesn't forget any important details. Though most of the times he is reliable, there are also times when he books a job shift day before project submission pulling a Gabriel move.</span>
+            <br><span style="color: #2980B9; font-family: 'Courier'">"gabriel is your admin pages working" ~ xav</span>
           </p>
         </div>
         </div>
