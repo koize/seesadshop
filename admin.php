@@ -144,8 +144,8 @@ function uploadProductImage() {
     global $db;
     $target_dir = "img/";
     $id = $_POST['id'];
-    $target_file = $target_dir . basename($_FILES["product_image"]["name"]);
-    if(!move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_file)) {
+    $target_file = $target_dir . basename($_FILES["product_image_link"]["name"]);
+    if(!move_uploaded_file($_FILES["product_image_link"]["tmp_name"], $target_file)) {
         echo "error occured!";
     }
     $db->query('UPDATE products SET image_link = "' . $target_file . '" WHERE id = "' . $id . '"');
