@@ -33,7 +33,7 @@ if ($_COOKIE['id'] != "1") {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="promotion.js"></script>
-    <link rel="icon" href="img/csad_icon.png" type="image/x-icon"/>
+    <link rel="icon" href="img/csad_icon.png" type="image/x-icon" />
 
 </head>
 
@@ -93,7 +93,7 @@ if ($_COOKIE['id'] != "1") {
     <a class="user_input" href="#Users">Users</a>
     <a class="user_input" href="#reward-codes">Reward Codes</a>
     <a class="user_input" href="#feedback">Feedback</a>
-    <a class="user_input" href="#products">Products</a>
+    <!-- <a class="user_input" href="#products">Products</a> -->
     <a class="user_input" href="#shopping-cart">Shopping Cart</a>
     <a class="user_input" href="#promotions">Promotions</a>
     <!--
@@ -112,7 +112,7 @@ if ($_COOKIE['id'] != "1") {
         </div>
     </div>
     -->
-    <h3 id="#Users">Users</h3>
+    <h3 id="Users">Users</h3>
     <table class="table table-striped">
         <tr>
             <th>id</th>
@@ -138,7 +138,7 @@ if ($_COOKIE['id'] != "1") {
             echo "<td>" . $row['password'] . "</td>";
             echo "<td>" . $row['address'] . "</td>";
             echo "<td>" . $row['phone'] . "</td>";
-            echo "<td><img style='width:60px;height:60px' src='".$row['img_filepath'] ."'><br>" . $row['img_filepath'] . "</td>";
+            echo "<td><img style='width:60px;height:60px' src='" . $row['img_filepath'] . "'><br>" . $row['img_filepath'] . "</td>";
             echo "<td>" . $row['created_at'] . "</td>";
             echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "edit_user_" . $row['id'] . "'>Edit</button></td>";
             echo "</tr>";
@@ -159,14 +159,18 @@ if ($_COOKIE['id'] != "1") {
         echo "</button>";
         echo "</div>";
         echo "<div class='modal-body'>";
-        echo "User ID: <div id='user_user_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
+        echo "User ID: <div id='user_user_id" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['id'] . "</div>";
         echo "Name: <div id='user_name" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['name'] . "</div>";
         echo "Username: <div id='user_username" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['username'] . "</div>";
         echo "Email: <div id='user_email" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['email'] . "</div>";
         echo "Password: <div id='user_password" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['password'] . "</div>";
         echo "Address: <div id='user_address" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['address'] . "</div>";
-        echo "Phone: <div id='user_phone" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['phone'] . "</div>";
-        echo "Profile Picture Path: <div id='user_img_path" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['img_filepath'] . "</div>"; //I'm questioning myself
+        echo "Phone: <div id='user_phone" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['phone'] . "</div><br>";
+        echo "<form method='post' action='admin.php' enctype='multipart/form-data'>";
+        echo "Profile Picture Path: <input type='file' name='user_img_path' id='user_img_path' class='user_input'/>"; //I'm questioning myself
+        echo "<input type='hidden' name='id' id='id' value='" . $row['id'] . "'/>";
+        echo "<button class='btn btn-primary' type='submit' name='uploadUserImg'>Upload</button>";
+        echo "</form>";
         echo "Time Created: <div id='user_created_at" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['created_at'] . "</div>";
 
         //content here
@@ -181,7 +185,7 @@ if ($_COOKIE['id'] != "1") {
         //echo "<script>$(document).ready(function() { $('#edit" . $row['id'] . "').modal('show');});</script>";
     }
     ?>
-    <h3 id="#reward-codes">reward codes</h3>
+    <h3 id="reward-codes">reward codes</h3>
     <table class="table table-striped">
         <tr>
             <th>id</th>
@@ -240,30 +244,37 @@ if ($_COOKIE['id'] != "1") {
             var xmlhttp = new XMLHttpRequest();
             var str = "mode=save_user_changes";
             let user_id = "&user_id=" + document.getElementById("user_user_id" + x).innerText;
+            let verif = document.getElementById("user_user_id" + x).innerText;
+            if (isNaN(verif) || isNaN(parseFloat(verif))) {
+                alert("User ID must be a number!");
+                return;
+            }
             let name = "&name=" + document.getElementById("user_name" + x).innerText;
             let username = "&username=" + document.getElementById("user_username" + x).innerText;
             let email = "&email=" + document.getElementById("user_email" + x).innerText;
+            verif = document.getElementById("user_email" + x).innerText;
+            if (!verif.includes("@")) {
+                alert("Email must be valid!");
+                return;
+            }
             let password = "&password=" + document.getElementById("user_password" + x).innerText;
             let address = "&address=" + document.getElementById("user_address" + x).innerText;
+            verif = document.getElementById("user_phone" + x).innerText;
             let phone = "&phone=" + document.getElementById("user_phone" + x).innerText;
-            let img_path = "&img_path=" + document.getElementById("user_img_path" + x).innerText;
+            if (isNaN(verif) || isNaN(parseFloat(verif)) || (verif.length < 8 && verif.length)) {
+                if (verif.length != 0) {
+                    alert("Phone number must be a number!");
+                    return;
+                }
+            }
+            let img = document.getElementById("user_img_path" + x);
+            //let img_path = "&img_path=" + document.getElementById("user_img_path" + x).innerText;
             let created_at = "&created_at=" + document.getElementById("user_created_at" + x).innerText;
-            str = str + user_id + name + username + email + password + address + phone + img_path + created_at;
+            str = str + user_id + name + username + email + password + address + phone  + created_at;
             xmlhttp.open('POST', "admin.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById('resultModalBody').innerHTML = this.responseText;
-                    /*
-                    $(function() {
-                        $('#edit_user_' + x).modal('toggle');
-                    })
-                    //$('#resultModal').modal('show');
-                    $(document).ready(function() {
-                        $('#resultModal').modal('show');
-                    });
-                    */
-
                     alert(this.responseText);
                 }
             };
@@ -320,7 +331,7 @@ if ($_COOKIE['id'] != "1") {
         }
     </script>
 
-    <h3 id="#feedback">feedback</h3>
+    <h3 id="feedback">feedback</h3>
     <table class="table table-striped">
         <tr>
             <th>id</th>
@@ -392,7 +403,7 @@ if ($_COOKIE['id'] != "1") {
             xmlhttp.send(str);
         }
     </script>
-    <h3 id="#promotions">Promotions</h3>
+    <h3 id="promotions">Promotions</h3>
     <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#add_promotion">Add Promotion</button>
     <div class="modal fade" id="add_promotion" tabindex="-1" role="dialog" aria-labelledby="add_product" aria-hidden="true">
         <div class='modal-dialog modal-dialog-centered' role='document'>
@@ -462,7 +473,7 @@ if ($_COOKIE['id'] != "1") {
             echo "<td>" . $row['sale_price'] . "</td>";
             echo "<td>" . $row['start_date'] . "</td>";
             echo "<td>" . $row['end_date'] . "</td>";
-            echo "<td><img style='width:60px;height:60px' src='".$row['img_filepath']."'><br>" . $row['img_filepath'] . "</td>";
+            echo "<td><img style='width:60px;height:60px' src='" . $row['img_filepath'] . "'><br>" . $row['img_filepath'] . "</td>";
             echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "promotions_" . $row['id'] . "'>Edit</button></td>";
             echo "</tr>";
         }
@@ -470,9 +481,9 @@ if ($_COOKIE['id'] != "1") {
         <?php
         $sql = "SELECT * FROM promotions";
         $result = $db->query($sql);
-        foreach($result as $row) {
+        foreach ($result as $row) {
             echo "<div class='modal fade' id='promotions_" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='"
-            . "promotions_" . $row['id'] . "' aria-hidden='true'>";
+                . "promotions_" . $row['id'] . "' aria-hidden='true'>";
             echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
             echo "<div class='modal-content'>";
             echo "<div class='modal-header'>";
@@ -521,6 +532,7 @@ if ($_COOKIE['id'] != "1") {
             };
             xmlhttp.send(str);
         }
+
         function deletePromotion(x) {
             var xmlhttp = new XMLHttpRequest();
             var str = "mode=delete_promotion&id=" + x;
@@ -534,6 +546,7 @@ if ($_COOKIE['id'] != "1") {
             };
             xmlhttp.send(str);
         }
+
         function savePromotionChanges(x) {
             var xmlhttp = new XMLHttpRequest();
             var str = "mode=save_promotion_changes&id=" + x;
@@ -557,7 +570,7 @@ if ($_COOKIE['id'] != "1") {
     </script>
 
     <!--
-            <h3 id="#products">Products</h3>
+            <h3 id="products">Products</h3>
             <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#add_product">Add Product</button>
             <div class="modal fade" id="#add_product" tabindex="-1" role="dialog" aria-labelledby="add_product" aria-hidden="true">
                 <div class='modal-dialog modal-dialog-centered' role='document'>
@@ -669,7 +682,7 @@ if ($_COOKIE['id'] != "1") {
             xmlhttp.send(str);
         }
     </script>
-    <h3 id="#shopping-cart">Shopping Cart</h3>
+    <h3 id="shopping-cart">Shopping Cart</h3>
     <table class="table table-striped">
         <tr>
             <th>id</th>

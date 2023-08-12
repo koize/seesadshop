@@ -9,6 +9,10 @@ $query = $db->query('CREATE DATABASE IF NOT EXISTS seesad');
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if(isset($_POST['uploadUserImg'])){
+        uploadUserImg();
+        exit();
+    }
     if($_POST['mode'] == "save_user_changes") {
         saveUserChanges();
     } else if($_POST['mode'] == "delete_user") {
@@ -36,6 +40,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
+function uploadUserImg() {
+    global $db;
+    $target_dir = "user-profile-icon/";
+    foreach($_POST as $key => $value) {
+        echo $key . " " . $value . "<br>";
+    }
+    $id = $_POST['id'];
+    $target_file = $target_dir . basename($_FILES["user_img_path"]["name"]);
+    if(move_uploaded_file($_FILES["user_img_path"]["tmp_name"], $target_file)) {
+        $db->query('UPDATE users SET img_filepath = "' . $target_file . '" WHERE id = "' . $id . '"');
+    }
+    header("Location: dashboard.php");
+
+}
+
 function saveUserChanges() {
     global $db;
     $user_id = $_POST['user_id'];
@@ -45,9 +64,9 @@ function saveUserChanges() {
     $password = $_POST['password'];
     $address = $_POST['address'];
     $phone = $_POST['phone'];
-    $img_path = $_POST['img_path'];
     $created_at = $_POST['created_at'];
-    $db->query('UPDATE users SET name = "' . $name . '", username = "' . $user_name . '", email = "' . $email . '", password = "' . $password . '", address = "' . $address . '", phone = "' . $phone . '", img_filepath = "' . $img_path . '", created_at = "' . $created_at . '" WHERE id = "' . $user_id . '"');
+    
+    $db->query('UPDATE users SET name = "' . $name . '", username = "' . $user_name . '", email = "' . $email . '", password = "' . $password . '", address = "' . $address . '", phone = "' . $phone . '", created_at = "' . $created_at . '" WHERE id = "' . $user_id . '"');
     echo "Successfully updated user!";
 }
 
