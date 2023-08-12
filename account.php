@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
     //add new user to database
     date_default_timezone_set('Asia/Kolkata');
     $date = date('d-m-y h:i:s');
-    $query = $db->query('INSERT INTO users (name, username, email, password, address, phone, created_at) VALUES ("' . $_POST['name'] . '","' . $_POST['username'] . '","' . $email . '","' . $password . '","' . $_POST['address'] . '","' . $_POST['phone'] . '","' . $date . '")');
+    $query = $db->query('INSERT INTO users (name, username, email, password, address, phone, created_at, img_filepath) VALUES ("' . $_POST['name'] . '","' . $_POST['username'] . '","' . $email . '","' . $password . '","' . $_POST['address'] . '","' . $_POST['phone'] . '","' . $date . '","user-profile-icon/default.png")');
   }
   $cookie_name = "id";
   $query = $db->query('SELECT * FROM users WHERE email = "' . $_POST['email'] . '"');
@@ -86,7 +86,6 @@ if (isset($_COOKIE['id'])) {
     $address = $user['address'];
     $img_filepath = $user['img_filepath'];
     $created_at = $user['created_at'];
-
   }
 }
 
@@ -116,7 +115,7 @@ if (isset($_COOKIE['id'])) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <script src="signout.js"></script>
   <title>Clear Skin All Day Account</title>
-  <link rel="icon" href="img/csad_icon.png" type="image/x-icon"/>
+  <link rel="icon" href="img/csad_icon.png" type="image/x-icon" />
 
 </head>
 
@@ -196,7 +195,10 @@ if (isset($_COOKIE['id'])) {
     <section style="background-color: #eee;">
       <div class="container py-5">
 
-
+        <h6 class="mb-3 display-6 fw-bold ls-tight text-center" style="color: #2980B9">
+          My
+          <span style="color: #6DD5FA">Account</span>
+        </h6>
 
         <div class="row">
           <div class="col-lg-4">
@@ -204,9 +206,9 @@ if (isset($_COOKIE['id'])) {
               <div class="card-body text-center">
                 <?php
                 if ($img_filepath != "") {
-                  echo '<img src="' . $img_filepath . '" alt="cookie" class="rounded-circle img-fluid" style="width: 130px;">';
+                  echo '<img src="' . $img_filepath . '" alt="cookie" class="rounded-circle img-fluid" style="width: 94px; height: 94px">';
                 } else {
-                  echo '<img src="https://subwayisfresh.com.sg/wp-content/uploads/2022/02/Sides-Double-Chocolate-Cookie.jpg" alt="cookie" class="rounded-circle img-fluid" style="width: 130px;">';
+                  echo '<img src="https://subwayisfresh.com.sg/wp-content/uploads/2022/02/Sides-Double-Chocolate-Cookie.jpg" alt="cookie" class="rounded-circle img-fluid" style="width: 94px; height: 94px"">';
                 }
 
                 ?>
@@ -232,7 +234,7 @@ if (isset($_COOKIE['id'])) {
                   <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form method="post" class="needs-validation" novalidate enctype= "multipart/form-data">
+                  <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
                     <!-- Name input -->
                     <div class="form-outline mb-4">
                       <input type="file" name="image" placeholder="Profile Picture" id="image" class="form-control">
@@ -313,13 +315,16 @@ if (isset($_COOKIE['id'])) {
           }
           if (array_key_exists('editAcc', $_POST)) {
             $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
-            $filename = $_FILES["image"]["name"];
-            $tempname = $_FILES["image"]["tmp_name"];
-            $img_filepath = "user-profile-icon/" . $filename;
 
-            $query = $db->query('UPDATE users SET img_filepath = "' . $img_filepath . '" WHERE id = "' . $_COOKIE['id'] . '"');
+            if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
+              $filename = $_FILES["image"]["name"];
+              $tempname = $_FILES["image"]["tmp_name"];
+              $img_filepath = "user-profile-icon/" . $filename;
+              move_uploaded_file($tempname, $img_filepath);
+              $query = $db->query('UPDATE users SET img_filepath = "' . $img_filepath . '" WHERE id = "' . $_COOKIE['id'] . '"');
+            }
+
             $query = $db->query('UPDATE users SET name = "' . $_POST['name'] . '", username = "' . $_POST['username'] . '", email = "' . $_POST['email'] . '", address = "' . $_POST['address'] . '", phone = "' . $_POST['phone'] . '" WHERE id = "' . $_COOKIE['id'] . '"');
-            move_uploaded_file($tempname, $img_filepath);
             echo "<script>$(document).ready(function(){
               $('#editConfirmModal').modal('show');
               });</script>";
@@ -336,9 +341,10 @@ if (isset($_COOKIE['id'])) {
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer">
-                <form >
+                  <form>
                     <button type="submit" class="btn btn-primary" onclick="editAccDone()">Ok</button>
-                  </form>                </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -420,52 +426,88 @@ if (isset($_COOKIE['id'])) {
             </div>
           </div>
           <div class="col-lg-12">
+            <h6 class="mt-2 mb-4 display-6 fw-bold ls-tight text-center" style="color: #2980B9">
+              My
+              <span style="color: #6DD5FA">Orders</span>
+            </h6>
             <div class="card mb-4">
               <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="font-weight-bold">Past orders#</h6>
-                  </div>
-                  <div class="col-sm-9">
-                    <h6 class="font-weight-bold">Order contents</h6>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Username</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $username ?></p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Phone</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $name ?></p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Mobile</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">(098) 765-4321</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Address</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-                  </div>
-                </div>
+                <table class="table table-striped">
+                  <tr>
+                    <th>id</th>
+                    <th>order id</th>
+                    <th>product name</th>
+                    <th>total price</th>
+                    <th>quantitiy</th>
+                    <th>shipping address</th>
+                    <th>view order</th>
+                  </tr>
+                  <?php
+                  $sql = "SELECT * FROM orders_list  WHERE user_id = '" . $_COOKIE['id'] . "'";
+                  $result = $db->query($sql);
+                  foreach ($result as $row) {
+                    echo "<tr>";
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['order_id'] . "</td>";
+                    echo "<td>" . $row['product_name'] . "</td>";
+                    echo "<td>" . $row['product_price'] . "</td>";
+                    echo "<td>" . $row['product_quantity'] . "</td>";
+                    echo "<td>" . $row['address'] . "</td>";
+                    echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "order_" . $row['order_id'] . "'>View</button></td>";
+                    echo "</tr>";
+                  }
+                  echo "</table>";
+
+                  ?>
+                  <?php
+                  $sql = "SELECT * FROM orders_list  WHERE user_id = '" . $_COOKIE['id'] . "'";
+                  $result = $db->query($sql);
+                  foreach ($result as $row) {
+                    echo "<div class='modal fade' id='order_" . $row['order_id'] . "' tabindex='-1' role='dialog' aria-labelledby='"
+                      . "order" . $row['order_id'] . "' aria-hidden='true'>";
+                    echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
+                    echo "<div class='modal-content'>";
+                    echo "<div class='modal-header'>";
+                    echo "<h5 class='modal-title' id='order_" . $row['order_id'] . "Title'>Order info #" . $row['order_id'] . "</h5>";
+                    echo "<button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'>";
+                    echo "</button>";
+                    echo "</div>";
+                    echo "<div class='modal-body'>";
+
+                    echo "<table class='table table-striped'>
+                      <tr>
+                      <th>id</th>
+                      <th>product name</th>
+                      <th>image</th>
+                      <th>product desc</th>
+                      <th>product price</th>
+                      </tr>";
+
+                    $sql1 = "SELECT * FROM products WHERE id = '" . $row['product_id'] . "'";
+                    $result1 = $db->query($sql1);
+
+                    foreach ($result1 as $row1) {
+                      echo "<tr>";
+                      echo "<td>" . $row1['id'] . "</td>";
+                      echo "<td>" . $row1['product_name'] . "</td>";
+                      echo "<td><img style='width:60px;height:60px' src='img/" . $row1['image_link'] . "'>" . "</td>";
+                      echo "<td>" . $row1['product_desc'] . "</td>";
+                      echo "<td>$" . $row1['product_price'] . "</td>";
+                      echo "</tr>";
+                    }
+                    echo "</table>";
+
+                    echo "</div>";
+                    //content here
+                    echo "<div class='modal-footer'>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                  }
+                  ?>
+              
               </div>
             </div>
           </div>

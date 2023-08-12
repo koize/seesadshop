@@ -123,7 +123,7 @@ function uploadNewProduct() {
         echo "Product category cannot be empty!";
         exit();
     }
-    $db->query('INSERT INTO products (product_name, product_desc, product_price, products_category) VALUES ("' . $product_name . '", "' . $product_desc . '", "' . $product_price . '", "' . $product_category . '")');
+    $db->query('INSERT INTO products (product_name, product_desc, product_price, products_category) VALUES ("' . $product_name . '", "' . $product_desc . '", ' . $product_price . ', "' . $product_category . '")');
     $target_file = $target_dir . basename($_FILES["product_image"]["name"]);
     $id = $db->lastInsertId();
     if(!move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_file)) {
@@ -299,7 +299,7 @@ function savePromotionChanges() {
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
     $details = $_POST['details'];
-    $db->query('UPDATE promotions SET name = "' . $name . '", original_price = "' . $original_price . '", sale_price = "' . $sale_price . '", start_date = "' . $start_date . '", end_date = "' . $end_date . '", details = "' . $details . '" WHERE id = "' . $id . '"');
+    $db->query('UPDATE promotions SET name = "' . $name . '", original_price = ' . $original_price . ', sale_price = ' . $sale_price . ', start_date = "' . $start_date . '", end_date = "' . $end_date . '", details = "' . $details . '" WHERE id = "' . $id . '"');
     echo "Successfully updated promotion!";
 }
 
