@@ -238,7 +238,7 @@
                     <input type="submit" value="Add" class="btn">
                   </form>
                   <?php
-                  
+                  $voucherMultiplier = 1;
                   $servername = "localhost";
                   $username = "root";
                   $password = "";
