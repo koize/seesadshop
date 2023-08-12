@@ -1,6 +1,4 @@
 <?php
-
-session_start();
 $db = mysqli_connect('localhost', 'root', '', 'seesad');
 if (!$db) {
     die("Connection Failed: " . mysqli_connect_error());

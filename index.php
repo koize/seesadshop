@@ -1,3 +1,5 @@
+<?php session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -176,8 +178,129 @@
     <div class="container">
       <!--Section: Content-->
       <section class="text-center">
-        <h4 class="mb-5"><strong>Featured products</strong></h4>
+      <h6 class="my-5 display-6 fw-bold ls-tight" style="color: #2980B9">
+            Featured
+            <span style="color: #6DD5FA">products</span>
+          </h6>
 
+
+          <section class="text-center">
+        <?php
+        include 'addtocart.php';
+        $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
+
+        $query = $db->query('CREATE DATABASE IF NOT EXISTS seesad');
+        $query = $db->query('CREATE TABLE IF NOT EXISTS products (
+      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      image_link TEXT,
+      product_name TEXT,
+      product_desc TEXT,
+      product_price DATE,
+      products_category TEXT
+    )');
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "csad_projek_test";
+        $dbname = "seesad";
+
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+        }
+
+        
+          $sql = 'SELECT * FROM products LIMIT 3';
+        
+        $result = $conn->query($sql);
+        echo '<div class="row">';
+        if ($result->num_rows > 0) {
+          for ($i = 0; $i < mysqli_num_rows($result); $i++) {
+            $row = mysqli_fetch_assoc($result);
+            /*echo '<div class="col-lg-4 col-md-12 mb-4">';
+            echo '<div class="card">';
+            echo '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">';
+            echo '<img src= "img/' . $row['image_link'] . '"class = "img-fluid"/>';
+            echo '<a href="#!">';
+            echo '<div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>';
+            echo '</a>';
+            echo '</div>';
+            echo '<div class="card-body">';
+            echo '<h5 class="card-title">' . $row['product_name'] . '</h5>';
+            echo '<p class="card-text">';
+            echo $row['product_desc'];
+            echo '</p>';
+            echo '<p class="card-text">';
+            echo $row['product_price'];
+            echo '</p>';
+            if (isset($_COOKIE['id'])) {
+              echo '<a href="products.php?addToCart=' . $row['id'] . '" class="btn btn-primary">Add to Cart</a>';
+            } else {
+              echo '<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#PleaseLogin">Add to cart</button>
+              ';
+            }
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';*/
+            //
+            echo '<div class="col-lg-4 col-md-6 mb-4">';
+            echo '<div class="card text-body mb-3" style="height:600px">';
+            echo '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">';
+            echo '<img src="img/' . $row['image_link'] . '" class="card-img-top" />';
+            echo '<div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>';
+            echo '</div>';
+            echo '<div class="card-body">';
+            echo '<h5 class="card-title">' . $row['product_name'] . '</h5>';
+            echo '<p class="card-text">';
+            echo $row['product_desc'];
+            echo ' </p>
+                <div class="row mb-3">
+                    <h5 class="card-text">$'.$row['product_price'].'</h5>
+                </div>
+                  <div class="row">';
+                  if (isset($_COOKIE['id'])) {
+                    echo '<a href="products.php?addToCart=' . $row['id'] . '" class="btn btn-primary btn-rounded ">Add to Cart</a>';
+                  } else {
+                    echo '<button type="button" class="btn btn-primary btn-rounded" data-mdb-toggle="modal" data-mdb-target="#PleaseLogin">Add to cart</button>
+                    ';
+                  } echo ' 
+                </div>
+              </div>
+            </div>
+          </div>';
+
+          }
+        } else {
+          echo "No results found";
+        }
+        echo '</div>';
+        mysqli_close($conn);
+
+        ?>
+      </section>
+      <!-- Modal -->
+    <div class="modal fade" id="PleaseLogin" tabindex="-1" aria-labelledby="feedback" aria-hidden="true" style="z-index: 10000000 !important;">
+      <div class="modal-dialog mt-20">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Not Signed in!</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">Please sign in to add this item to cart</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<!--
         <div class="row">
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card text-body mb-3" style="height:600px">
@@ -256,7 +379,8 @@
               </div>
             </div>
           </div>
-        </div>
+      
+        </div>-->
       </section>
       <!--Section: Content-->
 
@@ -276,8 +400,10 @@
           </div>
 
           <div class="col-md-6 gx-5 mb-4">
-            <h4><strong>About us</strong></h4>
-            <p class="text-muted">
+          <h6 class=" display-6 fw-bold ls-tight" style="color: #2980B9">
+            About
+            <span style="color: #6DD5FA">Us</span>
+          </h6>            <p class="text-muted">
               Seesad is an online shop dedicated to providing high-quality, natural face wash products that are gentle on the skin. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals.
             </p>
             <p><strong>Why choose us?</strong></p>
@@ -300,8 +426,10 @@
 
       <!--Section: Content-->
       <section class="mb-5">
-        <h4 class="mb-5 text-center"><strong>A short introduction to the Seesad online store</strong></h4>
-
+      <h6 class="my-5 display-6 fw-bold ls-tight text-center" style="color: #2980B9">
+            An intro
+            <span style="color: #6DD5FA">to our store</span>
+          </h6>
         <div class="row d-flex justify-content-center">
           <div class="col-md-6">
             <div class="ratio ratio-16x9">

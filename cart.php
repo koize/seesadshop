@@ -94,8 +94,10 @@
   <main class="mt-5">
     <div class="container">
       <section>
-        <h3 class="mb-5"><strong>Shopping Cart</strong></h3>
-      </section>
+      <h6 class="mb-5 display-6 fw-bold ls-tight" style="color: #2980B9">
+            Shopping
+            <span style="color: #6DD5FA">Cart</span>
+          </h6>         </section>
       <section>
         <div class="row">
           <div class="col-md-7 gx-5 mb-4">
@@ -222,7 +224,7 @@
               <!-- Card start -->
               <div class="row" style="margin: 20px 10px 0px 10px">
                 <div class="col-md-6">
-                  SubTotal:
+                  Sub Total:
                 </div>
                 <div class="col-md-6">
                   <?php

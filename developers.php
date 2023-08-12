@@ -134,7 +134,7 @@
 
       <div class="card py-1 px-5 mb-5" id="j">
         <h6 class="my-5 display-6 fw-bold ls-tight" style="color: #6DD5FA">
-          Gabriel
+          Justin
           <span style="color: #2980B9">(hackerman that abandoned us 2 days before submission)</span>
         </h6>
         <div class="col">

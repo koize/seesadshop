@@ -74,8 +74,11 @@
     <main class="mt-5">
             <!--Section: Content-->
             <section class="text-center">
-                <h1>Mini Game</h1>
-                <p>Play our mini game to get a discount code for each level reached!!</p>
+            <h6 class="my-5 display-6 fw-bold ls-tight text-center" style="color: #2980B9">
+            CSAD
+            <span style="color: #6DD5FA">Rewards</span>
+          </h6>
+            <p>Get discounts while playing!</p>
                 <table class="table table-striped">
                     <tr>
                         <th>Score</th>
@@ -96,7 +99,13 @@
                 </table>
                 <!-- iframe that capures keyboard inputs when clicked on -->
                 <figure>
-                <iframe id="game_iframe" width="1000" height="800" src="./rewards/game.php"></iframe>
+                    <?php
+                    if(!isset($_COOKIE['id'])) {
+                        echo '<iframe id="game_iframe" width="1000" height="780" src="./rewards/game.php"></iframe>';
+                    } else {
+                        echo '<iframe id="game_iframe" width="1000" height="730" src="./rewards/game.php"></iframe>';
+                    }
+                    ?>
                 </figure>
                 <div>
                     <button id="claim_reward" class="btn btn-primary" onclick="getRewardCode()">claim rewards!</button>

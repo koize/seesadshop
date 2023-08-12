@@ -77,9 +77,15 @@
       <section class="text-center">
         <?php 
           if (isset($_GET['search_products'])) {
-            echo '<h3 class="mb-5"><strong>Products matching ' . $_GET['search_products'] . '</strong></h3>';
+            echo '<h6 class="my-5 display-6 fw-bold ls-tight" style="color: #2980B9">
+            Products matching
+            <span style="color: #6DD5FA"> ' . $_GET['search_products'] . '</span>
+          </h6>';
           } else {
-            echo '<h3 class="mb-5"><strong>Our Products</strong></h3>';
+            echo '<h6 class="my-5 display-6 fw-bold ls-tight" style="color: #2980B9">
+            Our
+            <span style="color: #6DD5FA">products</span>
+          </h6>';
           }
 
          ?>

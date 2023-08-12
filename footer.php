@@ -18,17 +18,20 @@
           <h5 class="text-uppercase">the poor developers</h5>
 
           <ul class="list-unstyled mb-0">
-            <li>
-              <a href="developers.php#gab" class="text-white">hackerman gab</a>
+          <li>
+              <a href="developers.php" class="text-white">Developers Home</a>
             </li>
             <li>
-              <a href="developers.php#dru" class="text-white">slave 1</a>
+              <a href="developers.php#gab" class="text-white">gab (hackerman)</a>
             </li>
             <li>
-              <a href="developers.php#j" class="text-white">slave 2</a>
+              <a href="developers.php#dru" class="text-white">dru ()</a>
             </li>
             <li>
-              <a href="developers.php#xav" class="text-white">slave 3</a>
+              <a href="developers.php#j" class="text-white">jus ()</a>
+            </li>
+            <li>
+              <a href="developers.php#xav" class="text-white">xav ()</a>
             </li>
           </ul>
         </div>
