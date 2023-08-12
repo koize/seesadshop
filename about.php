@@ -84,8 +84,10 @@
         <div class="row">
 
           <div class="col-md-6 gx-5 mb-4">
-            <h4><strong>About us</strong></h4>
-            <p class="text-muted">
+          <h6 class=" display-6 fw-bold ls-tight" style="color: #2980B9">
+            About
+            <span style="color: #6DD5FA">Us</span>
+          </h6>            <p class="text-muted">
              Clear Skin All Day is an online shop dedicated to providing high-quality face wash products from Kao and Gatsby. We believe that everyone deserves to have clear, healthy skin, and we are committed to providing our customers with the best possible products to help them achieve their skin care goals.
             </p>
             <p><strong>Why Kao (Biore) and Gatsby?</strong></p>
@@ -119,8 +121,10 @@
           </div>
 
           <div class="col-md-6 gx-5 mb-4">
-            <h4><strong>Why choose us?</strong></h4>
-            <p class="text-muted">
+          <h6 class=" display-6 fw-bold ls-tight" style="color: #2980B9">
+            Why
+            <span style="color: #6DD5FA">choose us?</span>
+          </h6>            <p class="text-muted">
               We offer a variety of different face wash products to suit different skin types. Whether you have oily, dry, or sensitive skin, we have a face wash that is right for you.
 
               In addition to our high-quality products, we also offer excellent customer service. We are always available to answer your questions and help you find the right product for your skin.
@@ -138,8 +142,10 @@
       <hr class="my-5" />
       <!--Section: Content-->
       <section class="mb-5">
-        <h4 class="mb-5 text-center"><strong>Find us!</strong></h4>
-        <div class="col">
+      <h6 class=" display-6 fw-bold ls-tight text-center" style="color: #2980B9">
+            Find
+            <span style="color: #6DD5FA">us!</span>
+          </h6>        <div class="col">
           <div class="row align-items-center justify-content-around">
             <div class="col-md-6 gx-5 mb-4">
               <h4>
