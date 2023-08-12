@@ -641,6 +641,7 @@ if ($_COOKIE['id'] != "1") {
                 echo "Product Desc: <div id='product_desc" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_desc'] . "</div>";
                 echo "Product Price: <div id='product_price" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_price'] . "</div>";
                 echo "Product Category: <div id='product_category" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['products_category'] . "</div>";
+                echo "<form method='post' action='admin.php' enctype='multipart/form-data'>";
                 echo "<br>Image File: <input type='file' name='product_image_link' id='product_image_link' class='user_input'/>";
                 echo "<input type='hidden' name='id' id='id' value='" . $row['id'] . "'/>";
                 echo "<button class='btn btn-primary' type='submit' name='uploadProductImage'>Upload</button>";
