@@ -19,7 +19,7 @@
 
           <ul class="list-unstyled mb-0">
           <li>
-              <a href="developers.php#gab" class="text-white">Developers Home</a>
+              <a href="developers.php" class="text-white">Developers Home</a>
             </li>
             <li>
               <a href="developers.php#gab" class="text-white">gab (hackerman)</a>
