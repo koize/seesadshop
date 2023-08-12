@@ -24,29 +24,6 @@ $getOrderID = mysqli_query($dbb,"SELECT MAX(order_id) AS order_id_max FROM order
 $order_id_max = $getOrderID->fetch_array()['order_id_max'];
 $order_id = $order_id_max + 1;
 
-$voucherWrongWarning = false;
-$voucherMultiplier = 1;
-
-if(isset($_GET['voucher'])){
-  $voucher_code = $_GET['voucher'];
-  $checkVoucher = "SELECT * FROM reward_codes WHERE discount_code = '$voucher_code'";
-  $voucherResult = $conn->query($checkVoucher);
-  if($voucherResult->num_rows > 0){
-    $voucherRow = mysqli_fetch_assoc($voucherResult);
-    $discount = $voucherRow['discount'];
-    if($discount == 5){
-      $voucherMultiplier = 0.95;
-    }else if($discount == 10){
-      $voucherMultiplier = 0.9;
-
-    }else if($discount == 2){
-      $voucherMultiplier = 0.98;
-    }
-  }else{
-    $voucherWrongWarning = true;
-  }
-}
-
 if(isset($_GET['checkOut'])){
   if (isset($_COOKIE['id'])) {
     $query = $db->query('SELECT id, name, username, address FROM users WHERE id = "' . $_COOKIE['id'] . '"');

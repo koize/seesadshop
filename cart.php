@@ -15,7 +15,7 @@
   <!-- Custom styles -->
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-  <link rel="icon" href="img/csad_logo_korean_small.png" type="image/x-icon"/>
+  <link rel="icon" href="img/csad_logo_korean_small.png" type="image/x-icon" />
 
 
 </head>
@@ -112,40 +112,37 @@
               $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
               $query = $db->query('CREATE DATABASE IF NOT EXISTS seesad');
               $query = $db->query('CREATE TABLE IF NOT EXISTS shopping_cart (
-      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      product_id INT,
-      image_link TEXT,
-      product_name TEXT ,
-      product_price INT,
-      product_quantity INT,
-      user_address TEXT,
-      user_id INT)
-    ');
-    $query = $db->query('CREATE TABLE IF NOT EXISTS orders_list (
-      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      product_id INT,
-      product_name TEXT,
-      product_price INT,
-      product_quantity INT,
-      order_id int,
-      user_id int,
-      address TEXT)
-    ');
-                  include 'checkout.php';
+              id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+              product_id INT,
+              image_link TEXT,
+              product_name TEXT ,
+              product_price INT,
+              product_quantity INT,
+              user_address TEXT,
+              user_id INT)
+              ');
+              $query = $db->query('CREATE TABLE IF NOT EXISTS orders_list (
+              id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+              product_id INT,
+              product_name TEXT,
+              product_price INT,
+              product_quantity INT,
+              order_id int,
+              user_id int,
+              address TEXT)
+              ');
 
+              include 'checkout.php';
 
               if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
               }
 
               $checkIfEmpty = "SELECT CASE WHEN EXISTS(SELECT 1 FROM shopping_cart) THEN 0 ELSE 1 END AS IsEmpty";
-              $getIfEmpty = mysqli_query($dbb,$checkIfEmpty);
+              $getIfEmpty = mysqli_query($dbb, $checkIfEmpty);
               $cartempty = $getIfEmpty->fetch_array()['IsEmpty'];
 
-              
-
-
-              if($cartempty == 1  ){
+              if ($cartempty == 1) {
                 echo '<div class="card">';
                 echo '<div class="row">';
                 echo '<h4 style="text-align: center; padding: 25px 20px 20px 20px">Cart is empty</h4>';
@@ -154,39 +151,39 @@
                 echo '<a href="products.php" style="margin: 0px 35% 10px 38%" class="btn btn-outline-info">Add products now!</a>';
                 echo '</p>';
                 echo '</div>';
-              }else{
+              } else {
                 if (isset($_COOKIE['id'])) {
                   $query = $db->query('SELECT id, name, username, address FROM users WHERE id = "' . $_COOKIE['id'] . '"');
                   $result = $query->fetchAll();
                   foreach ($result as $index => $user) {
-                  $user_id = $user['id'];
+                    $user_id = $user['id'];
                   }
                 }
-              $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart WHERE user_id = $user_id";
-              $result = $conn->query($sqlViewCart);
+                $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart WHERE user_id = $user_id";
+                $result = $conn->query($sqlViewCart);
 
-              if ($result->num_rows > 0) {
-                for ($i = 0; $i < mysqli_num_rows($result); $i++) {
-                  $row = mysqli_fetch_assoc($result);
-                  echo '<div class="row" style = "margin: 20px 10px 0px 10px">';
-                  echo '<div class="col-md-3">';
-                  echo '<img src="img/' . $row['image_link'] . '" class="img-fluid"/>';
-                  echo '</div>';
-                  echo '<div class="col-md-7">';
-                  echo $row['product_name'];
-                  echo '</div>';
-                  echo '<div class="col-md-2">';
-                  echo '<div class=row>';
-                  echo '<a href="">Delete</a>';
-                  echo '</div>';
-                  echo '<div class=row>';
-                  echo '<span style="text-align: bottom-right; padding-top: 10px; font-weight: bold">$' . $row['product_price'] . '</span>';
-                  echo '</div>';
-                  echo '</div>';
-                  echo '<hr class="hr hr-blurry" style="margin: 10px 0px 0px 0px">';
-                  echo '</div>';
+                if ($result->num_rows > 0) {
+                  for ($i = 0; $i < mysqli_num_rows($result); $i++) {
+                    $row = mysqli_fetch_assoc($result);
+                    echo '<div class="row" style = "margin: 20px 10px 0px 10px">';
+                    echo '<div class="col-md-3">';
+                    echo '<img src="img/' . $row['image_link'] . '" class="img-fluid"/>';
+                    echo '</div>';
+                    echo '<div class="col-md-7">';
+                    echo $row['product_name'];
+                    echo '</div>';
+                    echo '<div class="col-md-2">';
+                    echo '<div class=row>';
+                    echo '<a href="">Delete</a>';
+                    echo '</div>';
+                    echo '<div class=row>';
+                    echo '<span style="text-align: bottom-right; padding-top: 10px; font-weight: bold">$' . $row['product_price'] . '</span>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<hr class="hr hr-blurry" style="margin: 10px 0px 0px 0px">';
+                    echo '</div>';
+                  }
                 }
-              }
               }
 
               ?>
@@ -197,20 +194,20 @@
           <div class="col-md-5 gx-5 mb-4">
             <div class="card" style="margin-bottom: 20px; ">
               <!-- Card start -->
-              <div class="row" style="margin: 20px 10px 0px 10px">  
+              <div class="row" style="margin: 20px 10px 0px 10px">
                 <div class="col-md-6">
                   SubTotal:
                 </div>
                 <div class="col-md-6">
-                <?php
-                
-                if (isset($_COOKIE['id'])) {
-                  $query = $db->query('SELECT id, name, username, address FROM users WHERE id = "' . $_COOKIE['id'] . '"');
-                  $result = $query->fetchAll();
-                  foreach ($result as $index => $user) {
-                  $user_id = $user['id'];
+                  <?php
+
+                  if (isset($_COOKIE['id'])) {
+                    $query = $db->query('SELECT id, name, username, address FROM users WHERE id = "' . $_COOKIE['id'] . '"');
+                    $result = $query->fetchAll();
+                    foreach ($result as $index => $user) {
+                      $user_id = $user['id'];
+                    }
                   }
-                }
                   $sqlViewCart = "SELECT id,image_link,product_name,product_price,product_quantity FROM shopping_cart WHERE user_id = $user_id";
                   $result = $conn->query($sqlViewCart);
                   $subTotal = 0;
@@ -221,10 +218,10 @@
                       $subTotal = $subTotal + $row['product_price'];
                     }
                   }
-                  $formatted_subTotal = number_format((float)$subTotal,2,'.'.'');
-                  
+                  $formatted_subTotal = number_format((float)$subTotal, 2, '.' . '');
 
-                  echo '<span style="padding-left:100px">$'.$formatted_subTotal.'</span>';
+
+                  echo '<span style="padding-left:100px">$' . $formatted_subTotal . '</span>';
                   ?>
                 </div>
               </div>
@@ -234,19 +231,53 @@
                 <div class="col-md-6">
                   Voucher
                 </div>
-                
+
                 <div class="col-md-6">
-                  <form>
-                    <div class="row">
-                    <div class="col-md-6">
-                    <input type = "text" name="voucherET"/>
-                    </div>
-                    <div class="col-md-6">
-                    <a href='cart.php?voucher=<?php echo $_POST["voucherET"];?>' class="btn btn-primary">Add</a>
-                    </div>
-                </div>
-                
-                  </form> 
+                  <form method='POST' action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
+                    <input type="text" name="voucherET" />
+                    <input type="submit" value="Add" class="btn">
+                  </form>
+                  <?php
+                  
+                  $servername = "localhost";
+                  $username = "root";
+                  $password = "";
+                  $dbname = "csad_projek_test";
+                  $dbname = "seesad";
+
+                  $conn = new mysqli($servername, $username, $password, $dbname);
+
+                  if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                  }
+
+                  $dbb = mysqli_connect('localhost', 'root', '', 'seesad');
+                  if (!$dbb) {
+                    die("Connection Failed: " . mysqli_connect_error());
+                  }
+                  $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
+
+
+                  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $voucher_code = $_POST['voucherET'];
+                    $checkVoucher = "SELECT * FROM reward_codes WHERE discount_code = '$voucher_code'";
+                    $voucherResult = $conn->query($checkVoucher);
+                    if ($voucherResult !== false && $voucherResult->num_rows > 0) {
+                      $voucherRow = mysqli_fetch_assoc($voucherResult);
+                      $discount = $voucherRow['discount'];
+                      if ($discount == 5) {
+                        $voucherMultiplier = 0.95;
+                      } else if ($discount == 10) {
+                        $voucherMultiplier = 0.9;
+                      } else if ($discount == 2) {
+                        $voucherMultiplier = 0.98;
+                      }
+                    } else {
+                      $voucherWrongWarning = true;
+                    }
+                  }
+
+                  ?>
                 </div>
               </div>
               <hr class="hr" style="margin: 10px 0px 0px 0px">
@@ -270,7 +301,7 @@
                 </div>
               </div>
               <hr class="hr" style="margin: 10px 0px 0px 0px">
-              
+
               <div class="card" style="margin:20px; background-color:lightgray">
                 <div class="row" style="margin: 15px 15px 15px 15px">
                   <div class="col-md-6">
@@ -278,8 +309,8 @@
                   </div>
                   <div class="col-md-6">
                     <?php
-                    $TOTAL = ($subTotal+5+3.69) * $voucherMultiplier;
-                    echo '<span style="padding-left:100px; font-weight: bold">$'.$TOTAL.'</span>';
+                    $TOTAL = ($subTotal + 5 + 3.69) * $voucherMultiplier;
+                    echo '<span style="padding-left:100px; font-weight: bold">$' . $TOTAL . '</span>';
                     ?>
                   </div>
                 </div>
@@ -287,24 +318,24 @@
               <!-- Card end -->
             </div>
             <?php
-              $checkIfEmpty = "SELECT CASE WHEN EXISTS(SELECT 1 FROM shopping_cart) THEN 0 ELSE 1 END AS IsEmpty";
-              $getIfEmpty = mysqli_query($dbb,$checkIfEmpty);
-              $cartempty = $getIfEmpty->fetch_array()['IsEmpty'];
+            $checkIfEmpty = "SELECT CASE WHEN EXISTS(SELECT 1 FROM shopping_cart) THEN 0 ELSE 1 END AS IsEmpty";
+            $getIfEmpty = mysqli_query($dbb, $checkIfEmpty);
+            $cartempty = $getIfEmpty->fetch_array()['IsEmpty'];
 
-              if($cartempty==1){
-                echo '<div class="card" style="width: 100%;">';
-                echo '<a class="btn btn-secondary stretched-link" style="padding: 20px">';
-                echo '<span style="font-weight: bold; margin:auto; font-size: 18px">No items in cart</span>';
-                echo '</a>';
-                echo '</div>';
-              }else{
-                echo '<div class="card" style="width: 100%;">';
-                echo '<a href="cart.php?checkOut=10" class="btn btn-info stretched-link" style="padding: 20px">';
-                echo '<span style="font-weight: bold; margin:auto; font-size: 18px">CHECKOUT $'.$TOTAL.'</span>';
-                echo '</a>';
-                echo '</div>';
-              }
-              ?>
+            if ($cartempty == 1) {
+              echo '<div class="card" style="width: 100%;">';
+              echo '<a class="btn btn-secondary stretched-link" style="padding: 20px">';
+              echo '<span style="font-weight: bold; margin:auto; font-size: 18px">No items in cart</span>';
+              echo '</a>';
+              echo '</div>';
+            } else {
+              echo '<div class="card" style="width: 100%;">';
+              echo '<a href="cart.php?checkOut=10" class="btn btn-info stretched-link" style="padding: 20px">';
+              echo '<span style="font-weight: bold; margin:auto; font-size: 18px">CHECKOUT $' . $TOTAL . '</span>';
+              echo '</a>';
+              echo '</div>';
+            }
+            ?>
           </div>
       </section>
     </div>
