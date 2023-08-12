@@ -25,13 +25,13 @@
               <a href="developers.php#gab" class="text-white">gab (hackerman)</a>
             </li>
             <li>
-              <a href="developers.php#dru" class="text-white">dru ()</a>
+              <a href="developers.php#dru" class="text-white">dru (requires emotional support)</a>
             </li>
             <li>
-              <a href="developers.php#j" class="text-white">jus ()</a>
+              <a href="developers.php#j" class="text-white">jus (WHYYY)</a>
             </li>
             <li>
-              <a href="developers.php#xav" class="text-white">xav ()</a>
+              <a href="developers.php#xav" class="text-white">xav (korean)</a>
             </li>
           </ul>
         </div>
