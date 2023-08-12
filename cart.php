@@ -15,7 +15,7 @@
   <!-- Custom styles -->
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-  <link rel="icon" href="img/csad_icon.png" type="image/x-icon"/>
+  <link rel="icon" href="img/csad_icon.png" type="image/x-icon" />
 
 
 </head>
@@ -138,7 +138,7 @@
                 die("Connection failed: " . $conn->connect_error);
               }
 
-              $checkIfEmpty = "SELECT CASE WHEN EXISTS(SELECT 1 FROM shopping_cart) THEN 0 ELSE 1 END AS IsEmpty";
+              $checkIfEmpty = "SELECT CASE WHEN EXISTS(SELECT 1 FROM shopping_cart WHERE user_id =" . $_COOKIE['id'] .") THEN 0 ELSE 1 END AS IsEmpty";
               $getIfEmpty = mysqli_query($dbb, $checkIfEmpty);
               $cartempty = $getIfEmpty->fetch_array()['IsEmpty'];
 
@@ -165,19 +165,45 @@
                 if ($result->num_rows > 0) {
                   for ($i = 0; $i < mysqli_num_rows($result); $i++) {
                     $row = mysqli_fetch_assoc($result);
-                    echo '<div class="row" style = "margin: 20px 10px 0px 10px">';
-                    echo '<div class="col-md-3">';
+                    $formatted_price = number_format((float)$row['product_price'], 2, '.' . '');
+                    echo '<div class="row" style = "margin: 20px 10px 0px 10px; position:relative">';
+                    echo '<div class="col-md-12 col-lg-3">';
                     echo '<img src="img/' . $row['image_link'] . '" class="img-fluid"/>';
                     echo '</div>';
-                    echo '<div class="col-md-7">';
-                    echo $row['product_name'];
-                    echo '</div>';
-                    echo '<div class="col-md-2">';
+                    echo '<div class="col-md-12 col-lg-7">';
                     echo '<div class=row>';
-                    echo '<a href="">Delete</a>';
+                    echo '<h5 style="margin: 10px 0px 0px -10px; font-weight: normal">' . $row['product_name'] . '<h5>';
+                    echo '<div class=row style="margin-top: 60px; width:40%">';
+
+                    echo '<div class="col-md-4" style="margin:auto">';
+                    echo '<a href="cart.php?minusQuantity=' . $row['id'] . '" style="">';
+                    echo '<img src="img/minusicon.png" alt="a"  height="30px">';
+                    echo '</a>';
                     echo '</div>';
+
+                    echo '<div class="col-md-4" style="margin: 0px 10px 0px 0px; padding:10px 0px 0px 10px ">';
+                    echo '<h5 style="font-weight: normal;">' . $row['product_quantity'] . '<h5>';
+                    echo '</div>';
+
+                    echo '<div class="col-md-4" style="margin:7px 0px 0px -30px">';
+                    echo '<a href="cart.php?addQuantity=' . $row['id'] . '" style="">';
+                    echo '<img src="img/addicon.png" alt="a"  height="30px">';
+                    echo '</a>';
+                    echo '</div>';
+
+
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="col-md-12 col-lg-2">';
                     echo '<div class=row>';
-                    echo '<span style="text-align: bottom-right; padding-top: 10px; font-weight: bold">$' . $row['product_price'] . '</span>';
+                    echo '<a href="cart.php?deleteItem=' . $row['id'] . '" style="margin-left:50px; margin-top:10px;">';
+                    echo '<img src="img/delete_red.png" alt="a"  height="30px">';
+                    //https://www.flaticon.com/free-icons/delete
+                    echo '</a>';
+                    echo '</div>';
+                    echo '<div class=row style="postion:relative">';
+                    echo '<span style="text-align: right; padding: 70px 20px 0px 0px; font-weight: bold";>$' . $formatted_price . '</span>';
                     echo '</div>';
                     echo '</div>';
                     echo '<hr class="hr hr-blurry" style="margin: 10px 0px 0px 0px">';
@@ -192,7 +218,7 @@
             </div>
           </div>
           <div class="col-md-5 gx-5 mb-4">
-            <div class="card" style="margin-bottom: 20px; ">
+            <div class="card" style="margin-bottom: 20px; font-weight: bold;">
               <!-- Card start -->
               <div class="row" style="margin: 20px 10px 0px 10px">
                 <div class="col-md-6">
@@ -219,7 +245,6 @@
                     }
                   }
                   $formatted_subTotal = number_format((float)$subTotal, 2, '.' . '');
-
 
                   echo '<span style="padding-left:100px">$' . $formatted_subTotal . '</span>';
                   ?>
@@ -318,20 +343,20 @@
               <!-- Card end -->
             </div>
             <?php
-            $checkIfEmpty = "SELECT CASE WHEN EXISTS(SELECT 1 FROM shopping_cart) THEN 0 ELSE 1 END AS IsEmpty";
+            $checkIfEmpty = "SELECT CASE WHEN EXISTS(SELECT 1 FROM shopping_cart WHERE user_id =" . $_COOKIE['id'] .") THEN 0 ELSE 1 END AS IsEmpty";
             $getIfEmpty = mysqli_query($dbb, $checkIfEmpty);
             $cartempty = $getIfEmpty->fetch_array()['IsEmpty'];
 
             if ($cartempty == 1) {
               echo '<div class="card" style="width: 100%;">';
-              echo '<a class="btn btn-secondary stretched-link" style="padding: 20px">';
+              echo '<a class="btn btn-secondary stretched-link" style="padding: 20px" data-mdb-toggle="modal" data-mdb-target="#noItems">';
               echo '<span style="font-weight: bold; margin:auto; font-size: 18px">No items in cart</span>';
               echo '</a>';
               echo '</div>';
             } else {
               echo '<div class="card" style="width: 100%;">';
-              echo '<a href="cart.php?checkOut=10" class="btn btn-info stretched-link" style="padding: 20px">';
-              echo '<span style="font-weight: bold; margin:auto; font-size: 18px">CHECKOUT $' . $TOTAL . '</span>';
+              echo '<a href="cart.php?checkOut" class="btn btn-info stretched-link" style="padding: 20px">';
+              echo '<span style="font-weight: bold; margin:auto; font-size: 18px" data-mdb-toggle="modal" data-mdb-target="#CheckoutSuccess">CHECKOUT $' . $TOTAL . '</span>';
               echo '</a>';
               echo '</div>';
             }
@@ -341,7 +366,36 @@
     </div>
   </main>
   <!--Main layout-->
-
+  <!-- Modal chekout -->
+  <div class="modal fade" id="CheckoutSuccess" tabindex="-1" aria-labelledby="feedback" aria-hidden="true" style="z-index: 10000000 !important;">
+    <div class="modal-dialog mt-20">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Payment Successful</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">We have received your payment and your order will be prepared shortly</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal noitem -->
+  <div class="modal fade" id="noItems" tabindex="-1" aria-labelledby="feedback" aria-hidden="true" style="z-index: 10000000 !important;">
+    <div class="modal-dialog mt-20">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cart Empty</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">Your cart is empty! Add items before checking out</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--Footer-->
   <div id="footer-support">
 
