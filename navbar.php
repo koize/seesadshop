@@ -45,13 +45,13 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li>
-              <a class="dropdown-item" href="#">Kao (Biore)</a>
+              <a class="dropdown-item" href="products_kao.php">Kao (Biore)</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Gatsby</a>
+              <a class="dropdown-item" href="products_gatsby.php">Gatsby</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Others</a>
+              <a class="dropdown-item" href="products_others.php">Others</a>
             </li>
             <li>
               <a class="dropdown-item" href="products.php">All products</a>
