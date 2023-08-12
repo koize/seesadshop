@@ -144,7 +144,7 @@ if ($_COOKIE['id'] != "1") {
                 echo "<td><img style='width:65px' class='rounded-circle img-fluid' src='" . $row['img_filepath'] . "'><br>" . $row['img_filepath'] . "</td>";
             }
             echo "<td>" . $row['created_at'] . "</td>";
-            echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "edit_user_" . $row['id'] . "'>Edit</button></td>";
+            echo "<td><button type='button' class='btn btn-outline-info' data-mdb-toggle='modal' data-mdb-target='#" . "edit_user_" . $row['id'] . "'>Edit</button></td>";
             echo "</tr>";
         }
         ?>
@@ -207,7 +207,7 @@ if ($_COOKIE['id'] != "1") {
             echo "<td>" . $row['discount'] . "%</td>";
             echo "<td><code>" . $row['discount_code'] . "</code></td>";
             echo "<td>" . $row['used_code'] . "</td>";
-            echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "edit_code_" . $row['id'] . "'>Edit</button></td>";
+            echo "<td><button type='button' class='btn btn-outline-info' data-mdb-toggle='modal' data-mdb-target='#" . "edit_code_" . $row['id'] . "'>Edit</button></td>";
             echo "</tr>";
         }
         ?>
@@ -355,7 +355,7 @@ if ($_COOKIE['id'] != "1") {
             echo "<td>" . $row['email'] . "</td>";
             echo "<td>" . $row['message'] . "</td>";
             echo "<td>" . $row['created_at'] . "</td>";
-            echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "feedback_" . $row['id'] . "'>Read</button></td>";
+            echo "<td><button type='button' class='btn btn-outline-info' data-mdb-toggle='modal' data-mdb-target='#" . "feedback_" . $row['id'] . "'>Read</button></td>";
             echo "</tr>";
         }
         ?>
@@ -408,7 +408,7 @@ if ($_COOKIE['id'] != "1") {
         }
     </script>
     <h3 id="promotions">Promotions</h3>
-    <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#add_promotion">Add Promotion</button>
+    <button type="button" class="btn btn-outline-info" data-mdb-toggle="modal" data-mdb-target="#add_promotion" style="margin-bottom: 10px">Add Promotion</button>
     <div class="modal fade" id="add_promotion" tabindex="-1" role="dialog" aria-labelledby="add_product" aria-hidden="true">
         <div class='modal-dialog modal-dialog-centered' role='document'>
             <div class='modal-content'>
@@ -480,7 +480,7 @@ if ($_COOKIE['id'] != "1") {
             echo "<td>" . $row['start_date'] . "</td>";
             echo "<td>" . $row['end_date'] . "</td>";
             echo "<td><img style='width:60px;height:60px' src='" . $row['img_filepath'] . "'><br>" . $row['img_filepath'] . "</td>";
-            echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "promotions_" . $row['id'] . "'>Edit</button></td>";
+            echo "<td><button type='button' class='btn btn-outline-info' data-mdb-toggle='modal' data-mdb-target='#" . "promotions_" . $row['id'] . "'>Edit</button></td>";
             echo "</tr>";
         }
         ?>
@@ -555,7 +555,7 @@ if ($_COOKIE['id'] != "1") {
     </script>
 
     <h3 id="products">Products</h3>
-    <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#add_product">Add Product</button>
+    <button type="button" class="btn btn-outline-info" data-mdb-toggle="modal" data-mdb-target="#add_product" style="margin-bottom: 10px;">Add Product</button>
     <div class="modal fade" id="add_product" tabindex="-1" role="dialog" aria-labelledby="add_product" aria-hidden="true">
         <div class='modal-dialog modal-dialog-centered' role='document'>
             <div class='modal-content'>
@@ -617,7 +617,7 @@ if ($_COOKIE['id'] != "1") {
             echo "<td>$" . $row['product_price'] . "</td>";
             echo "<td>" . $row['products_category'] . "</td>";
             echo "<td><img style='width:65px' src='" . $row['image_link'] . "'><br>" . $row['image_link'] . "</td>";
-            echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "products_" . $row['id'] . "'>Edit</button></td>";
+            echo "<td><button type='button' class='btn btn-outline-info' data-mdb-toggle='modal' data-mdb-target='#" . "products_" . $row['id'] . "'>Edit</button></td>";
             echo "</tr>";
         }
         ?>
