@@ -165,9 +165,10 @@
             echo '<h5 class="card-title">' . $row['product_name'] . '</h5>';
             echo '<p class="card-text">';
             echo $row['product_desc'];
+            $formatted_price = number_format((float)$row['product_price'], 2, '.' . '');
             echo ' </p>
                 <div class="row mb-3">
-                    <h5 class="card-text">$'.$row['product_price'].'</h5>
+                    <h5 class="card-text">$'.$formatted_price.'</h5>
                 </div>
                   <div class="row">';
                   if (isset($_COOKIE['id'])) {
