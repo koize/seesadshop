@@ -18,6 +18,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }else if(isset($_POST['uploadNewProduct'])) {
         uploadNewProduct();
         exit();
+    } else if(isset($_POST['uploadProductImage'])) {
+        uploadProductImage();
+        exit();
     }
     if($_POST['mode'] == "save_user_changes") {
         saveUserChanges();
@@ -137,6 +140,20 @@ function uploadNewProduct() {
     header("Location: dashboard.php");
 }
 
+function uploadProductImage() {
+    global $db;
+    $target_dir = "products/";
+    $id = $_POST['id'];
+    $target_file = $target_dir . basename($_FILES["product_image"]["name"]);
+    if(!move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_file)) {
+        echo "error occured!";
+    }
+    $db->query('UPDATE products SET image_link = "' . $target_file . '" WHERE id = "' . $id . '"');
+    echo "Successfully updated product image!";
+    sleep(2);
+    header("Location: dashboard.php");
+}
+
 function saveUserChanges() {
     global $db;
     $user_id = $_POST['user_id'];
@@ -230,8 +247,8 @@ function saveProductChanges() {
         echo "Product price cannot be empty!";
         exit();
     }
-    $image_link = $_POST['image_link'];
-    $db->query('UPDATE products SET product_name = "' . $product_name . '", product_desc = "' . $product_desc . '", product_price = "' . $product_price . '", image_link = "' . $image_link . '" WHERE id = "' . $id . '"');
+    $products_category = $_POST['products_category'];
+    $db->query('UPDATE products SET product_name = "' . $product_name . '", product_desc = "' . $product_desc . '", product_price = "' . $product_price . '", products_category = "' . $products_category . '" WHERE id = "' . $id . '"');
     echo "Successfully updated product!";
 }
 
