@@ -12,6 +12,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(isset($_POST['uploadUserImg'])){
         uploadUserImg();
         exit();
+    }else if(isset($_POST['uploadNewPromotion'])) {
+        uploadNewPromotion();
+        exit();
     }
     if($_POST['mode'] == "save_user_changes") {
         saveUserChanges();
@@ -31,8 +34,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         saveShoppingChanges();
     } else if($_POST['mode'] == "delete_shopping") {
         deleteShopping();
-    } else if($_POST['mode'] == "add_promotion") {
-        addPromotion();
     } else if($_POST['mode'] == "delete_promotion") {
         deletePromotion();
     } else if($_POST['mode'] == "save_promotion_changes") {
@@ -43,9 +44,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 function uploadUserImg() {
     global $db;
     $target_dir = "user-profile-icon/";
+    /*
     foreach($_POST as $key => $value) {
         echo $key . " " . $value . "<br>";
     }
+    */
     $id = $_POST['id'];
     $target_file = $target_dir . basename($_FILES["user_img_path"]["name"]);
     if(move_uploaded_file($_FILES["user_img_path"]["tmp_name"], $target_file)) {
@@ -53,6 +56,33 @@ function uploadUserImg() {
     }
     header("Location: dashboard.php");
 
+}
+
+function uploadNewPromotion() {
+    global $db;
+    $target_dir = "img/";
+    $name = $_POST['promotion_name'];
+    $original_price = $_POST['promotion_original_price'];
+    $sale_price = $_POST['promotion_sale_price'];
+    $start_date = $_POST['promotion_start_date'];
+    $end_date = $_POST['promotion_end_date'];
+    $details = $_POST['promotion_details'];
+    foreach($_POST as $key => $value) {
+        echo $key . " " . $value . "<br>";
+    }
+
+    $db->query('INSERT INTO promotions (name, original_price, sale_price, start_date, end_date, details) VALUES ("' . $name . '", "' . $original_price . '", "' . $sale_price . '", "' . $start_date . '", "' . $end_date . '", "' . $details . '")');
+    $target_file = $target_dir . basename($_FILES["promotion_image"]["name"]);
+    $id = $db->lastInsertId();
+    if(!move_uploaded_file($_FILES["promotion_image"]["tmp_name"], $target_file)) {
+        echo "error occured!";
+        $db->query('UPDATE promotions SET img_filepath = "" WHERE id = "' . $id . '"');
+    } else {
+        $db->query('UPDATE promotions SET img_filepath = "' . $target_file . '" WHERE id = "' . $id . '"');
+    }
+    echo "Successfully added promotion!";
+    sleep(2);
+    header("Location: dashboard.php");
 }
 
 function saveUserChanges() {
@@ -136,19 +166,6 @@ function deleteShopping() {
     $id = $_POST['id'];
     $db->query('DELETE FROM shopping_cart WHERE id = "' . $id . '"');
     echo "Successfully deleted product!";
-}
-
-function addPromotion() {
-    global $db;
-    $name = $_POST['name'];
-    $original_price = $_POST['original_price'];
-    $sale_price = $_POST['sale_price'];
-    $start_date = $_POST['start_date'];
-    $end_date = $_POST['end_date'];
-    $details = $_POST['details'];
-    $image_link = $_POST['image_link'];
-    $db->query('INSERT INTO promotions (name, original_price, sale_price, start_date, end_date, details, image_link) VALUES ("' . $name . '", "' . $original_price . '", "' . $sale_price . '", "' . $start_date . '", "' . $end_date . '", "' . $details . '", "' . $image_link . '")');
-    echo "Successfully added promotion!";
 }
 
 function deletePromotion() {

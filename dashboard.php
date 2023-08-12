@@ -138,7 +138,7 @@ if ($_COOKIE['id'] != "1") {
             echo "<td>" . $row['password'] . "</td>";
             echo "<td>" . $row['address'] . "</td>";
             echo "<td>" . $row['phone'] . "</td>";
-            if($row['img_filepath'] == "") {
+            if ($row['img_filepath'] == "") {
                 echo "<td><img style='width:65px' class='rounded-circle img-fluid' src='https://subwayisfresh.com.sg/wp-content/uploads/2022/02/Sides-Double-Chocolate-Cookie.jpg'><br>" . $row['img_filepath'] . "</td>";
             } else {
                 echo "<td><img style='width:65px' class='rounded-circle img-fluid' src='" . $row['img_filepath'] . "'><br>" . $row['img_filepath'] . "</td>";
@@ -274,7 +274,7 @@ if ($_COOKIE['id'] != "1") {
             let img = document.getElementById("user_img_path" + x);
             //let img_path = "&img_path=" + document.getElementById("user_img_path" + x).innerText;
             let created_at = "&created_at=" + document.getElementById("user_created_at" + x).innerText;
-            str = str + user_id + name + username + email + password + address + phone  + created_at;
+            str = str + user_id + name + username + email + password + address + phone + created_at;
             xmlhttp.open('POST', "admin.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.onreadystatechange = function() {
@@ -418,37 +418,39 @@ if ($_COOKIE['id'] != "1") {
                 </div>
                 </button>
                 <div class="modal-body">
-                    <table style="text-align: left">
-                        <tr>
-                            <td>Name:</td>
-                            <td><input type='text' id='promotion_name' class='user_input' /></td>
-                        </tr>
-                        <tr>
-                            <td>Original Price:</td>
-                            <td><input type='text' id='promotion_original_price' class='user_input' /></td>
-                        </tr>
-                        <tr>
-                            <td>Discounted Price:</td>
-                            <td><input type='text' id='promotion_sale_price' class='user_input' /></td>
-                        </tr>
-                        <tr>
-                            <td>Details</td>
-                            <td><textarea id='promotion_details' cols='30' rows='10'></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Start Date:</td>
-                            <td><input type='date' id='promotion_start_date' class='user_input' /></td>
-                        </tr>
-                        <tr>
-                            <td>End Date:</td>
-                            <td><input type='date' id='promotion_end_date' class='user_input' /></td>
-                        </tr>
-                        <tr>
-                            <td>Image</td>
-                            <td><input type='file' id='promotion_image' class='user_input' /></td>
-                        </tr>
-                    </table>
-                    <button type='button' class='btn btn-primary' data-mdb-dismiss='modal' onclick='addPromotion();'>Add</button>
+                    <form method='post' action='admin.php' enctype='multipart/form-data'>
+                        <table style=" text-align: left">
+                            <tr>
+                                <td>Name:</td>
+                                <td><input type='text' name='promotion_name' id='promotion_name' class='user_input' /></td>
+                            </tr>
+                            <tr>
+                                <td>Original Price:</td>
+                                <td><input type='text'name='promotion_original_price' id='promotion_original_price' class='user_input' /></td>
+                            </tr>
+                            <tr>
+                                <td>Discounted Price:</td>
+                                <td><input type='text' name='promotion_sale_price' id='promotion_sale_price' class='user_input' /></td>
+                            </tr>
+                            <tr>
+                                <td>Details</td>
+                                <td><textarea name='promotion_details' id='promotion_details' cols='30' rows='10'></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Start Date:</td>
+                                <td><input type='date' name='promotion_start_date' id='promotion_start_date' class='user_input' /></td>
+                            </tr>
+                            <tr>
+                                <td>End Date:</td>
+                                <td><input type='date' name='promotion_end_date' id='promotion_end_date' class='user_input' /></td>
+                            </tr>
+                            <tr>
+                                <td>Image</td>
+                                <td><input type='file' name='promotion_image' id='promotion_image' class='user_input' /></td>
+                            </tr>
+                        </table>
+                        <button type='submit' class='btn btn-primary' name='uploadNewPromotion' data-mdb-dismiss='modal' >Add</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -516,6 +518,7 @@ if ($_COOKIE['id'] != "1") {
         ?>
     </table>
     <script>
+        /*
         function addPromotion() {
             var xmlhttp = new XMLHttpRequest();
             var str = "mode=add_promotion";
@@ -536,6 +539,7 @@ if ($_COOKIE['id'] != "1") {
             };
             xmlhttp.send(str);
         }
+        */
 
         function deletePromotion(x) {
             var xmlhttp = new XMLHttpRequest();
