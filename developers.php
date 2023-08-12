@@ -93,16 +93,22 @@
       <div class="card py-1 px-5 mb-5" id="gab">
         <h6 class="my-5 display-6 fw-bold ls-tight" style="color: #6DD5FA">
           Gabriel
-          <span style="color: #2980B9">(hackerman that abandoned us 2 days before submission)</span>
+          <span style="color: #2980B9">(hackerman that abandoned us 2 days before submission) - 2204455</span>
         </h6>
         <div class="col">
         <div class="row">
         <div class="col-md-6 gx-5 mb-4">
-          <img src="portfolio-img/dru.jpg" class="img-fluid" alt="..." width="50%" height="50%" />
+          <img src="portfolio-img/gab.gif" class="img-fluid" alt="quacc" width="50%" height="50%" />
         </div>
         <div class="col-md-6 gx-6 mb-4">
           <p class="lead fw-normal text-muted mb-5 mr-5">
-            <span style="color: #2980B9">"went to habourfront while we are here losing braincells"</span>
+            <span style="color: #2980B9">Passionate in cybersecurity, he has no reason to be in an engineering course,
+              and yet he is. No one really understands why he's here, or why he is still here, but one thing's for sure...
+              <br>
+              <b>Next time, when choosing a place to code, ensure there's WiFi.</b></span>
+              <br>
+            <span style="color: #49a0d9; font-family:'Courier New', Courier, monospace">
+            <q>In my defence, coding by the beach sounded like a good idea.</q> ~ Gab</span>
           </p>
         </div>
         </div>
