@@ -109,7 +109,7 @@ function uploadNewPromotion() {
 
 function uploadNewProduct() {
     global $db;
-    $target_dir = "img/";
+    $target_dir = "products/";
     $product_name = $_POST['product_name'];
     if($product_name == "") {
         echo "Product name cannot be empty!";
@@ -142,7 +142,7 @@ function uploadNewProduct() {
 
 function uploadProductImage() {
     global $db;
-    $target_dir = "img/";
+    $target_dir = "products/";
     $id = $_POST['id'];
     $target_file = $target_dir . basename($_FILES["product_image"]["name"]);
     if(!move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_file)) {
