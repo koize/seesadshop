@@ -43,6 +43,16 @@ if (isset($_GET['addToCart'])) {
     }
 
     if (mysqli_query($db, $sql)) {
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+        $('#addedToCart').modal('show');
+        });
+        </script>";
     } else {
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+        $('#addFail').modal('show');
+        });
+        </script>";
     }
 }

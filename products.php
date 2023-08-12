@@ -135,7 +135,7 @@
             echo '<img src= "img/' . $row['image_link'] . '"class = "img-fluid"/>';
             echo '<a href="#!">';
             echo '<div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>';
-            echo '</a>';
+            echo '</a>';  
             echo '</div>';
             echo '<div class="card-body">';
             echo '<h5 class="card-title">' . $row['product_name'] . '</h5>';
@@ -191,7 +191,8 @@
         ?>
       </section>
     </div>
-    <!-- Modal -->
+
+    <!-- Modal  Login pls-->
     <div class="modal fade" id="PleaseLogin" tabindex="-1" aria-labelledby="feedback" aria-hidden="true" style="z-index: 10000000 !important;">
       <div class="modal-dialog mt-20">
         <div class="modal-content">
@@ -203,6 +204,40 @@
           <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
             <a href="login.php" class="btn btn-primary">Sign in</a>          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal added to cart-->
+  <div class="modal fade" id="addedToCart" tabindex="-1" aria-labelledby="feedback" aria-hidden="true" style="z-index: 10000000 !important;">
+      <div class="modal-dialog mt-20">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Item Added</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">Item has been successfully added to cart</div>
+          <div class="modal-footer">
+            <a href="cart.php" class="btn btn-secondary">Go to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal add fail-->
+  <div class="modal fade" id="addFail" tabindex="-1" aria-labelledby="feedback" aria-hidden="true" style="z-index: 10000000 !important;">
+      <div class="modal-dialog mt-20">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Unsuccessful</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">Failed to add item to cart</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Ok</button>
+          </div>
         </div>
       </div>
     </div>
