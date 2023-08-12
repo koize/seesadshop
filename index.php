@@ -137,9 +137,9 @@
                                 <div class="col">
                                 </div>
                                  <div class="col">
-                                 <h1 class="mb-4">' . $promotion['name'] . '</h1>
-                                 <h2 class="mb-4">Sale price: $' . $promotion['sale_price'] . '</h2>
-                                 <p class="mb-4">Promotion ends on ' . $promotion['end_date'] . '</p>
+                                 <h1 class="mb-2">' . $promotion['name'] . '</h1>
+                                 <h2 class="mb-2">Sale price: $' . $promotion['sale_price'] . '</h2>
+                                 <p class="mb-2">Promotion ends on ' . $promotion['end_date'] . '</p>
                                  </div>
                                 <div class="col">
                                 </div>
@@ -291,7 +291,8 @@
           </div>
           <div class="modal-body">Please sign in to add this item to cart</div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Ok</button>
+            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
+            <a href="login.php" class="btn btn-primary">Sign in</a>
           </div>
         </div>
       </div>

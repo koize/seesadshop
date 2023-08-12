@@ -202,8 +202,8 @@
           </div>
           <div class="modal-body">Please sign in to add this item to cart</div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Ok</button>
-          </div>
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
+            <a href="login.php" class="btn btn-primary">Sign in</a>          </div>
         </div>
       </div>
     </div>
