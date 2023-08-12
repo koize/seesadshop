@@ -138,7 +138,11 @@ if ($_COOKIE['id'] != "1") {
             echo "<td>" . $row['password'] . "</td>";
             echo "<td>" . $row['address'] . "</td>";
             echo "<td>" . $row['phone'] . "</td>";
-            echo "<td><img style='width:60px;height:60px' src='" . $row['img_filepath'] . "'><br>" . $row['img_filepath'] . "</td>";
+            if($row['img_filepath'] == "") {
+                echo "<td><img style='width:65px' class='rounded-circle img-fluid' src='https://subwayisfresh.com.sg/wp-content/uploads/2022/02/Sides-Double-Chocolate-Cookie.jpg'><br>" . $row['img_filepath'] . "</td>";
+            } else {
+                echo "<td><img style='width:65px' class='rounded-circle img-fluid' src='" . $row['img_filepath'] . "'><br>" . $row['img_filepath'] . "</td>";
+            }
             echo "<td>" . $row['created_at'] . "</td>";
             echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "edit_user_" . $row['id'] . "'>Edit</button></td>";
             echo "</tr>";
