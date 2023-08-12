@@ -369,15 +369,15 @@ if ($_COOKIE['id'] != "1") {
         echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
         echo "<div class='modal-content'>";
         echo "<div class='modal-header'>";
-        echo "<h5 class='modal-title' id='" . "feedback_" . $row['id'] . "Title" . "'>Read Feedback info" . $row['id'] . "</h5>";
+        echo "<h5 class='modal-title' id='" . "feedback_" . $row['id'] . "Title" . "'>Read Feedback info: " . $row['id'] . "</h5>";
         echo "<button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'>";
         echo "</button>";
         echo "</div>";
         echo "<div class='modal-body'>";
-        echo "User ID: <div id='feedback_user_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
+        echo "Feedback ID: <div id='feedback_user_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
         echo "Name: <div id='feedback_user_name" . $row['id'] . "' class='user_input'>" . $row['name'] . "</div>";
         echo "Email: <div id='feedback_user_email" . $row['id'] . "' class='user_input'>" . $row['email'] . "</div>";
-        echo "Profile Picture Path: <div id='feedback_message" . $row['id'] . "' class='user_input'>" . $row['message'] . "</div>"; //I'm questioning myself
+        echo "Message: <div id='feedback_message" . $row['id'] . "' class='user_input'>" . $row['message'] . "</div>"; //I'm questioning myself
         echo "Time Created: <div id='feedback_created_at" . $row['id'] . "' class='user_input'>" . $row['created_at'] . "</div>";
 
         //content here
@@ -498,7 +498,7 @@ if ($_COOKIE['id'] != "1") {
             echo "</button>";
             echo "</div>";
             echo "<div class='modal-body'>";
-            echo "User ID: <div id='promotions_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
+            echo "Product ID: <div id='promotions_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
             echo "Product Name: <div id='promotions_name" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['name'] . "</div>";
             echo "Product Desc: <div id='promotions_details" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['details'] . "</div>";
             echo "Product Original Price: <div id='product_original_price" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['original_price'] . "</div>";
@@ -652,12 +652,12 @@ if ($_COOKIE['id'] != "1") {
                         echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
                         echo "<div class='modal-content'>";
                         echo "<div class='modal-header'>";
-                        echo "<h5 class='modal-title' id='" . "products_" . $row['id'] . "Title" . "'>Product info" . $row['id'] . "</h5>";
+                        echo "<h5 class='modal-title' id='" . "products_" . $row['id'] . "Title" . "'>Product info: " . $row['id'] . "</h5>";
                         echo "<button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'>";
                         echo "</button>";
                         echo "</div>";
                         echo "<div class='modal-body'>";
-                        echo "User ID: <div id='products_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
+                        echo "Product ID: <div id='products_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
                         echo "Product Name: <div id='product_name" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_name'] . "</div>";
                         echo "Product Desc: <div id='product_desc" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_desc'] . "</div>";
                         echo "Product Price: <div id='product_price" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_price'] . "</div>";
@@ -747,12 +747,12 @@ if ($_COOKIE['id'] != "1") {
             echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
             echo "<div class='modal-content'>";
             echo "<div class='modal-header'>";
-            echo "<h5 class='modal-title' id='" . "shopping_" . $row['id'] . "Title" . "'>Product info" . $row['id'] . "</h5>";
+            echo "<h5 class='modal-title' id='" . "shopping_" . $row['id'] . "Title" . "'>Product info: " . $row['id'] . "</h5>";
             echo "<button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'>";
             echo "</button>";
             echo "</div>";
             echo "<div class='modal-body'>";
-            echo "User ID: <div id='shopping_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
+            echo "Product ID: <div id='shopping_id" . $row['id'] . "' class='user_input'>" . $row['id'] . "</div>";
             echo "Product Name: <div id='shopping_product_name" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_name'] . "</div>";
             echo "Product Desc: <div id='shopping_product_id" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_id'] . "</div>";
             echo "Product Price: <div id='shopping_product_price" . $row['id'] . "' class='user_input' contenteditable='true'>" . $row['product_price'] . "</div>";
