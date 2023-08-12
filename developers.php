@@ -139,16 +139,16 @@
       <div class="card py-1 px-5 mb-5" id="j">
         <h6 class="my-5 display-6 fw-bold ls-tight" style="color: #6DD5FA">
           Justin
-          <span style="color: #2980B9">(hackerman that abandoned us 2 days before submission)</span>
+          <span style="color: #2980B9">(source of drew's mental breakdowns) - 2109774</span>
         </h6>
         <div class="col">
         <div class="row">
         <div class="col-md-6 gx-5 mb-4">
-          <img src="img/hj1.jpg" class="img-fluid" alt="..." width="50%" height="50%" />
+          <img src="portfolio-img/jus.png" class="img-fluid" alt="..." width="50%" height="50%" />
         </div>
         <div class="col-md-6 gx-6 mb-4">
           <p class="lead fw-normal text-muted mb-5 mr-5">
-            <span style="color: #2980B9">"went to habourfront while we are here losing braincells"</span>
+            <span style="color: #2980B9">some random guy that ended up in the hardest EEE course with ZERO coding knowledge. he just wanted enjoy poly life and chill, but sadly that only exists in PFP. now year 2 exists. hell week is still going on. left school right when gate closes, 1 day before THIS WEBSITE IS DUE!!!. oh and the cause of drew's mental breakdowns? well MAD exists and its still not done as of writing (4hrs before this website's submission lmao)</span>
           </p>
         </div>
         </div>
