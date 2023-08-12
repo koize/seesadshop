@@ -204,8 +204,8 @@ if ($_COOKIE['id'] != "1") {
         foreach ($result as $row) {
             echo "<tr>";
             echo "<td>" . $row['user_id'] . "</td>";
-            echo "<td>" . $row['discount'] . "</td>";
-            echo "<td>" . $row['discount_code'] . "</td>";
+            echo "<td>" . $row['discount'] . "%</td>";
+            echo "<td><code>" . $row['discount_code'] . "</code></td>";
             echo "<td>" . $row['used_code'] . "</td>";
             echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "edit_code_" . $row['id'] . "'>Edit</button></td>";
             echo "</tr>";
@@ -475,8 +475,8 @@ if ($_COOKIE['id'] != "1") {
             echo "<td>" . $row['id'] . "</td>";
             echo "<td>" . $row['name'] . "</td>";
             echo "<td>" . $row['details'] . "</td>";
-            echo "<td>" . $row['original_price'] . "</td>";
-            echo "<td>" . $row['sale_price'] . "</td>";
+            echo "<td>$" . $row['original_price'] . "</td>";
+            echo "<td>$" . $row['sale_price'] . "</td>";
             echo "<td>" . $row['start_date'] . "</td>";
             echo "<td>" . $row['end_date'] . "</td>";
             echo "<td><img style='width:60px;height:60px' src='" . $row['img_filepath'] . "'><br>" . $row['img_filepath'] . "</td>";
@@ -636,7 +636,7 @@ if ($_COOKIE['id'] != "1") {
                     echo "<td>" . $row['id'] . "</td>";
                     echo "<td>" . $row['product_name'] . "</td>";
                     echo "<td>" . $row['product_desc'] . "</td>";
-                    echo "<td>" . $row['product_price'] . "</td>";
+                    echo "<td>$" . $row['product_price'] . "</td>";
                     echo "<td><img style='width:65px' src='" . $row['image_link'] . "'><br>" . $row['image_link'] . "</td>";
                     echo "<td><button type='button' class='btn btn-primary' data-mdb-toggle='modal' data-mdb-target='#" . "products_" . $row['id'] . "'>Edit</button></td>";
                     echo "</tr>";
