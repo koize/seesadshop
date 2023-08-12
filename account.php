@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
     date_default_timezone_set('Asia/Kolkata');
     $date = date('d-m-y h:i:s');
     $query = $db->query('INSERT INTO users (name, username, email, password, address, phone, created_at, img_filepath) VALUES ("' . $_POST['name'] . '","' . $_POST['username'] . '","' . $email . '","' . $password . '","' . $_POST['address'] . '","' . $_POST['phone'] . '","' . $date . '","user-profile-icon/default.png")');
-    echo "<script>editAccDone()</script>";
   }
   $cookie_name = "id";
   $query = $db->query('SELECT * FROM users WHERE email = "' . $_POST['email'] . '"');
@@ -65,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
 
     $cookie_value = $user['id'];
     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
   }
 }
 
@@ -448,6 +448,10 @@ if (isset($_COOKIE['id'])) {
                     <th>view order</th>
                   </tr>
                   <?php
+                  if (!isset($_COOKIE['id'])) {
+                    echo "<script>editAccDone();</script>";
+
+                  }
                   $sql = "SELECT * FROM orders_list  WHERE user_id = '" . $_COOKIE['id'] . "'";
                   $result = $db->query($sql);
                   foreach ($result as $row) {
