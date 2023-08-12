@@ -1,5 +1,5 @@
 <?php
-if($_COOKIE['id'] != "99999999") {
+if($_COOKIE['id'] != "1") {
     echo "You are not an admin.";
     exit();
 }

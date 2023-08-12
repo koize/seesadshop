@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <script src="promotion.js"></script>
-  <link rel="icon" href="img/csad_logo_korean_small.png" type="image/x-icon"/>
+  <link rel="icon" href="img/csad_icon.png" type="image/x-icon"/>
 
 
 
@@ -123,7 +123,7 @@
         if ($result->num_rows > 0) {
           for ($i = 0; $i < mysqli_num_rows($result); $i++) {
             $row = mysqli_fetch_assoc($result);
-            echo '<div class="col-lg-4 col-md-12 mb-4">';
+            /*echo '<div class="col-lg-4 col-md-12 mb-4">';
             echo '<div class="card">';
             echo '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">';
             echo '<img src= "img/' . $row['image_link'] . '"class = "img-fluid"/>';
@@ -147,7 +147,34 @@
             }
             echo '</div>';
             echo '</div>';
+            echo '</div>';*/
+            //
+            echo '<div class="col-lg-4 col-md-6 mb-4">';
+            echo '<div class="card text-body mb-3" style="height:600px">';
+            echo '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">';
+            echo '<img src="img/' . $row['image_link'] . '" class="card-img-top" />';
+            echo '<div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>';
             echo '</div>';
+            echo '<div class="card-body">';
+            echo '<h5 class="card-title">' . $row['product_name'] . '</h5>';
+            echo '<p class="card-text">';
+            echo $row['product_desc'];
+            echo ' </p>
+                <div class="row mb-3">
+                    <h5 class="card-text">$'.$row['product_price'].'</h5>
+                </div>
+                  <div class="row">';
+                  if (isset($_COOKIE['id'])) {
+                    echo '<a href="products.php?addToCart=' . $row['id'] . '" class="btn btn-primary btn-rounded ">Add to Cart</a>';
+                  } else {
+                    echo '<button type="button" class="btn btn-primary btn-rounded" data-mdb-toggle="modal" data-mdb-target="#PleaseLogin">Add to cart</button>
+                    ';
+                  } echo ' 
+                </div>
+              </div>
+            </div>
+          </div>';
+
           }
         } else {
           echo "No results found";

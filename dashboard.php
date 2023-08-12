@@ -33,7 +33,7 @@ if ($_COOKIE['id'] != "1") {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="promotion.js"></script>
-    <link rel="icon" href="img/csad_logo_korean_small.png" type="image/x-icon"/>
+    <link rel="icon" href="img/csad_icon.png" type="image/x-icon"/>
 
 </head>
 
@@ -418,7 +418,7 @@ if ($_COOKIE['id'] != "1") {
                         </tr>
                         <tr>
                             <td>Details</td>
-                            <td><textarea id='promotion_details' cols='50' rows='10'></textarea></td>
+                            <td><textarea id='promotion_details' cols='30' rows='10'></textarea></td>
                         </tr>
                         <tr>
                             <td>Start Date:</td>
@@ -509,6 +509,7 @@ if ($_COOKIE['id'] != "1") {
             var sale_price = "&sale_price=" + document.getElementById("promotion_sale_price").value;
             var start_date = "&start_date=" + document.getElementById("promotion_start_date").value;
             var end_date = "&end_date=" + document.getElementById("promotion_end_date").value;
+            var image_link = "&image_link=" + document.getElementById("promotion_image_link").value;
             var details = "&details=" + document.getElementById("promotion_details").value;
             str = str + name + original_price + sale_price + start_date + end_date + details;
             xmlhttp.open('POST', "admin.php", true);
