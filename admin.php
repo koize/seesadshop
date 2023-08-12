@@ -18,6 +18,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }else if(isset($_POST['uploadNewProduct'])) {
         uploadNewProduct();
         exit();
+    } else if(isset($_POST['uploadProductImage'])) {
+        uploadProductImage();
+        exit();
     }
     if($_POST['mode'] == "save_user_changes") {
         saveUserChanges();
@@ -123,7 +126,7 @@ function uploadNewProduct() {
         echo "Product category cannot be empty!";
         exit();
     }
-    $db->query('INSERT INTO products (product_name, product_desc, product_price, products_category) VALUES ("' . $product_name . '", "' . $product_desc . '", "' . $product_price . '", "' . $product_category . '")');
+    $db->query('INSERT INTO products (product_name, product_desc, product_price, products_category) VALUES ("' . $product_name . '", "' . $product_desc . '", ' . $product_price . ', "' . $product_category . '")');
     $target_file = $target_dir . basename($_FILES["product_image"]["name"]);
     $id = $db->lastInsertId();
     if(!move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_file)) {
@@ -133,6 +136,20 @@ function uploadNewProduct() {
         $db->query('UPDATE products SET image_link = "' . $target_file . '" WHERE id = "' . $id . '"');
     }
     echo "Successfully added product!";
+    sleep(2);
+    header("Location: dashboard.php");
+}
+
+function uploadProductImage() {
+    global $db;
+    $target_dir = "products/";
+    $id = $_POST['id'];
+    $target_file = $target_dir . basename($_FILES["product_image"]["name"]);
+    if(!move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_file)) {
+        echo "error occured!";
+    }
+    $db->query('UPDATE products SET image_link = "' . $target_file . '" WHERE id = "' . $id . '"');
+    echo "Successfully updated product image!";
     sleep(2);
     header("Location: dashboard.php");
 }
@@ -230,8 +247,8 @@ function saveProductChanges() {
         echo "Product price cannot be empty!";
         exit();
     }
-    $image_link = $_POST['image_link'];
-    $db->query('UPDATE products SET product_name = "' . $product_name . '", product_desc = "' . $product_desc . '", product_price = "' . $product_price . '", image_link = "' . $image_link . '" WHERE id = "' . $id . '"');
+    $products_category = $_POST['products_category'];
+    $db->query('UPDATE products SET product_name = "' . $product_name . '", product_desc = "' . $product_desc . '", product_price = "' . $product_price . '", products_category = "' . $products_category . '" WHERE id = "' . $id . '"');
     echo "Successfully updated product!";
 }
 
@@ -299,7 +316,7 @@ function savePromotionChanges() {
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
     $details = $_POST['details'];
-    $db->query('UPDATE promotions SET name = "' . $name . '", original_price = "' . $original_price . '", sale_price = "' . $sale_price . '", start_date = "' . $start_date . '", end_date = "' . $end_date . '", details = "' . $details . '" WHERE id = "' . $id . '"');
+    $db->query('UPDATE promotions SET name = "' . $name . '", original_price = ' . $original_price . ', sale_price = ' . $sale_price . ', start_date = "' . $start_date . '", end_date = "' . $end_date . '", details = "' . $details . '" WHERE id = "' . $id . '"');
     echo "Successfully updated promotion!";
 }
 
