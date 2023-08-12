@@ -665,9 +665,8 @@ if ($_COOKIE['id'] != "1") {
                 var product_name = "&product_name=" + document.getElementById("product_name" + x).innerText;
                 var product_desc = "&product_desc=" + document.getElementById("product_desc" + x).innerText;
                 var product_price = "&product_price=" + document.getElementById("product_price" + x).innerText;
-                var image_link = "&image_link=" + document.getElementById("product_image_link" + x).innerText;
                 var products_category = "&products_category=" + document.getElementById("product_category" + x).innerText;
-                str += id + product_name + product_desc + product_price + image_link;
+                str += id + product_name + product_desc + product_price + products_category;
                 xmlhttp.open("POST", "admin.php", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.onreadystatechange = function() {
