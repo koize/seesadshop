@@ -7,8 +7,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <title>Clear Skin All Day Home</title>
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-  <!-- Google Fonts Roboto -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" /> <!-- Google Fonts Roboto -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
   <!-- MDB -->
   <link rel="stylesheet" href="css/mdb.min.css" />
@@ -17,8 +16,10 @@
   <!-- Material Icons3 -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
   <script src="promotion.js"></script>
-    <link rel="icon" href="img/csad_icon.png" type="image/x-icon"/>
+  <link rel="icon" href="img/csad_icon.png" type="image/x-icon" />
 
 
 </head>
@@ -35,7 +36,7 @@
         height: 100vh;
       }
 
-    
+
 
 
       /* Height for devices larger than 576px */
@@ -58,17 +59,17 @@
     </style>
 
     <!-- Navbar -->
-      <div id = "nav-products">
+    <div id="nav-products">
 
-      </div>
-      <script>
-        $(function() {
-          $("#nav-products").load("navbar.php");
-        });
-      </script>
+    </div>
+    <script>
+      $(function() {
+        $("#nav-products").load("navbar.php");
+      });
+    </script>
     <!-- Navbar -->
     <!-- carousel -->
-    
+
     <?php
 
     // Connect to the MySQL database
@@ -123,8 +124,8 @@
   <!-- Inner -->
   <div class="carousel-inner">';
     foreach ($promotions as $index => $promotion) {
-      
-        echo '  <!-- Single item -->
+
+      echo '  <!-- Single item -->
       <div class="carousel-item active">
         <img src="' . $promotion['img_filepath'] . '" class="d-block w-100" alt="' . $promotion['name'] . '"/>
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.2);">
@@ -146,10 +147,10 @@
                       </div>
   
       </div>';
-      }
-    
+    }
+
     ?>
-  
+
     <!-- Inner -->
 
     <!-- Controls -->
@@ -195,7 +196,7 @@
                   <div class="col">
                     <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
                   </div>
-                
+
                   <div class="col">
                     <a href="#!" class="btn btn-primary">Shop</a>
                   </div>
@@ -221,7 +222,7 @@
                   <div class="col">
                     <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
                   </div>
-                
+
                   <div class="col">
                     <a href="#!" class="btn btn-primary">Shop</a>
                   </div>
@@ -247,7 +248,7 @@
                   <div class="col">
                     <p class="card-text"><small class="text-muted">Price: $15.99</small></p>
                   </div>
-                  
+
                   <div class="col">
                     <a href="#!" class="btn btn-primary">Shop</a>
                   </div>
@@ -320,14 +321,14 @@
 
   </main>
   <!--Main layout-->
-    <div id = "footer-home">
+  <div id="footer-home">
 
-    </div>
-    <script> 
-      $(function(){
-        $("#footer-home").load("footer.php"); 
-      });
-    </script>
+  </div>
+  <script>
+    $(function() {
+      $("#footer-home").load("footer.php");
+    });
+  </script>
 
   <!-- MDB -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
