@@ -113,8 +113,8 @@
 
       <div class="card py-1 px-5 mb-5" id="dru">
         <h6 class="my-5 display-6 fw-bold ls-tight" style="color: #6DD5FA">
-          Gabriel
-          <span style="color: #2980B9">(hackerman that abandoned us 2 days before submission)</span>
+          Drew
+          <span style="color: #2980B9">(wondering why he went to SP) - 2110123</span>
         </h6>
         <div class="col">
         <div class="row">
@@ -123,7 +123,11 @@
         </div>
         <div class="col-md-6 gx-6 mb-4">
           <p class="lead fw-normal text-muted mb-5 mr-5">
-            <span style="color: #2980B9">"went to habourfront while we are here losing braincells"</span>
+            <span style="color: #2980B9">Thinking he would enjoy coding, joined the Diploma in Computer 
+            Engineering because he didn't want to do purely coding and thought that it would be fun. He regrets putting 
+            off all his projects to the last minute since now he has to spend 12 hours everyday for a whole month
+          to be able to finish all his projects. Now he is currently left with 3 more projects due within the next week.</span></br></br>
+          <span style="color: #2980B9; font-family: 'Courier'">"FC1 Thai stall is better than Japanese Curry" ~ Drew</span>
           </p>
         </div>
         </div>
