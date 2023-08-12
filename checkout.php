@@ -52,7 +52,7 @@ if (isset($_GET['checkOut'])) {
         $conn->query($deleteCart);
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-        $('#PleaseLogin').modal('show');
+        $('#CheckoutSuccess').modal('show');
         });
         </script>";
       }

@@ -337,7 +337,8 @@
                   <div class="col-md-6">
                     <?php
                     $TOTAL = ($subTotal + 5 + 3.69) * $voucherMultiplier;
-                    echo '<span style="padding-left:100px; font-weight: bold">$' . $TOTAL . '</span>';
+                    $formatted_TOTAL = number_format((float)$TOTAL, 2, '.' . '');
+                    echo '<span style="padding-left:100px; font-weight: bold">$' . $formatted_TOTAL . '</span>';
                     ?>
                   </div>
                 </div>
@@ -357,8 +358,8 @@
               echo '</div>';
             } else {
               echo '<div class="card" style="width: 100%;">';
-              echo '<a href="cart.php?checkOut" class="btn btn-info stretched-link" style="padding: 20px">';
-              echo '<span style="font-weight: bold; margin:auto; font-size: 18px" data-mdb-toggle="modal" data-mdb-target="#CheckoutSuccess">CHECKOUT $' . $TOTAL . '</span>';
+              echo '<a href="cart.php?checkOut" class="btn btn-info stretched-link" style="padding: 20px" data-mdb-toggle="modal" data-mdb-target="#CheckoutSuccess>';
+              echo '<span style="font-weight: bold; margin:auto; font-size: 18px" data-mdb-toggle="modal" data-mdb-target="#CheckoutSuccess">CHECKOUT $' . $formatted_TOTAL . '</span>';
               echo '</a>';
               echo '</div>';
             }
