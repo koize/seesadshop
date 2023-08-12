@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
     date_default_timezone_set('Asia/Kolkata');
     $date = date('d-m-y h:i:s');
     $query = $db->query('INSERT INTO users (name, username, email, password, address, phone, created_at, img_filepath) VALUES ("' . $_POST['name'] . '","' . $_POST['username'] . '","' . $email . '","' . $password . '","' . $_POST['address'] . '","' . $_POST['phone'] . '","' . $date . '","user-profile-icon/default.png")');
+    echo "<script>editAccDone()</script>";
   }
   $cookie_name = "id";
   $query = $db->query('SELECT * FROM users WHERE email = "' . $_POST['email'] . '"');
@@ -216,8 +217,8 @@ if (isset($_COOKIE['id'])) {
                 <p class="text-muted mb-1"><?php echo $username . "#" . $id ?></p>
                 <p class="text-muted mb-4"><?php echo $email ?></p>
                 <div class="d-flex justify-content-center mb-2">
-                  <button type="button" class="btn btn-outline-danger" data-mdb-toggle="modal" data-mdb-target="#signOutModal">Sign out</button>
-                  <button type="button" class="btn btn-danger ms-2" data-mdb-toggle="modal" data-mdb-target="#deleteModal">Delete account</button>
+                  <button type="button" class="btn btn-danger ms-2" data-mdb-toggle="modal" data-mdb-target="#signOutModal">Sign out</button>
+                  <button type="button" class="btn btn-outline-danger" data-mdb-toggle="modal" data-mdb-target="#deleteModal">Delete account</button>
                 </div>
                 <div class="d-flex justify-content-center mb-2">
                   <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#editModal">Edit profile</button>
@@ -310,7 +311,11 @@ if (isset($_COOKIE['id'])) {
           <?php
           if (array_key_exists('deleteAcc', $_GET)) {
             $db = new PDO('mysql:host=localhost;dbname=seesad', 'root', '');
+            $query = $db->query('DELETE FROM orders_list WHERE user_id = "' . $_COOKIE['id'] . '"');
+            $query = $db->query('DELETE FROM shopping_cart WHERE user_id = "' . $_COOKIE['id'] . '"');
+            $query = $db->query('DELETE FROM reward_codes WHERE user_id = "' . $_COOKIE['id'] . '"');
             $query = $db->query('DELETE FROM users WHERE id = "' . $_COOKIE['id'] . '"');
+            
             echo "<script>accountSignOut();</script>";
           }
           if (array_key_exists('editAcc', $_POST)) {
