@@ -6,7 +6,10 @@ Built using PHP, JS, MDBootstrap.
 
 Part of the CSAD module from SP EEE.
 
-Live server: http://koize.southeastasia.cloudapp.azure.com/index.php
+Live server (using a slightly different version of this website: https://github.com/koize/spmart)
+
+http://koize.southeastasia.cloudapp.azure.com/index.php
+
 Contributors:
 
 [Me](https://github.com/koize)
