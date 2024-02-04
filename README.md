@@ -6,8 +6,7 @@ Built using PHP, JS, MDBootstrap.
 
 Part of the CSAD module from SP EEE.
 
-Live server: http://seesad.eastasia.cloudapp.azure.com/seesad/index.php
-
+Live server: http://koize.southeastasia.cloudapp.azure.com/index.php
 Contributors:
 
 [Me](https://github.com/koize)
